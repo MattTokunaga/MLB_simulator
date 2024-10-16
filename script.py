@@ -341,10 +341,17 @@ teams = [
 
 #     return team_day_dicts
 
+
+# function to generate a schedule
 def generate_schedule(year, teams):
+    # define output dictionary
     generated_schedule = {}
+
+    # open the schudule template that was made from 2023 season
     with open('schedule_template.json') as json_file:
         sched_template_dict = json.load(json_file)
+
+    # define team dictionary to turn the numbers in the template into teamss
     team_dict = {}
     for i in range(1, 31):
         team_dict[i] = teams[i-1][1] +' '+ teams[i-1][0]        
@@ -354,6 +361,8 @@ def generate_schedule(year, teams):
     shuffled_nums_dic = {}
     for i in range(30):
         shuffled_nums_dic[i + 1] = shuffled_nums[i]
+
+    # find the third tuesday of march to start the season on
     month = 3
     cal = calendar.monthcalendar(year, month)
     tuesdays = 0
@@ -362,19 +371,33 @@ def generate_schedule(year, teams):
             tuesdays += 1
             if tuesdays == 3:
                 third_tuesday = date(year, month, week[calendar.TUESDAY])
+
+    # shuffles the numbers in the template
     for day in sched_template_dict:
         generated_schedule[third_tuesday + timedelta(int(day))] = [(shuffled_nums_dic[game[0]], shuffled_nums_dic[game[1]]) for game in sched_template_dict[day]]
+    
+    # replaces numbers with teams
     for date_key in generated_schedule:
         generated_schedule[date_key] = [(team_dict[game[0]], team_dict[game[1]]) for game in generated_schedule[date_key]]
+
+    # return the generated schedule
     return generated_schedule
 
 def simulate_season(year, teams):
+    # connect to sqlite database
     con = sqlite3.connect("mlb_simulator.db")
     cur = con.cursor()
+
+    # see if the given year is already in database
     tups = cur.execute("SELECT DISTINCT(year) FROM Seasons").fetchall()
     years = [tup[0] for tup in tups]
     if year in years:
         print("Error: Season already in record.")
         return False
+    
+    # generate schedule
     schedule = generate_schedule(year, teams)
+
+
+
 
