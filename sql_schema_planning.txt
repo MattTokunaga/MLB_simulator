@@ -1,0 +1,99 @@
+CREATE TABLE Players (
+player_id INT NOT NULL,
+handedness STRING,
+position INTEGER,
+contact INTEGER,
+power INTEGER,
+speed INTEGER,
+catch INTEGER,
+team INTEGER,
+year INTEGER,
+age INTEGER,
+PRIMARY KEY (player_id, year),
+FOREIGN KEY (team) REFERENCES Teams,
+CONSTRAINT StatMins CHECK (contact >= 0 AND power >= 0 AND speed >= 0 AND catch >= 0 AND position > 0),
+CONSTRAINT StatMaxs CHECK (contact <= 100 AND power <= 100 AND speed <= 100 AND catch <= 100 AND position < 10),
+CONSTRAINT Handedness CHECK (handedness = 'LEFT' OR handedness = 'RIGHT'));
+
+CREATE TABLE Seasons (
+year INTEGER,
+championship_winner INTEGER,
+runner_up INTEGER,
+alcs_loser INTEGER,
+nlcs_loser INTEGER,
+nlds_loser_1 INTEGER,
+alds_loser_1 INTEGER,
+nlds_loser_2 INTEGER,
+alds_loser_2 INTEGER,
+nlwest_winner INTEGER,
+alwest_winner INTEGER,
+nlcentral_winner INTEGER,
+alcentral_winner INTEGER,
+nleast_winner INTEGER,
+aleast_winner INTEGER,
+nl_wild_card INTEGER,
+al_wild_card INTEGER,
+PRIMARY KEY (year));
+
+CREATE TABLE Games (
+game_id INTEGER,
+year INTEGER,
+home_team INTEGER,
+away_team INTEGER,
+winning_team INTEGER,
+losing_team INTEGER,
+home_score INTEGER,
+away_score INTEGER,
+winning_score INTEGER,
+losing_score INTEGER,
+PRIMARY KEY (game_id));
+
+CREATE TABLE HalfInnings (
+game_id INTEGER,
+inning_no INTEGER,
+half STRING,
+hitting_team INTEGER,
+fielding_team INTEGER,
+hits INTEGER,
+runs_scored INTEGER,
+PRIMARY KEY (game_id, inning_no, half));
+
+CREATE TABLE Pitches (
+pitch_id INTEGER,
+result STRING,
+pitcher_id INTEGER,
+batter_id INTEGER,
+first_runner INTEGER,
+second_runner INTEGER,
+third_runner INTEGER,
+catcher INTEGER,
+first_baseman INTEGER,
+second_baseman INTEGER,
+shortstop INTEGER,
+third_baseman INTEGER,
+left_fielder INTEGER,
+center_fielder INTEGER,
+right_fielder INTEGER,
+PRIMARY KEY (pitch_id),
+FOREIGN KEY (pitcher_id) REFERENCES Players,
+FOREIGN KEY (batter_id) REFERENCES Players);
+
+CREATE TABLE DefensivePlays (
+play_id INTEGER,
+player_id INTEGER,
+player_from INTEGER,
+player_to INTEGER,
+position_from INTEGER,
+position_to INTEGER,
+type STRING,
+PRIMARY KEY (play_id)
+);
+
+CREATE TABLE Teams (
+team_id INTEGER,
+year INTEGER,
+name STRING,
+city STRING,
+PRIMARY KEY (team_id)
+);
+

@@ -1,0 +1,2431 @@
+,0,1,2
+0,Giants,Nationals,2024-03-19
+1,Giants,Nationals,2024-03-20
+2,Giants,Nationals,2024-03-21
+3,Giants,Rockies,2024-03-22
+4,Giants,Rockies,2024-03-23
+5,Giants,Rockies,2024-03-24
+6,Giants,Rockies,2024-03-25
+7,Giants,Twins,2024-03-26
+8,Giants,Twins,2024-03-27
+9,Giants,Twins,2024-03-28
+10,Giants,Diamondbacks,2024-03-29
+11,Giants,Diamondbacks,2024-03-30
+12,Giants,Diamondbacks,2024-03-31
+13,Braves,Giants,2024-04-02
+14,Braves,Giants,2024-04-03
+15,Braves,Giants,2024-04-04
+16,Padres,Giants,2024-04-05
+17,Padres,Giants,2024-04-06
+18,Padres,Giants,2024-04-07
+19,Giants,Yankees,2024-04-09
+20,Giants,Yankees,2024-04-10
+21,Giants,Yankees,2024-04-11
+22,Diamondbacks,Giants,2024-04-12
+23,Diamondbacks,Giants,2024-04-13
+24,Diamondbacks,Giants,2024-04-14
+25,Diamondbacks,Giants,2024-04-15
+26,Giants,Cubs,2024-04-16
+27,Giants,Cubs,2024-04-17
+28,Giants,Cubs,2024-04-18
+29,Giants,Rangers,2024-04-19
+30,Giants,Rangers,2024-04-20
+31,Giants,Rangers,2024-04-21
+32,Giants,Cardinals,2024-04-23
+33,Giants,Cardinals,2024-04-24
+34,Giants,Cardinals,2024-04-25
+35,Giants,Angels,2024-04-26
+36,Giants,Angels,2024-04-27
+37,Brewers,Giants,2024-04-30
+38,Brewers,Giants,2024-05-01
+39,Brewers,Giants,2024-05-02
+40,Giants,Rockies,2024-05-03
+41,Giants,Rockies,2024-05-04
+42,Giants,Rockies,2024-05-05
+43,Giants,Tigers,2024-05-07
+44,Giants,Tigers,2024-05-08
+45,Giants,Tigers,2024-05-09
+46,Diamondbacks,Giants,2024-05-10
+47,Diamondbacks,Giants,2024-05-11
+48,Diamondbacks,Giants,2024-05-12
+49,Reds,Giants,2024-05-14
+50,Reds,Giants,2024-05-15
+51,Reds,Giants,2024-05-16
+52,Giants,Phillies,2024-05-17
+53,Giants,Phillies,2024-05-18
+54,Giants,Phillies,2024-05-19
+55,Giants,Phillies,2024-05-20
+56,Mets,Giants,2024-05-21
+57,Mets,Giants,2024-05-22
+58,Mets,Giants,2024-05-23
+59,Cardinals,Giants,2024-05-24
+60,Cardinals,Giants,2024-05-25
+61,Cardinals,Giants,2024-05-26
+62,Cardinals,Giants,2024-05-27
+63,Blue Jays,Giants,2024-05-28
+64,Blue Jays,Giants,2024-05-29
+65,Blue Jays,Giants,2024-05-30
+66,Giants,Padres,2024-05-31
+67,Giants,Padres,2024-06-01
+68,Giants,Padres,2024-06-02
+69,Giants,Braves,2024-06-04
+70,Giants,Braves,2024-06-05
+71,Giants,Braves,2024-06-06
+72,Rockies,Giants,2024-06-07
+73,Rockies,Giants,2024-06-08
+74,Rockies,Giants,2024-06-09
+75,Pirates,Giants,2024-06-11
+76,Pirates,Giants,2024-06-12
+77,Pirates,Giants,2024-06-13
+78,Rockies,Giants,2024-06-14
+79,Rockies,Giants,2024-06-15
+80,Rockies,Giants,2024-06-16
+81,Giants,Royals,2024-06-18
+82,Giants,Royals,2024-06-19
+83,Giants,Royals,2024-06-20
+84,Giants,Marlins,2024-06-21
+85,Giants,Marlins,2024-06-22
+86,Giants,Marlins,2024-06-23
+87,Giants,Marlins,2024-06-24
+88,Giants,Pirates,2024-06-25
+89,Giants,Pirates,2024-06-26
+90,Giants,Pirates,2024-06-27
+91,Giants,Reds,2024-06-28
+92,Giants,Reds,2024-06-29
+93,Giants,Reds,2024-06-30
+94,Giants,Reds,2024-07-01
+95,Giants,Red Sox,2024-07-02
+96,Giants,Red Sox,2024-07-03
+97,Giants,Red Sox,2024-07-04
+98,Angels,Giants,2024-07-05
+99,Angels,Giants,2024-07-06
+100,Giants,White Sox,2024-07-09
+101,Giants,White Sox,2024-07-10
+102,Giants,White Sox,2024-07-11
+103,Giants,Dodgers,2024-07-12
+104,Giants,Dodgers,2024-07-13
+105,Giants,Dodgers,2024-07-14
+106,Nationals,Giants,2024-07-23
+107,Nationals,Giants,2024-07-24
+108,Nationals,Giants,2024-07-25
+109,Giants,Diamondbacks,2024-07-26
+110,Giants,Diamondbacks,2024-07-27
+111,Giants,Diamondbacks,2024-07-28
+112,Phillies,Giants,2024-07-30
+113,Phillies,Giants,2024-07-31
+114,Phillies,Giants,2024-08-01
+115,Astros,Giants,2024-08-02
+116,Astros,Giants,2024-08-03
+117,Astros,Giants,2024-08-04
+118,Giants,Rays,2024-08-06
+119,Giants,Rays,2024-08-07
+120,Giants,Rays,2024-08-08
+121,Giants,Padres,2024-08-09
+122,Giants,Padres,2024-08-10
+123,Giants,Padres,2024-08-11
+124,Giants,Padres,2024-08-12
+125,Giants,Orioles,2024-08-13
+126,Giants,Orioles,2024-08-14
+127,Giants,Orioles,2024-08-15
+128,Giants,Dodgers,2024-08-16
+129,Giants,Dodgers,2024-08-17
+130,Giants,Dodgers,2024-08-18
+131,Giants,Brewers,2024-08-20
+132,Giants,Brewers,2024-08-21
+133,Giants,Brewers,2024-08-22
+134,Dodgers,Giants,2024-08-23
+135,Dodgers,Giants,2024-08-24
+136,Dodgers,Giants,2024-08-25
+137,Cubs,Giants,2024-08-27
+138,Cubs,Giants,2024-08-28
+139,Cubs,Giants,2024-08-29
+140,Padres,Giants,2024-08-30
+141,Padres,Giants,2024-08-31
+142,Padres,Giants,2024-09-01
+143,Giants,Mets,2024-09-03
+144,Giants,Mets,2024-09-04
+145,Giants,Mets,2024-09-05
+146,Dodgers,Giants,2024-09-06
+147,Dodgers,Giants,2024-09-07
+148,Dodgers,Giants,2024-09-08
+149,Dodgers,Giants,2024-09-09
+150,Giants,Guardians,2024-09-10
+151,Giants,Guardians,2024-09-11
+152,Giants,Guardians,2024-09-12
+153,Athletics,Giants,2024-09-13
+154,Athletics,Giants,2024-09-14
+155,Athletics,Giants,2024-09-15
+156,Marlins,Giants,2024-09-17
+157,Marlins,Giants,2024-09-18
+158,Marlins,Giants,2024-09-19
+159,Giants,Mariners,2024-09-20
+160,Giants,Mariners,2024-09-21
+161,Giants,Mariners,2024-09-22
+162,Phillies,Dodgers,2024-03-19
+163,Phillies,Dodgers,2024-03-20
+164,Phillies,Dodgers,2024-03-21
+165,Astros,Dodgers,2024-03-22
+166,Astros,Dodgers,2024-03-23
+167,Astros,Dodgers,2024-03-24
+168,Dodgers,Phillies,2024-03-26
+169,Dodgers,Phillies,2024-03-27
+170,Dodgers,Phillies,2024-03-28
+171,Dodgers,Diamondbacks,2024-03-29
+172,Dodgers,Diamondbacks,2024-03-30
+173,Dodgers,Diamondbacks,2024-03-31
+174,Dodgers,Marlins,2024-04-02
+175,Dodgers,Marlins,2024-04-03
+176,Dodgers,Marlins,2024-04-04
+177,Dodgers,Diamondbacks,2024-04-05
+178,Dodgers,Diamondbacks,2024-04-06
+179,Dodgers,Diamondbacks,2024-04-07
+180,Dodgers,Twins,2024-04-09
+181,Dodgers,Twins,2024-04-10
+182,Dodgers,Twins,2024-04-11
+183,Dodgers,Rockies,2024-04-12
+184,Dodgers,Rockies,2024-04-13
+185,Dodgers,Rockies,2024-04-14
+186,Dodgers,Rockies,2024-04-15
+187,Dodgers,Cardinals,2024-04-16
+188,Dodgers,Cardinals,2024-04-17
+189,Dodgers,Cardinals,2024-04-18
+190,Angels,Dodgers,2024-04-19
+191,Angels,Dodgers,2024-04-20
+192,Angels,Dodgers,2024-04-21
+193,Dodgers,Rays,2024-04-23
+194,Dodgers,Rays,2024-04-24
+195,Dodgers,Rays,2024-04-25
+196,Diamondbacks,Dodgers,2024-04-26
+197,Diamondbacks,Dodgers,2024-04-27
+198,Diamondbacks,Dodgers,2024-04-28
+199,Diamondbacks,Dodgers,2024-04-29
+200,Dodgers,Braves,2024-04-30
+201,Dodgers,Braves,2024-05-01
+202,Dodgers,Braves,2024-05-02
+203,Dodgers,Nationals,2024-05-03
+204,Dodgers,Nationals,2024-05-04
+205,Dodgers,Nationals,2024-05-05
+206,Dodgers,Nationals,2024-05-06
+207,Dodgers,White Sox,2024-05-07
+208,Dodgers,White Sox,2024-05-08
+209,Dodgers,White Sox,2024-05-09
+210,Dodgers,Mariners,2024-05-10
+211,Dodgers,Mariners,2024-05-11
+212,Dodgers,Mariners,2024-05-12
+213,Dodgers,Pirates,2024-05-14
+214,Dodgers,Pirates,2024-05-15
+215,Dodgers,Pirates,2024-05-16
+216,Rockies,Dodgers,2024-05-17
+217,Rockies,Dodgers,2024-05-18
+218,Rockies,Dodgers,2024-05-19
+219,Dodgers,Royals,2024-05-21
+220,Dodgers,Royals,2024-05-22
+221,Dodgers,Royals,2024-05-23
+222,Diamondbacks,Dodgers,2024-05-24
+223,Diamondbacks,Dodgers,2024-05-25
+224,Diamondbacks,Dodgers,2024-05-26
+225,Pirates,Dodgers,2024-05-28
+226,Pirates,Dodgers,2024-05-29
+227,Pirates,Dodgers,2024-05-30
+228,Rockies,Dodgers,2024-05-31
+229,Rockies,Dodgers,2024-06-01
+230,Rockies,Dodgers,2024-06-02
+231,Cardinals,Dodgers,2024-06-04
+232,Cardinals,Dodgers,2024-06-05
+233,Cardinals,Dodgers,2024-06-06
+234,Athletics,Dodgers,2024-06-07
+235,Athletics,Dodgers,2024-06-08
+236,Athletics,Dodgers,2024-06-09
+237,Dodgers,Red Sox,2024-06-11
+238,Dodgers,Red Sox,2024-06-12
+239,Dodgers,Red Sox,2024-06-13
+240,Braves,Dodgers,2024-06-14
+241,Braves,Dodgers,2024-06-15
+242,Braves,Dodgers,2024-06-16
+243,Braves,Dodgers,2024-06-17
+244,Dodgers,Guardians,2024-06-18
+245,Dodgers,Guardians,2024-06-19
+246,Dodgers,Guardians,2024-06-20
+247,Brewers,Dodgers,2024-06-21
+248,Brewers,Dodgers,2024-06-22
+249,Brewers,Dodgers,2024-06-23
+250,Brewers,Dodgers,2024-06-24
+251,Dodgers,Yankees,2024-06-25
+252,Dodgers,Yankees,2024-06-26
+253,Dodgers,Yankees,2024-06-27
+254,Dodgers,Padres,2024-06-28
+255,Dodgers,Padres,2024-06-29
+256,Dodgers,Padres,2024-06-30
+257,Dodgers,Padres,2024-07-01
+258,Dodgers,Tigers,2024-07-02
+259,Dodgers,Tigers,2024-07-03
+260,Dodgers,Tigers,2024-07-04
+261,Dodgers,Padres,2024-07-05
+262,Dodgers,Padres,2024-07-06
+263,Dodgers,Padres,2024-07-07
+264,Dodgers,Orioles,2024-07-09
+265,Dodgers,Orioles,2024-07-10
+266,Dodgers,Orioles,2024-07-11
+267,Reds,Dodgers,2024-07-23
+268,Reds,Dodgers,2024-07-24
+269,Reds,Dodgers,2024-07-25
+270,Dodgers,Rangers,2024-07-26
+271,Dodgers,Rangers,2024-07-27
+272,Dodgers,Cubs,2024-07-30
+273,Dodgers,Cubs,2024-07-31
+274,Dodgers,Cubs,2024-08-01
+275,Padres,Dodgers,2024-08-02
+276,Padres,Dodgers,2024-08-03
+277,Padres,Dodgers,2024-08-04
+278,Marlins,Dodgers,2024-08-06
+279,Marlins,Dodgers,2024-08-07
+280,Marlins,Dodgers,2024-08-08
+281,Dodgers,Reds,2024-08-13
+282,Dodgers,Reds,2024-08-14
+283,Dodgers,Reds,2024-08-15
+284,Mets,Dodgers,2024-08-20
+285,Mets,Dodgers,2024-08-21
+286,Mets,Dodgers,2024-08-22
+287,Blue Jays,Dodgers,2024-08-27
+288,Blue Jays,Dodgers,2024-08-28
+289,Blue Jays,Dodgers,2024-08-29
+290,Padres,Dodgers,2024-08-30
+291,Padres,Dodgers,2024-08-31
+292,Padres,Dodgers,2024-09-01
+293,Nationals,Dodgers,2024-09-03
+294,Nationals,Dodgers,2024-09-04
+295,Nationals,Dodgers,2024-09-05
+296,Rangers,Dodgers,2024-09-06
+297,Rangers,Dodgers,2024-09-07
+298,Dodgers,Brewers,2024-09-10
+299,Dodgers,Brewers,2024-09-11
+300,Dodgers,Brewers,2024-09-12
+301,Cubs,Dodgers,2024-09-13
+302,Cubs,Dodgers,2024-09-14
+303,Cubs,Dodgers,2024-09-15
+304,Cubs,Dodgers,2024-09-16
+305,Dodgers,Mets,2024-09-17
+306,Dodgers,Mets,2024-09-18
+307,Dodgers,Mets,2024-09-19
+308,Dodgers,Rockies,2024-09-20
+309,Dodgers,Rockies,2024-09-21
+310,Dodgers,Rockies,2024-09-22
+311,Reds,Padres,2024-03-19
+312,Reds,Padres,2024-03-20
+313,Reds,Padres,2024-03-21
+314,Orioles,Padres,2024-03-26
+315,Orioles,Padres,2024-03-27
+316,Orioles,Padres,2024-03-28
+317,Padres,Rockies,2024-03-29
+318,Padres,Rockies,2024-03-30
+319,Padres,Rockies,2024-03-31
+320,Padres,Phillies,2024-04-02
+321,Padres,Phillies,2024-04-03
+322,Padres,Phillies,2024-04-04
+323,Padres,Diamondbacks,2024-04-05
+324,Padres,Diamondbacks,2024-04-06
+325,Padres,Diamondbacks,2024-04-07
+326,Phillies,Padres,2024-04-09
+327,Phillies,Padres,2024-04-10
+328,Phillies,Padres,2024-04-11
+329,Mets,Padres,2024-04-12
+330,Mets,Padres,2024-04-13
+331,Mets,Padres,2024-04-14
+332,Mets,Padres,2024-04-15
+333,Padres,Braves,2024-04-16
+334,Padres,Braves,2024-04-17
+335,Padres,Braves,2024-04-18
+336,Mariners,Padres,2024-04-19
+337,Mariners,Padres,2024-04-20
+338,Padres,Marlins,2024-04-23
+339,Padres,Marlins,2024-04-24
+340,Padres,Marlins,2024-04-25
+341,Diamondbacks,Padres,2024-04-26
+342,Diamondbacks,Padres,2024-04-27
+343,Diamondbacks,Padres,2024-04-28
+344,Braves,Padres,2024-04-30
+345,Braves,Padres,2024-05-01
+346,Braves,Padres,2024-05-02
+347,Padres,Rangers,2024-05-03
+348,Padres,Rangers,2024-05-04
+349,Padres,Rangers,2024-05-05
+350,Padres,Twins,2024-05-07
+351,Padres,Twins,2024-05-08
+352,Padres,Twins,2024-05-09
+353,Astros,Padres,2024-05-10
+354,Astros,Padres,2024-05-11
+355,Astros,Padres,2024-05-12
+356,Padres,Brewers,2024-05-14
+357,Padres,Brewers,2024-05-15
+358,Padres,Brewers,2024-05-16
+359,Cardinals,Padres,2024-05-17
+360,Cardinals,Padres,2024-05-18
+361,Cardinals,Padres,2024-05-19
+362,Cardinals,Padres,2024-05-20
+363,Padres,White Sox,2024-05-21
+364,Padres,White Sox,2024-05-22
+365,Padres,White Sox,2024-05-23
+366,Padres,Diamondbacks,2024-05-24
+367,Padres,Diamondbacks,2024-05-25
+368,Padres,Diamondbacks,2024-05-26
+369,Padres,Rays,2024-05-28
+370,Padres,Rays,2024-05-29
+371,Padres,Rays,2024-05-30
+372,Diamondbacks,Padres,2024-05-31
+373,Diamondbacks,Padres,2024-06-01
+374,Diamondbacks,Padres,2024-06-02
+375,Diamondbacks,Padres,2024-06-03
+376,Blue Jays,Padres,2024-06-04
+377,Blue Jays,Padres,2024-06-05
+378,Blue Jays,Padres,2024-06-06
+379,Guardians,Padres,2024-06-11
+380,Guardians,Padres,2024-06-12
+381,Guardians,Padres,2024-06-13
+382,Rockies,Padres,2024-06-14
+383,Rockies,Padres,2024-06-15
+384,Rockies,Padres,2024-06-16
+385,Padres,Mets,2024-06-18
+386,Padres,Mets,2024-06-19
+387,Padres,Mets,2024-06-20
+388,Angels,Padres,2024-06-21
+389,Angels,Padres,2024-06-22
+390,Angels,Padres,2024-06-23
+391,Cubs,Padres,2024-06-25
+392,Cubs,Padres,2024-06-26
+393,Cubs,Padres,2024-06-27
+394,Padres,Tigers,2024-07-02
+395,Padres,Tigers,2024-07-03
+396,Padres,Tigers,2024-07-04
+397,Athletics,Padres,2024-07-05
+398,Athletics,Padres,2024-07-06
+399,Athletics,Padres,2024-07-07
+400,Padres,Cardinals,2024-07-09
+401,Padres,Cardinals,2024-07-10
+402,Padres,Cardinals,2024-07-11
+403,Brewers,Padres,2024-07-23
+404,Brewers,Padres,2024-07-24
+405,Brewers,Padres,2024-07-25
+406,Padres,Royals,2024-07-30
+407,Padres,Royals,2024-07-31
+408,Padres,Royals,2024-08-01
+409,Padres,Mariners,2024-08-02
+410,Padres,Mariners,2024-08-03
+411,Pirates,Padres,2024-08-06
+412,Pirates,Padres,2024-08-07
+413,Pirates,Padres,2024-08-08
+414,Marlins,Padres,2024-08-09
+415,Marlins,Padres,2024-08-10
+416,Marlins,Padres,2024-08-11
+417,Marlins,Padres,2024-08-12
+418,Padres,Cubs,2024-08-13
+419,Padres,Cubs,2024-08-14
+420,Padres,Cubs,2024-08-15
+421,Padres,Red Sox,2024-08-20
+422,Padres,Red Sox,2024-08-21
+423,Padres,Red Sox,2024-08-22
+424,Rockies,Padres,2024-08-23
+425,Rockies,Padres,2024-08-24
+426,Rockies,Padres,2024-08-25
+427,Padres,Reds,2024-08-27
+428,Padres,Reds,2024-08-28
+429,Padres,Reds,2024-08-29
+430,Padres,Yankees,2024-09-03
+431,Padres,Yankees,2024-09-04
+432,Padres,Yankees,2024-09-05
+433,Padres,Rockies,2024-09-06
+434,Padres,Rockies,2024-09-07
+435,Padres,Rockies,2024-09-08
+436,Padres,Rockies,2024-09-09
+437,Nationals,Padres,2024-09-10
+438,Nationals,Padres,2024-09-11
+439,Nationals,Padres,2024-09-12
+440,Padres,Nationals,2024-09-17
+441,Padres,Nationals,2024-09-18
+442,Padres,Nationals,2024-09-19
+443,Padres,Pirates,2024-09-20
+444,Padres,Pirates,2024-09-21
+445,Padres,Pirates,2024-09-22
+446,Padres,Pirates,2024-09-23
+447,Mets,Rockies,2024-03-19
+448,Mets,Rockies,2024-03-20
+449,Mets,Rockies,2024-03-21
+450,Cardinals,Rockies,2024-03-26
+451,Cardinals,Rockies,2024-03-27
+452,Cardinals,Rockies,2024-03-28
+453,Rockies,Yankees,2024-04-02
+454,Rockies,Yankees,2024-04-03
+455,Rockies,Yankees,2024-04-04
+456,Marlins,Rockies,2024-04-09
+457,Marlins,Rockies,2024-04-10
+458,Marlins,Rockies,2024-04-11
+459,Brewers,Rockies,2024-04-12
+460,Brewers,Rockies,2024-04-13
+461,Brewers,Rockies,2024-04-14
+462,Brewers,Rockies,2024-04-15
+463,Blue Jays,Rockies,2024-04-16
+464,Blue Jays,Rockies,2024-04-17
+465,Blue Jays,Rockies,2024-04-18
+466,Rangers,Rockies,2024-04-19
+467,Rangers,Rockies,2024-04-20
+468,Rangers,Rockies,2024-04-21
+469,Rockies,Marlins,2024-04-23
+470,Rockies,Marlins,2024-04-24
+471,Rockies,Marlins,2024-04-25
+472,Pirates,Rockies,2024-04-30
+473,Pirates,Rockies,2024-05-01
+474,Pirates,Rockies,2024-05-02
+475,Reds,Rockies,2024-05-03
+476,Reds,Rockies,2024-05-04
+477,Reds,Rockies,2024-05-05
+478,Reds,Rockies,2024-05-06
+479,Rockies,Brewers,2024-05-07
+480,Rockies,Brewers,2024-05-08
+481,Rockies,Brewers,2024-05-09
+482,Rockies,Astros,2024-05-10
+483,Rockies,Astros,2024-05-11
+484,Rockies,Royals,2024-05-14
+485,Rockies,Royals,2024-05-15
+486,Rockies,Royals,2024-05-16
+487,Rockies,Phillies,2024-05-21
+488,Rockies,Phillies,2024-05-22
+489,Rockies,Phillies,2024-05-23
+490,Phillies,Rockies,2024-05-24
+491,Phillies,Rockies,2024-05-25
+492,Phillies,Rockies,2024-05-26
+493,Phillies,Rockies,2024-05-27
+494,Rockies,Pirates,2024-05-28
+495,Rockies,Pirates,2024-05-29
+496,Rockies,Pirates,2024-05-30
+497,Red Sox,Rockies,2024-06-04
+498,Red Sox,Rockies,2024-06-05
+499,Red Sox,Rockies,2024-06-06
+500,Diamondbacks,Rockies,2024-06-07
+501,Diamondbacks,Rockies,2024-06-08
+502,Diamondbacks,Rockies,2024-06-09
+503,Diamondbacks,Rockies,2024-06-10
+504,Rockies,Nationals,2024-06-11
+505,Rockies,Nationals,2024-06-12
+506,Rockies,Nationals,2024-06-13
+507,Rockies,Reds,2024-06-18
+508,Rockies,Reds,2024-06-19
+509,Rockies,Reds,2024-06-20
+510,Braves,Rockies,2024-06-21
+511,Braves,Rockies,2024-06-22
+512,Braves,Rockies,2024-06-23
+513,Braves,Rockies,2024-06-24
+514,Rockies,Twins,2024-06-25
+515,Rockies,Twins,2024-06-26
+516,Rockies,Twins,2024-06-27
+517,Rockies,Diamondbacks,2024-06-28
+518,Rockies,Diamondbacks,2024-06-29
+519,Rockies,Diamondbacks,2024-06-30
+520,Rockies,Tigers,2024-07-02
+521,Rockies,Tigers,2024-07-03
+522,Rockies,Tigers,2024-07-04
+523,Angels,Rockies,2024-07-05
+524,Angels,Rockies,2024-07-06
+525,Angels,Rockies,2024-07-07
+526,Rays,Rockies,2024-07-09
+527,Rays,Rockies,2024-07-10
+528,Rays,Rockies,2024-07-11
+529,Rockies,Cubs,2024-07-23
+530,Rockies,Cubs,2024-07-24
+531,Rockies,Cubs,2024-07-25
+532,Guardians,Rockies,2024-07-30
+533,Guardians,Rockies,2024-07-31
+534,Guardians,Rockies,2024-08-01
+535,Diamondbacks,Rockies,2024-08-02
+536,Diamondbacks,Rockies,2024-08-03
+537,Diamondbacks,Rockies,2024-08-04
+538,Rockies,Braves,2024-08-06
+539,Rockies,Braves,2024-08-07
+540,Rockies,Braves,2024-08-08
+541,Rockies,Diamondbacks,2024-08-09
+542,Rockies,Diamondbacks,2024-08-10
+543,Rockies,Diamondbacks,2024-08-11
+544,Rockies,Cardinals,2024-08-13
+545,Rockies,Cardinals,2024-08-14
+546,Rockies,Cardinals,2024-08-15
+547,Mariners,Rockies,2024-08-16
+548,Mariners,Rockies,2024-08-17
+549,Mariners,Rockies,2024-08-18
+550,Cubs,Rockies,2024-08-20
+551,Cubs,Rockies,2024-08-21
+552,Cubs,Rockies,2024-08-22
+553,Athletics,Rockies,2024-08-23
+554,Athletics,Rockies,2024-08-24
+555,Athletics,Rockies,2024-08-25
+556,Rockies,Mets,2024-08-27
+557,Rockies,Mets,2024-08-28
+558,Rockies,Mets,2024-08-29
+559,Orioles,Rockies,2024-09-03
+560,Orioles,Rockies,2024-09-04
+561,Orioles,Rockies,2024-09-05
+562,Nationals,Rockies,2024-09-10
+563,Nationals,Rockies,2024-09-11
+564,Nationals,Rockies,2024-09-12
+565,Astros,Rockies,2024-09-13
+566,Astros,Rockies,2024-09-14
+567,Rockies,White Sox,2024-09-17
+568,Rockies,White Sox,2024-09-18
+569,Rockies,White Sox,2024-09-19
+570,Mets,Diamondbacks,2024-03-19
+571,Mets,Diamondbacks,2024-03-20
+572,Mets,Diamondbacks,2024-03-21
+573,Reds,Diamondbacks,2024-03-26
+574,Reds,Diamondbacks,2024-03-27
+575,Reds,Diamondbacks,2024-03-28
+576,Diamondbacks,Yankees,2024-04-02
+577,Diamondbacks,Yankees,2024-04-03
+578,Diamondbacks,Yankees,2024-04-04
+579,Pirates,Diamondbacks,2024-04-09
+580,Pirates,Diamondbacks,2024-04-10
+581,Pirates,Diamondbacks,2024-04-11
+582,Diamondbacks,Pirates,2024-04-12
+583,Diamondbacks,Pirates,2024-04-13
+584,Diamondbacks,Pirates,2024-04-14
+585,Diamondbacks,Pirates,2024-04-15
+586,Diamondbacks,Red Sox,2024-04-16
+587,Diamondbacks,Red Sox,2024-04-17
+588,Diamondbacks,Red Sox,2024-04-18
+589,Cubs,Diamondbacks,2024-04-19
+590,Cubs,Diamondbacks,2024-04-20
+591,Cubs,Diamondbacks,2024-04-21
+592,Cubs,Diamondbacks,2024-04-22
+593,Diamondbacks,Royals,2024-04-23
+594,Diamondbacks,Royals,2024-04-24
+595,Diamondbacks,Royals,2024-04-25
+596,Diamondbacks,Phillies,2024-04-30
+597,Diamondbacks,Phillies,2024-05-01
+598,Diamondbacks,Phillies,2024-05-02
+599,Nationals,Diamondbacks,2024-05-07
+600,Nationals,Diamondbacks,2024-05-08
+601,Nationals,Diamondbacks,2024-05-09
+602,Athletics,Diamondbacks,2024-05-10
+603,Athletics,Diamondbacks,2024-05-11
+604,Blue Jays,Diamondbacks,2024-05-14
+605,Blue Jays,Diamondbacks,2024-05-15
+606,Blue Jays,Diamondbacks,2024-05-16
+607,Diamondbacks,Tigers,2024-05-21
+608,Diamondbacks,Tigers,2024-05-22
+609,Diamondbacks,Tigers,2024-05-23
+610,Diamondbacks,Rangers,2024-05-24
+611,Diamondbacks,Rangers,2024-05-25
+612,Diamondbacks,Rangers,2024-05-26
+613,Diamondbacks,Twins,2024-05-28
+614,Diamondbacks,Twins,2024-05-29
+615,Diamondbacks,Twins,2024-05-30
+616,Phillies,Diamondbacks,2024-06-04
+617,Phillies,Diamondbacks,2024-06-05
+618,Phillies,Diamondbacks,2024-06-06
+619,Diamondbacks,White Sox,2024-06-11
+620,Diamondbacks,White Sox,2024-06-12
+621,Diamondbacks,White Sox,2024-06-13
+622,Diamondbacks,Cubs,2024-06-18
+623,Diamondbacks,Cubs,2024-06-19
+624,Diamondbacks,Cubs,2024-06-20
+625,Diamondbacks,Orioles,2024-06-25
+626,Diamondbacks,Orioles,2024-06-26
+627,Diamondbacks,Orioles,2024-06-27
+628,Diamondbacks,Mets,2024-06-28
+629,Diamondbacks,Mets,2024-06-29
+630,Diamondbacks,Mets,2024-06-30
+631,Diamondbacks,Mets,2024-07-01
+632,Brewers,Diamondbacks,2024-07-02
+633,Brewers,Diamondbacks,2024-07-03
+634,Brewers,Diamondbacks,2024-07-04
+635,Diamondbacks,Rays,2024-07-09
+636,Diamondbacks,Rays,2024-07-10
+637,Diamondbacks,Rays,2024-07-11
+638,Diamondbacks,Reds,2024-07-23
+639,Diamondbacks,Reds,2024-07-24
+640,Diamondbacks,Reds,2024-07-25
+641,Diamondbacks,Marlins,2024-07-30
+642,Diamondbacks,Marlins,2024-07-31
+643,Diamondbacks,Marlins,2024-08-01
+644,Astros,Diamondbacks,2024-08-02
+645,Astros,Diamondbacks,2024-08-03
+646,Astros,Diamondbacks,2024-08-04
+647,Cardinals,Diamondbacks,2024-08-06
+648,Cardinals,Diamondbacks,2024-08-07
+649,Cardinals,Diamondbacks,2024-08-08
+650,Diamondbacks,Brewers,2024-08-13
+651,Diamondbacks,Brewers,2024-08-14
+652,Diamondbacks,Brewers,2024-08-15
+653,Diamondbacks,Cardinals,2024-08-20
+654,Diamondbacks,Cardinals,2024-08-21
+655,Diamondbacks,Cardinals,2024-08-22
+656,Diamondbacks,Braves,2024-08-27
+657,Diamondbacks,Braves,2024-08-28
+658,Diamondbacks,Braves,2024-08-29
+659,Diamondbacks,Nationals,2024-08-30
+660,Diamondbacks,Nationals,2024-08-31
+661,Diamondbacks,Nationals,2024-09-01
+662,Diamondbacks,Nationals,2024-09-02
+663,Diamondbacks,Guardians,2024-09-03
+664,Diamondbacks,Guardians,2024-09-04
+665,Diamondbacks,Guardians,2024-09-05
+666,Diamondbacks,Athletics,2024-09-06
+667,Diamondbacks,Athletics,2024-09-07
+668,Marlins,Diamondbacks,2024-09-10
+669,Marlins,Diamondbacks,2024-09-11
+670,Marlins,Diamondbacks,2024-09-12
+671,Diamondbacks,Mariners,2024-09-13
+672,Diamondbacks,Mariners,2024-09-14
+673,Diamondbacks,Mariners,2024-09-15
+674,Braves,Diamondbacks,2024-09-17
+675,Braves,Diamondbacks,2024-09-18
+676,Braves,Diamondbacks,2024-09-19
+677,Angels,Diamondbacks,2024-09-20
+678,Angels,Diamondbacks,2024-09-21
+679,Angels,Diamondbacks,2024-09-22
+680,Athletics,Cardinals,2024-03-19
+681,Athletics,Cardinals,2024-03-20
+682,Athletics,Cardinals,2024-03-21
+683,Cubs,Cardinals,2024-03-22
+684,Cubs,Cardinals,2024-03-23
+685,Cubs,Cardinals,2024-03-24
+686,Mets,Cardinals,2024-03-26
+687,Mets,Cardinals,2024-03-27
+688,Mets,Cardinals,2024-03-28
+689,Brewers,Cardinals,2024-03-29
+690,Brewers,Cardinals,2024-03-30
+691,Brewers,Cardinals,2024-03-31
+692,Brewers,Cardinals,2024-04-01
+693,Cardinals,Rays,2024-04-02
+694,Cardinals,Rays,2024-04-03
+695,Cardinals,Rays,2024-04-04
+696,Cardinals,Guardians,2024-04-05
+697,Cardinals,Guardians,2024-04-06
+698,Cardinals,Phillies,2024-04-09
+699,Cardinals,Phillies,2024-04-10
+700,Cardinals,Phillies,2024-04-11
+701,Reds,Cardinals,2024-04-12
+702,Reds,Cardinals,2024-04-13
+703,Reds,Cardinals,2024-04-14
+704,Cubs,Cardinals,2024-04-19
+705,Cubs,Cardinals,2024-04-20
+706,Cubs,Cardinals,2024-04-21
+707,Cardinals,White Sox,2024-04-26
+708,Cardinals,White Sox,2024-04-27
+709,Cardinals,White Sox,2024-04-28
+710,Cardinals,Pirates,2024-05-03
+711,Cardinals,Pirates,2024-05-04
+712,Cardinals,Pirates,2024-05-05
+713,Cardinals,Pirates,2024-05-06
+714,Cardinals,Orioles,2024-05-07
+715,Cardinals,Orioles,2024-05-08
+716,Cardinals,Orioles,2024-05-09
+717,Pirates,Cardinals,2024-05-10
+718,Pirates,Cardinals,2024-05-11
+719,Pirates,Cardinals,2024-05-12
+720,Cardinals,Rangers,2024-05-14
+721,Cardinals,Rangers,2024-05-15
+722,Cardinals,Rangers,2024-05-16
+723,Cardinals,Brewers,2024-05-17
+724,Cardinals,Brewers,2024-05-18
+725,Cardinals,Brewers,2024-05-19
+726,Cardinals,Marlins,2024-05-21
+727,Cardinals,Marlins,2024-05-22
+728,Cardinals,Marlins,2024-05-23
+729,Cardinals,Twins,2024-05-24
+730,Cardinals,Twins,2024-05-25
+731,Cardinals,Twins,2024-05-26
+732,Nationals,Cardinals,2024-05-28
+733,Nationals,Cardinals,2024-05-29
+734,Nationals,Cardinals,2024-05-30
+735,Cardinals,Cubs,2024-05-31
+736,Cardinals,Cubs,2024-06-01
+737,Cardinals,Cubs,2024-06-02
+738,Phillies,Cardinals,2024-06-11
+739,Phillies,Cardinals,2024-06-12
+740,Phillies,Cardinals,2024-06-13
+741,Brewers,Cardinals,2024-06-14
+742,Brewers,Cardinals,2024-06-15
+743,Brewers,Cardinals,2024-06-16
+744,Cardinals,Red Sox,2024-06-18
+745,Cardinals,Red Sox,2024-06-19
+746,Cardinals,Red Sox,2024-06-20
+747,Marlins,Cardinals,2024-06-25
+748,Marlins,Cardinals,2024-06-26
+749,Marlins,Cardinals,2024-06-27
+750,Cardinals,Reds,2024-06-28
+751,Cardinals,Reds,2024-06-29
+752,Cardinals,Reds,2024-06-30
+753,Cardinals,Reds,2024-07-01
+754,Cardinals,Yankees,2024-07-02
+755,Cardinals,Yankees,2024-07-03
+756,Cardinals,Yankees,2024-07-04
+757,Cardinals,Reds,2024-07-05
+758,Cardinals,Reds,2024-07-06
+759,Cardinals,Reds,2024-07-07
+760,Blue Jays,Cardinals,2024-07-09
+761,Blue Jays,Cardinals,2024-07-10
+762,Blue Jays,Cardinals,2024-07-11
+763,Cardinals,Brewers,2024-07-12
+764,Cardinals,Brewers,2024-07-13
+765,Cardinals,Brewers,2024-07-14
+766,Braves,Cardinals,2024-07-23
+767,Braves,Cardinals,2024-07-24
+768,Braves,Cardinals,2024-07-25
+769,Pirates,Cardinals,2024-07-26
+770,Pirates,Cardinals,2024-07-27
+771,Pirates,Cardinals,2024-07-28
+772,Reds,Cardinals,2024-08-02
+773,Reds,Cardinals,2024-08-03
+774,Reds,Cardinals,2024-08-04
+775,Cardinals,Nationals,2024-08-09
+776,Cardinals,Nationals,2024-08-10
+777,Cardinals,Nationals,2024-08-11
+778,Cardinals,Nationals,2024-08-12
+779,Cardinals,Pirates,2024-08-16
+780,Cardinals,Pirates,2024-08-17
+781,Cardinals,Pirates,2024-08-18
+782,Cardinals,Royals,2024-08-23
+783,Cardinals,Royals,2024-08-24
+784,Cardinals,Royals,2024-08-25
+785,Angels,Cardinals,2024-08-27
+786,Angels,Cardinals,2024-08-28
+787,Angels,Cardinals,2024-08-29
+788,Cardinals,Cubs,2024-08-30
+789,Cardinals,Cubs,2024-08-31
+790,Cardinals,Cubs,2024-09-01
+791,Cardinals,Cubs,2024-09-02
+792,Astros,Cardinals,2024-09-03
+793,Astros,Cardinals,2024-09-04
+794,Astros,Cardinals,2024-09-05
+795,Cardinals,Mets,2024-09-06
+796,Cardinals,Mets,2024-09-07
+797,Cardinals,Mets,2024-09-08
+798,Cardinals,Mets,2024-09-09
+799,Cardinals,Braves,2024-09-10
+800,Cardinals,Braves,2024-09-11
+801,Cardinals,Braves,2024-09-12
+802,Guardians,Cardinals,2024-09-13
+803,Guardians,Cardinals,2024-09-14
+804,Cardinals,Mariners,2024-09-17
+805,Cardinals,Mariners,2024-09-18
+806,Cardinals,Mariners,2024-09-19
+807,Cardinals,Tigers,2024-09-20
+808,Cardinals,Tigers,2024-09-21
+809,Cardinals,Tigers,2024-09-22
+810,Brewers,Rangers,2024-03-19
+811,Brewers,Rangers,2024-03-20
+812,Brewers,Rangers,2024-03-21
+813,Reds,Brewers,2024-03-22
+814,Reds,Brewers,2024-03-23
+815,Reds,Brewers,2024-03-24
+816,Brewers,Red Sox,2024-04-02
+817,Brewers,Red Sox,2024-04-03
+818,Brewers,Red Sox,2024-04-04
+819,Pirates,Brewers,2024-04-05
+820,Pirates,Brewers,2024-04-06
+821,Pirates,Brewers,2024-04-07
+822,Brewers,Orioles,2024-04-09
+823,Brewers,Orioles,2024-04-10
+824,Brewers,Orioles,2024-04-11
+825,Brewers,Pirates,2024-04-12
+826,Brewers,Pirates,2024-04-13
+827,Brewers,Pirates,2024-04-14
+828,Brewers,Pirates,2024-04-15
+829,Brewers,Rays,2024-04-23
+830,Brewers,Rays,2024-04-24
+831,Brewers,Rays,2024-04-25
+832,Brewers,Pirates,2024-04-26
+833,Brewers,Pirates,2024-04-27
+834,Brewers,Pirates,2024-04-28
+835,Brewers,Mets,2024-04-30
+836,Brewers,Mets,2024-05-01
+837,Brewers,Mets,2024-05-02
+838,Brewers,Cubs,2024-05-03
+839,Brewers,Cubs,2024-05-04
+840,Brewers,Cubs,2024-05-05
+841,Astros,Brewers,2024-05-07
+842,Astros,Brewers,2024-05-08
+843,Astros,Brewers,2024-05-09
+844,Cubs,Brewers,2024-05-10
+845,Cubs,Brewers,2024-05-11
+846,Cubs,Brewers,2024-05-12
+847,Twins,Brewers,2024-05-17
+848,Twins,Brewers,2024-05-18
+849,Athletics,Brewers,2024-05-28
+850,Athletics,Brewers,2024-05-29
+851,Athletics,Brewers,2024-05-30
+852,Brewers,Cubs,2024-05-31
+853,Brewers,Cubs,2024-06-01
+854,Brewers,Cubs,2024-06-02
+855,Brewers,Cubs,2024-06-03
+856,Marlins,Brewers,2024-06-04
+857,Marlins,Brewers,2024-06-05
+858,Marlins,Brewers,2024-06-06
+859,Brewers,White Sox,2024-06-07
+860,Brewers,White Sox,2024-06-08
+861,Brewers,White Sox,2024-06-09
+862,Angels,Brewers,2024-06-11
+863,Angels,Brewers,2024-06-12
+864,Angels,Brewers,2024-06-13
+865,Reds,Brewers,2024-06-14
+866,Reds,Brewers,2024-06-15
+867,Reds,Brewers,2024-06-16
+868,Mets,Brewers,2024-06-18
+869,Mets,Brewers,2024-06-19
+870,Mets,Brewers,2024-06-20
+871,Nationals,Brewers,2024-06-25
+872,Nationals,Brewers,2024-06-26
+873,Nationals,Brewers,2024-06-27
+874,Brewers,Twins,2024-06-28
+875,Brewers,Twins,2024-06-29
+876,Brewers,Nationals,2024-07-02
+877,Brewers,Nationals,2024-07-03
+878,Brewers,Nationals,2024-07-04
+879,Cubs,Brewers,2024-07-05
+880,Cubs,Brewers,2024-07-06
+881,Cubs,Brewers,2024-07-07
+882,Braves,Brewers,2024-07-09
+883,Braves,Brewers,2024-07-10
+884,Braves,Brewers,2024-07-11
+885,Pirates,Brewers,2024-08-02
+886,Pirates,Brewers,2024-08-03
+887,Pirates,Brewers,2024-08-04
+888,Blue Jays,Brewers,2024-08-06
+889,Blue Jays,Brewers,2024-08-07
+890,Blue Jays,Brewers,2024-08-08
+891,Brewers,Tigers,2024-08-09
+892,Brewers,Tigers,2024-08-10
+893,Brewers,Tigers,2024-08-11
+894,Brewers,Marlins,2024-08-16
+895,Brewers,Marlins,2024-08-17
+896,Brewers,Marlins,2024-08-18
+897,Brewers,Marlins,2024-08-19
+898,Brewers,Braves,2024-08-20
+899,Brewers,Braves,2024-08-21
+900,Brewers,Braves,2024-08-22
+901,Brewers,Phillies,2024-08-23
+902,Brewers,Phillies,2024-08-24
+903,Brewers,Phillies,2024-08-25
+904,Brewers,Phillies,2024-08-26
+905,Phillies,Brewers,2024-08-27
+906,Phillies,Brewers,2024-08-28
+907,Phillies,Brewers,2024-08-29
+908,Brewers,Reds,2024-08-30
+909,Brewers,Reds,2024-08-31
+910,Brewers,Reds,2024-09-01
+911,Brewers,Reds,2024-09-02
+912,Brewers,Yankees,2024-09-03
+913,Brewers,Yankees,2024-09-04
+914,Brewers,Yankees,2024-09-05
+915,Brewers,Guardians,2024-09-06
+916,Brewers,Guardians,2024-09-07
+917,Brewers,Guardians,2024-09-08
+918,Brewers,Mariners,2024-09-10
+919,Brewers,Mariners,2024-09-11
+920,Brewers,Mariners,2024-09-12
+921,Brewers,Royals,2024-09-13
+922,Brewers,Royals,2024-09-14
+923,Brewers,Royals,2024-09-15
+924,Brewers,Reds,2024-09-20
+925,Brewers,Reds,2024-09-21
+926,Brewers,Reds,2024-09-22
+927,Orioles,Reds,2024-03-19
+928,Orioles,Reds,2024-03-20
+929,Orioles,Reds,2024-03-21
+930,Reds,Pirates,2024-03-22
+931,Reds,Pirates,2024-03-23
+932,Reds,Pirates,2024-03-24
+933,Pirates,Reds,2024-04-05
+934,Pirates,Reds,2024-04-06
+935,Pirates,Reds,2024-04-07
+936,Pirates,Reds,2024-04-08
+937,Reds,Phillies,2024-04-09
+938,Reds,Phillies,2024-04-10
+939,Reds,Phillies,2024-04-11
+940,Astros,Reds,2024-04-16
+941,Astros,Reds,2024-04-17
+942,Astros,Reds,2024-04-18
+943,Reds,Twins,2024-04-19
+944,Reds,Twins,2024-04-20
+945,Reds,Twins,2024-04-21
+946,Reds,Yankees,2024-04-23
+947,Reds,Yankees,2024-04-24
+948,Reds,Yankees,2024-04-25
+949,Reds,Pirates,2024-04-26
+950,Reds,Pirates,2024-04-27
+951,Reds,Pirates,2024-04-28
+952,Reds,Nationals,2024-04-30
+953,Reds,Nationals,2024-05-01
+954,Reds,Nationals,2024-05-02
+955,Marlins,Reds,2024-05-03
+956,Marlins,Reds,2024-05-04
+957,Marlins,Reds,2024-05-05
+958,Marlins,Reds,2024-05-06
+959,Reds,White Sox,2024-05-10
+960,Reds,White Sox,2024-05-11
+961,Red Sox,Reds,2024-05-14
+962,Red Sox,Reds,2024-05-15
+963,Red Sox,Reds,2024-05-16
+964,Athletics,Reds,2024-05-21
+965,Athletics,Reds,2024-05-22
+966,Athletics,Reds,2024-05-23
+967,Reds,Cubs,2024-05-24
+968,Reds,Cubs,2024-05-25
+969,Reds,Cubs,2024-05-26
+970,Reds,Braves,2024-05-28
+971,Reds,Braves,2024-05-29
+972,Reds,Braves,2024-05-30
+973,Phillies,Reds,2024-06-04
+974,Phillies,Reds,2024-06-05
+975,Phillies,Reds,2024-06-06
+976,Cubs,Reds,2024-06-07
+977,Cubs,Reds,2024-06-08
+978,Cubs,Reds,2024-06-09
+979,Cubs,Reds,2024-06-10
+980,Angels,Reds,2024-06-11
+981,Angels,Reds,2024-06-12
+982,Angels,Reds,2024-06-13
+983,Pirates,Reds,2024-06-14
+984,Pirates,Reds,2024-06-15
+985,Pirates,Reds,2024-06-16
+986,Nationals,Reds,2024-06-18
+987,Nationals,Reds,2024-06-19
+988,Nationals,Reds,2024-06-20
+989,Mets,Reds,2024-06-28
+990,Mets,Reds,2024-06-29
+991,Mets,Reds,2024-06-30
+992,Mets,Reds,2024-07-01
+993,Rays,Reds,2024-07-09
+994,Rays,Reds,2024-07-10
+995,Rays,Reds,2024-07-11
+996,Reds,Royals,2024-07-12
+997,Reds,Royals,2024-07-13
+998,Reds,Royals,2024-07-14
+999,Rangers,Reds,2024-07-23
+1000,Rangers,Reds,2024-07-24
+1001,Rangers,Reds,2024-07-25
+1002,Mariners,Reds,2024-07-30
+1003,Mariners,Reds,2024-07-31
+1004,Mariners,Reds,2024-08-01
+1005,Cubs,Reds,2024-08-02
+1006,Cubs,Reds,2024-08-03
+1007,Cubs,Reds,2024-08-04
+1008,Blue Jays,Reds,2024-08-06
+1009,Blue Jays,Reds,2024-08-07
+1010,Blue Jays,Reds,2024-08-08
+1011,Reds,Mets,2024-08-13
+1012,Reds,Mets,2024-08-14
+1013,Reds,Mets,2024-08-15
+1014,White Sox,Reds,2024-08-16
+1015,White Sox,Reds,2024-08-17
+1016,Reds,Tigers,2024-08-23
+1017,Reds,Tigers,2024-08-24
+1018,Reds,Tigers,2024-08-25
+1019,Reds,Marlins,2024-08-27
+1020,Reds,Marlins,2024-08-28
+1021,Reds,Marlins,2024-08-29
+1022,Guardians,Reds,2024-09-06
+1023,Guardians,Reds,2024-09-07
+1024,Guardians,Reds,2024-09-08
+1025,Reds,Cubs,2024-09-13
+1026,Reds,Cubs,2024-09-14
+1027,Reds,Cubs,2024-09-15
+1028,Braves,Reds,2024-09-17
+1029,Braves,Reds,2024-09-18
+1030,Braves,Reds,2024-09-19
+1031,Pirates,Phillies,2024-03-26
+1032,Pirates,Phillies,2024-03-27
+1033,Pirates,Phillies,2024-03-28
+1034,Pirates,Rays,2024-04-02
+1035,Pirates,Rays,2024-04-03
+1036,Pirates,Rays,2024-04-04
+1037,Braves,Pirates,2024-04-05
+1038,Braves,Pirates,2024-04-06
+1039,Braves,Pirates,2024-04-07
+1040,Braves,Pirates,2024-04-08
+1041,Blue Jays,Pirates,2024-04-09
+1042,Blue Jays,Pirates,2024-04-10
+1043,Blue Jays,Pirates,2024-04-11
+1044,Pirates,White Sox,2024-04-12
+1045,Pirates,White Sox,2024-04-13
+1046,Pirates,White Sox,2024-04-14
+1047,Astros,Pirates,2024-04-16
+1048,Astros,Pirates,2024-04-17
+1049,Astros,Pirates,2024-04-18
+1050,Athletics,Pirates,2024-04-23
+1051,Athletics,Pirates,2024-04-24
+1052,Athletics,Pirates,2024-04-25
+1053,Royals,Pirates,2024-04-26
+1054,Royals,Pirates,2024-04-27
+1055,Pirates,Marlins,2024-04-30
+1056,Pirates,Marlins,2024-05-01
+1057,Pirates,Marlins,2024-05-02
+1058,Angels,Pirates,2024-05-07
+1059,Angels,Pirates,2024-05-08
+1060,Angels,Pirates,2024-05-09
+1061,Cubs,Pirates,2024-05-10
+1062,Cubs,Pirates,2024-05-11
+1063,Cubs,Pirates,2024-05-12
+1064,Mets,Pirates,2024-05-28
+1065,Mets,Pirates,2024-05-29
+1066,Mets,Pirates,2024-05-30
+1067,Pirates,Nationals,2024-06-11
+1068,Pirates,Nationals,2024-06-12
+1069,Pirates,Nationals,2024-06-13
+1070,Orioles,Pirates,2024-06-18
+1071,Orioles,Pirates,2024-06-19
+1072,Orioles,Pirates,2024-06-20
+1073,Pirates,Tigers,2024-06-21
+1074,Pirates,Tigers,2024-06-22
+1075,Pirates,Tigers,2024-06-23
+1076,Guardians,Pirates,2024-06-28
+1077,Guardians,Pirates,2024-06-29
+1078,Guardians,Pirates,2024-06-30
+1079,Pirates,Twins,2024-07-12
+1080,Pirates,Twins,2024-07-13
+1081,Pirates,Twins,2024-07-14
+1082,Pirates,Mets,2024-07-23
+1083,Pirates,Mets,2024-07-24
+1084,Pirates,Mets,2024-07-25
+1085,Pirates,Cubs,2024-07-26
+1086,Pirates,Cubs,2024-07-27
+1087,Pirates,Cubs,2024-07-28
+1088,Marlins,Pirates,2024-07-30
+1089,Marlins,Pirates,2024-07-31
+1090,Marlins,Pirates,2024-08-01
+1091,Pirates,Red Sox,2024-08-06
+1092,Pirates,Red Sox,2024-08-07
+1093,Pirates,Red Sox,2024-08-08
+1094,Mariners,Pirates,2024-08-13
+1095,Mariners,Pirates,2024-08-14
+1096,Mariners,Pirates,2024-08-15
+1097,Pirates,Royals,2024-08-16
+1098,Pirates,Royals,2024-08-17
+1099,Pirates,Cubs,2024-08-23
+1100,Pirates,Cubs,2024-08-24
+1101,Pirates,Cubs,2024-08-25
+1102,Pirates,Yankees,2024-08-27
+1103,Pirates,Yankees,2024-08-28
+1104,Pirates,Yankees,2024-08-29
+1105,Nationals,Pirates,2024-08-30
+1106,Nationals,Pirates,2024-08-31
+1107,Nationals,Pirates,2024-09-01
+1108,Nationals,Pirates,2024-09-02
+1109,Pirates,Rangers,2024-09-03
+1110,Pirates,Rangers,2024-09-04
+1111,Pirates,Rangers,2024-09-05
+1112,Phillies,Pirates,2024-09-10
+1113,Phillies,Pirates,2024-09-11
+1114,Phillies,Pirates,2024-09-12
+1115,Cubs,Pirates,2024-09-13
+1116,Cubs,Pirates,2024-09-14
+1117,Cubs,Pirates,2024-09-15
+1118,Cubs,Pirates,2024-09-16
+1119,Pirates,Braves,2024-09-17
+1120,Pirates,Braves,2024-09-18
+1121,Pirates,Braves,2024-09-19
+1122,Cubs,Yankees,2024-03-26
+1123,Cubs,Yankees,2024-03-27
+1124,Cubs,Yankees,2024-03-28
+1125,Cubs,Twins,2024-03-29
+1126,Cubs,Twins,2024-03-30
+1127,Cubs,Twins,2024-03-31
+1128,Cubs,Orioles,2024-04-02
+1129,Cubs,Orioles,2024-04-03
+1130,Cubs,Orioles,2024-04-04
+1131,Athletics,Cubs,2024-04-09
+1132,Athletics,Cubs,2024-04-10
+1133,Athletics,Cubs,2024-04-11
+1134,Cubs,Rays,2024-04-16
+1135,Cubs,Rays,2024-04-17
+1136,Cubs,Rays,2024-04-18
+1137,Cubs,Braves,2024-04-23
+1138,Cubs,Braves,2024-04-24
+1139,Cubs,Braves,2024-04-25
+1140,Cubs,Nationals,2024-05-07
+1141,Cubs,Nationals,2024-05-08
+1142,Cubs,Nationals,2024-05-09
+1143,Astros,Cubs,2024-05-14
+1144,Astros,Cubs,2024-05-15
+1145,Astros,Cubs,2024-05-16
+1146,Cubs,Mariners,2024-05-21
+1147,Cubs,Mariners,2024-05-22
+1148,Cubs,Mariners,2024-05-23
+1149,Tigers,Cubs,2024-05-24
+1150,Tigers,Cubs,2024-05-25
+1151,Cubs,Marlins,2024-05-28
+1152,Cubs,Marlins,2024-05-29
+1153,Cubs,Marlins,2024-05-30
+1154,Cubs,Red Sox,2024-06-04
+1155,Cubs,Red Sox,2024-06-05
+1156,Cubs,Red Sox,2024-06-06
+1157,Phillies,Cubs,2024-06-11
+1158,Phillies,Cubs,2024-06-12
+1159,Phillies,Cubs,2024-06-13
+1160,Cubs,Rangers,2024-06-18
+1161,Cubs,Rangers,2024-06-19
+1162,Cubs,Rangers,2024-06-20
+1163,Cubs,Mets,2024-06-25
+1164,Cubs,Mets,2024-06-26
+1165,Cubs,Mets,2024-06-27
+1166,Angels,Cubs,2024-07-09
+1167,Angels,Cubs,2024-07-10
+1168,Angels,Cubs,2024-07-11
+1169,Braves,Cubs,2024-07-26
+1170,Braves,Cubs,2024-07-27
+1171,Braves,Cubs,2024-07-28
+1172,Braves,Cubs,2024-07-29
+1173,Cubs,Phillies,2024-08-02
+1174,Cubs,Phillies,2024-08-03
+1175,Cubs,Phillies,2024-08-04
+1176,Cubs,Phillies,2024-08-05
+1177,Blue Jays,Cubs,2024-08-13
+1178,Blue Jays,Cubs,2024-08-14
+1179,Blue Jays,Cubs,2024-08-15
+1180,Cubs,Tigers,2024-08-16
+1181,Cubs,Tigers,2024-08-17
+1182,Nationals,Cubs,2024-08-20
+1183,Nationals,Cubs,2024-08-21
+1184,Nationals,Cubs,2024-08-22
+1185,Cubs,Royals,2024-08-23
+1186,Cubs,Royals,2024-08-24
+1187,Cubs,Royals,2024-08-25
+1188,Cubs,Guardians,2024-08-30
+1189,Cubs,Guardians,2024-08-31
+1190,Cubs,Guardians,2024-09-01
+1191,Mets,Cubs,2024-09-10
+1192,Mets,Cubs,2024-09-11
+1193,Mets,Cubs,2024-09-12
+1194,Marlins,Cubs,2024-09-17
+1195,Marlins,Cubs,2024-09-18
+1196,Marlins,Cubs,2024-09-19
+1197,Cubs,White Sox,2024-09-20
+1198,Cubs,White Sox,2024-09-21
+1199,Cubs,White Sox,2024-09-22
+1200,Marlins,Yankees,2024-03-22
+1201,Marlins,Yankees,2024-03-23
+1202,Marlins,Yankees,2024-03-24
+1203,Red Sox,Marlins,2024-03-29
+1204,Red Sox,Marlins,2024-03-30
+1205,Marlins,White Sox,2024-04-02
+1206,Marlins,White Sox,2024-04-03
+1207,Marlins,White Sox,2024-04-04
+1208,Braves,Marlins,2024-04-05
+1209,Braves,Marlins,2024-04-06
+1210,Braves,Marlins,2024-04-07
+1211,Braves,Marlins,2024-04-08
+1212,Marlins,Phillies,2024-04-12
+1213,Marlins,Phillies,2024-04-13
+1214,Marlins,Phillies,2024-04-14
+1215,Marlins,Phillies,2024-04-15
+1216,Marlins,Braves,2024-04-26
+1217,Marlins,Braves,2024-04-27
+1218,Marlins,Braves,2024-04-28
+1219,Marlins,Tigers,2024-04-30
+1220,Marlins,Tigers,2024-05-01
+1221,Marlins,Tigers,2024-05-02
+1222,Marlins,Rays,2024-05-03
+1223,Marlins,Rays,2024-05-04
+1224,Marlins,Rays,2024-05-05
+1225,Athletics,Marlins,2024-05-07
+1226,Athletics,Marlins,2024-05-08
+1227,Athletics,Marlins,2024-05-09
+1228,Marlins,Mets,2024-05-10
+1229,Marlins,Mets,2024-05-11
+1230,Marlins,Mets,2024-05-12
+1231,Marlins,Mets,2024-05-13
+1232,Mariners,Marlins,2024-05-14
+1233,Mariners,Marlins,2024-05-15
+1234,Mariners,Marlins,2024-05-16
+1235,Phillies,Marlins,2024-05-17
+1236,Phillies,Marlins,2024-05-18
+1237,Phillies,Marlins,2024-05-19
+1238,Guardians,Marlins,2024-05-21
+1239,Guardians,Marlins,2024-05-22
+1240,Guardians,Marlins,2024-05-23
+1241,Mets,Marlins,2024-05-24
+1242,Mets,Marlins,2024-05-25
+1243,Mets,Marlins,2024-05-26
+1244,Marlins,Nationals,2024-05-31
+1245,Marlins,Nationals,2024-06-01
+1246,Marlins,Nationals,2024-06-02
+1247,Marlins,Nationals,2024-06-03
+1248,Blue Jays,Marlins,2024-06-14
+1249,Blue Jays,Marlins,2024-06-15
+1250,Blue Jays,Marlins,2024-06-16
+1251,Marlins,Braves,2024-06-21
+1252,Marlins,Braves,2024-06-22
+1253,Marlins,Braves,2024-06-23
+1254,Marlins,Red Sox,2024-06-28
+1255,Marlins,Red Sox,2024-06-29
+1256,Nationals,Marlins,2024-07-05
+1257,Nationals,Marlins,2024-07-06
+1258,Nationals,Marlins,2024-07-07
+1259,Angels,Marlins,2024-07-09
+1260,Angels,Marlins,2024-07-10
+1261,Angels,Marlins,2024-07-11
+1262,Marlins,Phillies,2024-07-12
+1263,Marlins,Phillies,2024-07-13
+1264,Marlins,Phillies,2024-07-14
+1265,Marlins,Twins,2024-07-23
+1266,Marlins,Twins,2024-07-24
+1267,Marlins,Twins,2024-07-25
+1268,Marlins,Royals,2024-07-30
+1269,Marlins,Royals,2024-07-31
+1270,Marlins,Royals,2024-08-01
+1271,Astros,Marlins,2024-08-06
+1272,Astros,Marlins,2024-08-07
+1273,Astros,Marlins,2024-08-08
+1274,Phillies,Marlins,2024-08-09
+1275,Phillies,Marlins,2024-08-10
+1276,Phillies,Marlins,2024-08-11
+1277,Braves,Marlins,2024-08-16
+1278,Braves,Marlins,2024-08-17
+1279,Braves,Marlins,2024-08-18
+1280,Marlins,Orioles,2024-08-23
+1281,Marlins,Orioles,2024-08-24
+1282,Marlins,Orioles,2024-08-25
+1283,Marlins,Mets,2024-08-30
+1284,Marlins,Mets,2024-08-31
+1285,Marlins,Mets,2024-09-01
+1286,Mets,Marlins,2024-09-06
+1287,Mets,Marlins,2024-09-07
+1288,Mets,Marlins,2024-09-08
+1289,Marlins,Nationals,2024-09-13
+1290,Marlins,Nationals,2024-09-14
+1291,Marlins,Nationals,2024-09-15
+1292,Marlins,Rangers,2024-09-17
+1293,Marlins,Rangers,2024-09-18
+1294,Marlins,Rangers,2024-09-19
+1295,Nationals,Marlins,2024-09-20
+1296,Nationals,Marlins,2024-09-21
+1297,Nationals,Marlins,2024-09-22
+1298,Blue Jays,Phillies,2024-03-22
+1299,Blue Jays,Phillies,2024-03-23
+1300,Blue Jays,Phillies,2024-03-24
+1301,Phillies,Mets,2024-03-29
+1302,Phillies,Mets,2024-03-30
+1303,Phillies,Mets,2024-03-31
+1304,Phillies,Mets,2024-04-05
+1305,Phillies,Mets,2024-04-06
+1306,Phillies,Mets,2024-04-07
+1307,Phillies,Nationals,2024-04-19
+1308,Phillies,Nationals,2024-04-20
+1309,Phillies,Nationals,2024-04-21
+1310,Mariners,Phillies,2024-04-30
+1311,Mariners,Phillies,2024-05-01
+1312,Mariners,Phillies,2024-05-02
+1313,Phillies,Rays,2024-05-10
+1314,Phillies,Rays,2024-05-11
+1315,Phillies,Rays,2024-05-12
+1316,Nationals,Phillies,2024-05-24
+1317,Nationals,Phillies,2024-05-25
+1318,Nationals,Phillies,2024-05-26
+1319,Phillies,Twins,2024-05-28
+1320,Phillies,Twins,2024-05-29
+1321,Phillies,Twins,2024-05-30
+1322,Mets,Phillies,2024-05-31
+1323,Mets,Phillies,2024-06-01
+1324,Mets,Phillies,2024-06-02
+1325,Phillies,Braves,2024-06-07
+1326,Phillies,Braves,2024-06-08
+1327,Phillies,Braves,2024-06-09
+1328,Phillies,Braves,2024-06-14
+1329,Phillies,Braves,2024-06-15
+1330,Phillies,Braves,2024-06-16
+1331,Angels,Phillies,2024-06-25
+1332,Angels,Phillies,2024-06-26
+1333,Angels,Phillies,2024-06-27
+1334,Yankees,Phillies,2024-06-28
+1335,Yankees,Phillies,2024-06-29
+1336,Phillies,Royals,2024-07-09
+1337,Phillies,Royals,2024-07-10
+1338,Phillies,Royals,2024-07-11
+1339,Orioles,Phillies,2024-07-12
+1340,Orioles,Phillies,2024-07-13
+1341,Orioles,Phillies,2024-07-14
+1342,Astros,Phillies,2024-07-23
+1343,Astros,Phillies,2024-07-24
+1344,Astros,Phillies,2024-07-25
+1345,Mets,Phillies,2024-07-26
+1346,Mets,Phillies,2024-07-27
+1347,Mets,Phillies,2024-07-28
+1348,Mets,Phillies,2024-07-29
+1349,Athletics,Phillies,2024-07-30
+1350,Athletics,Phillies,2024-07-31
+1351,Athletics,Phillies,2024-08-01
+1352,Guardians,Phillies,2024-08-13
+1353,Guardians,Phillies,2024-08-14
+1354,Guardians,Phillies,2024-08-15
+1355,Nationals,Phillies,2024-08-16
+1356,Nationals,Phillies,2024-08-17
+1357,Nationals,Phillies,2024-08-18
+1358,Nationals,Phillies,2024-08-19
+1359,Braves,Phillies,2024-08-23
+1360,Braves,Phillies,2024-08-24
+1361,Braves,Phillies,2024-08-25
+1362,Braves,Phillies,2024-08-30
+1363,Braves,Phillies,2024-08-31
+1364,Braves,Phillies,2024-09-01
+1365,Braves,Phillies,2024-09-02
+1366,Phillies,Rangers,2024-09-03
+1367,Phillies,Rangers,2024-09-04
+1368,Phillies,Rangers,2024-09-05
+1369,Phillies,Nationals,2024-09-06
+1370,Phillies,Nationals,2024-09-07
+1371,Phillies,Nationals,2024-09-08
+1372,Phillies,Tigers,2024-09-10
+1373,Phillies,Tigers,2024-09-11
+1374,Phillies,Tigers,2024-09-12
+1375,Phillies,Red Sox,2024-09-13
+1376,Phillies,Red Sox,2024-09-14
+1377,Phillies,Red Sox,2024-09-15
+1378,Phillies,White Sox,2024-09-17
+1379,Phillies,White Sox,2024-09-18
+1380,Phillies,White Sox,2024-09-19
+1381,Phillies,Yankees,2024-09-20
+1382,Phillies,Yankees,2024-09-21
+1383,Mets,Braves,2024-03-22
+1384,Mets,Braves,2024-03-23
+1385,Mets,Braves,2024-03-24
+1386,Astros,Mets,2024-04-02
+1387,Astros,Mets,2024-04-03
+1388,Astros,Mets,2024-04-04
+1389,Mets,Nationals,2024-04-05
+1390,Mets,Nationals,2024-04-06
+1391,Mets,Nationals,2024-04-07
+1392,Mets,Nationals,2024-04-08
+1393,Angels,Mets,2024-04-16
+1394,Angels,Mets,2024-04-17
+1395,Angels,Mets,2024-04-18
+1396,Blue Jays,Mets,2024-04-19
+1397,Blue Jays,Mets,2024-04-20
+1398,Blue Jays,Mets,2024-04-21
+1399,Mets,White Sox,2024-04-23
+1400,Mets,White Sox,2024-04-24
+1401,Mets,White Sox,2024-04-25
+1402,Mets,Rangers,2024-04-30
+1403,Mets,Rangers,2024-05-01
+1404,Mets,Rangers,2024-05-02
+1405,Mets,Yankees,2024-05-03
+1406,Mets,Yankees,2024-05-04
+1407,Mets,Yankees,2024-05-05
+1408,Mets,Nationals,2024-05-10
+1409,Mets,Nationals,2024-05-11
+1410,Mets,Nationals,2024-05-12
+1411,Mets,Twins,2024-05-14
+1412,Mets,Twins,2024-05-15
+1413,Mets,Twins,2024-05-16
+1414,Nationals,Mets,2024-05-24
+1415,Nationals,Mets,2024-05-25
+1416,Nationals,Mets,2024-05-26
+1417,Nationals,Mets,2024-05-31
+1418,Nationals,Mets,2024-06-01
+1419,Nationals,Mets,2024-06-02
+1420,Athletics,Mets,2024-06-04
+1421,Athletics,Mets,2024-06-05
+1422,Athletics,Mets,2024-06-06
+1423,Mets,Rays,2024-06-07
+1424,Mets,Rays,2024-06-08
+1425,Mets,Tigers,2024-06-25
+1426,Mets,Tigers,2024-06-26
+1427,Mets,Tigers,2024-06-27
+1428,Guardians,Mets,2024-07-02
+1429,Guardians,Mets,2024-07-03
+1430,Guardians,Mets,2024-07-04
+1431,Braves,Mets,2024-07-12
+1432,Braves,Mets,2024-07-13
+1433,Braves,Mets,2024-07-14
+1434,Mariners,Mets,2024-07-23
+1435,Mariners,Mets,2024-07-24
+1436,Mariners,Mets,2024-07-25
+1437,Rays,Mets,2024-07-26
+1438,Rays,Mets,2024-07-27
+1439,Braves,Mets,2024-08-02
+1440,Braves,Mets,2024-08-03
+1441,Braves,Mets,2024-08-04
+1442,Braves,Mets,2024-08-05
+1443,Mets,Braves,2024-08-09
+1444,Mets,Braves,2024-08-10
+1445,Mets,Braves,2024-08-11
+1446,Mets,Orioles,2024-08-16
+1447,Mets,Orioles,2024-08-17
+1448,Mets,Orioles,2024-08-18
+1449,Mets,Red Sox,2024-08-23
+1450,Mets,Red Sox,2024-08-24
+1451,Mets,Red Sox,2024-08-25
+1452,Mets,Royals,2024-09-10
+1453,Mets,Royals,2024-09-11
+1454,Mets,Royals,2024-09-12
+1455,Angels,Braves,2024-03-19
+1456,Angels,Braves,2024-03-20
+1457,Angels,Braves,2024-03-21
+1458,Astros,Braves,2024-03-26
+1459,Astros,Braves,2024-03-27
+1460,Astros,Braves,2024-03-28
+1461,Orioles,Braves,2024-04-05
+1462,Orioles,Braves,2024-04-06
+1463,Athletics,Braves,2024-04-16
+1464,Athletics,Braves,2024-04-17
+1465,Athletics,Braves,2024-04-18
+1466,Braves,Orioles,2024-04-19
+1467,Braves,Orioles,2024-04-20
+1468,Braves,Guardians,2024-04-23
+1469,Braves,Guardians,2024-04-24
+1470,Braves,Guardians,2024-04-25
+1471,Nationals,Braves,2024-05-03
+1472,Nationals,Braves,2024-05-04
+1473,Nationals,Braves,2024-05-05
+1474,Braves,Rays,2024-05-17
+1475,Braves,Rays,2024-05-18
+1476,Braves,Rays,2024-05-19
+1477,Braves,Rangers,2024-05-28
+1478,Braves,Rangers,2024-05-29
+1479,Braves,Rangers,2024-05-30
+1480,Nationals,Braves,2024-06-07
+1481,Nationals,Braves,2024-06-08
+1482,Nationals,Braves,2024-06-09
+1483,Braves,Royals,2024-06-11
+1484,Braves,Royals,2024-06-12
+1485,Braves,Royals,2024-06-13
+1486,Braves,Mariners,2024-06-18
+1487,Braves,Mariners,2024-06-19
+1488,Braves,Mariners,2024-06-20
+1489,Blue Jays,Braves,2024-06-21
+1490,Blue Jays,Braves,2024-06-22
+1491,Blue Jays,Braves,2024-06-23
+1492,Braves,Tigers,2024-06-25
+1493,Braves,Tigers,2024-06-26
+1494,Braves,Tigers,2024-06-27
+1495,Braves,Twins,2024-07-30
+1496,Braves,Twins,2024-07-31
+1497,Braves,Twins,2024-08-01
+1498,Braves,Red Sox,2024-08-02
+1499,Braves,Red Sox,2024-08-03
+1500,Braves,Red Sox,2024-08-04
+1501,Braves,Nationals,2024-08-23
+1502,Braves,Nationals,2024-08-24
+1503,Braves,Nationals,2024-08-25
+1504,Braves,White Sox,2024-08-27
+1505,Braves,White Sox,2024-08-28
+1506,Braves,White Sox,2024-08-29
+1507,Braves,Nationals,2024-09-13
+1508,Braves,Nationals,2024-09-14
+1509,Braves,Nationals,2024-09-15
+1510,Braves,Nationals,2024-09-16
+1511,Braves,Yankees,2024-09-20
+1512,Braves,Yankees,2024-09-21
+1513,Braves,Yankees,2024-09-22
+1514,Nationals,Tigers,2024-03-26
+1515,Nationals,Tigers,2024-03-27
+1516,Nationals,Tigers,2024-03-28
+1517,Nationals,Rays,2024-03-29
+1518,Nationals,Rays,2024-03-30
+1519,Nationals,Rays,2024-03-31
+1520,Nationals,Red Sox,2024-04-05
+1521,Nationals,Red Sox,2024-04-06
+1522,Nationals,Red Sox,2024-04-07
+1523,Nationals,Twins,2024-04-09
+1524,Nationals,Twins,2024-04-10
+1525,Nationals,Twins,2024-04-11
+1526,Nationals,Blue Jays,2024-04-12
+1527,Nationals,Blue Jays,2024-04-13
+1528,Astros,Nationals,2024-04-16
+1529,Astros,Nationals,2024-04-17
+1530,Astros,Nationals,2024-04-18
+1531,Guardians,Nationals,2024-04-30
+1532,Guardians,Nationals,2024-05-01
+1533,Guardians,Nationals,2024-05-02
+1534,Angels,Nationals,2024-05-21
+1535,Angels,Nationals,2024-05-22
+1536,Angels,Nationals,2024-05-23
+1537,Mariners,Nationals,2024-06-18
+1538,Mariners,Nationals,2024-06-19
+1539,Mariners,Nationals,2024-06-20
+1540,Nationals,Rangers,2024-06-25
+1541,Nationals,Rangers,2024-06-26
+1542,Nationals,Rangers,2024-06-27
+1543,Athletics,Nationals,2024-07-30
+1544,Athletics,Nationals,2024-07-31
+1545,Athletics,Nationals,2024-08-01
+1546,Nationals,Orioles,2024-08-02
+1547,Nationals,Orioles,2024-08-03
+1548,Nationals,Orioles,2024-08-04
+1549,Nationals,Royals,2024-08-13
+1550,Nationals,Royals,2024-08-14
+1551,Nationals,Royals,2024-08-15
+1552,Nationals,Yankees,2024-08-23
+1553,Nationals,Yankees,2024-08-24
+1554,Nationals,Yankees,2024-08-25
+1555,Nationals,White Sox,2024-08-27
+1556,Nationals,White Sox,2024-08-28
+1557,Nationals,White Sox,2024-08-29
+1558,Blue Jays,Nationals,2024-09-20
+1559,Blue Jays,Nationals,2024-09-21
+1560,Mariners,Athletics,2024-03-22
+1561,Mariners,Athletics,2024-03-23
+1562,Mariners,Athletics,2024-03-24
+1563,Red Sox,Athletics,2024-03-26
+1564,Red Sox,Athletics,2024-03-27
+1565,Red Sox,Athletics,2024-03-28
+1566,Astros,Athletics,2024-03-29
+1567,Astros,Athletics,2024-03-30
+1568,Astros,Athletics,2024-03-31
+1569,Guardians,Athletics,2024-04-02
+1570,Guardians,Athletics,2024-04-03
+1571,Guardians,Athletics,2024-04-04
+1572,Astros,Athletics,2024-04-05
+1573,Astros,Athletics,2024-04-06
+1574,Astros,Athletics,2024-04-07
+1575,Astros,Athletics,2024-04-08
+1576,Athletics,Twins,2024-04-09
+1577,Athletics,Twins,2024-04-10
+1578,Athletics,Twins,2024-04-11
+1579,Rangers,Athletics,2024-04-12
+1580,Rangers,Athletics,2024-04-13
+1581,Rangers,Athletics,2024-04-14
+1582,Athletics,Tigers,2024-04-16
+1583,Athletics,Tigers,2024-04-17
+1584,Athletics,Tigers,2024-04-18
+1585,Athletics,Mariners,2024-04-19
+1586,Athletics,Mariners,2024-04-20
+1587,Athletics,Mariners,2024-04-21
+1588,Athletics,Mariners,2024-04-22
+1589,Athletics,Rays,2024-05-03
+1590,Athletics,Rays,2024-05-04
+1591,Athletics,Rays,2024-05-05
+1592,Athletics,Rays,2024-05-06
+1593,Blue Jays,Athletics,2024-05-07
+1594,Blue Jays,Athletics,2024-05-08
+1595,Blue Jays,Athletics,2024-05-09
+1596,Athletics,White Sox,2024-05-10
+1597,Athletics,White Sox,2024-05-11
+1598,Athletics,White Sox,2024-05-12
+1599,Athletics,White Sox,2024-05-13
+1600,Rays,Athletics,2024-05-14
+1601,Rays,Athletics,2024-05-15
+1602,Rays,Athletics,2024-05-16
+1603,Athletics,Angels,2024-05-17
+1604,Athletics,Angels,2024-05-18
+1605,Athletics,Angels,2024-05-19
+1606,Angels,Athletics,2024-05-24
+1607,Angels,Athletics,2024-05-25
+1608,Angels,Athletics,2024-05-26
+1609,Orioles,Athletics,2024-05-28
+1610,Orioles,Athletics,2024-05-29
+1611,Orioles,Athletics,2024-05-30
+1612,White Sox,Athletics,2024-06-04
+1613,White Sox,Athletics,2024-06-05
+1614,White Sox,Athletics,2024-06-06
+1615,Mariners,Athletics,2024-06-14
+1616,Mariners,Athletics,2024-06-15
+1617,Mariners,Athletics,2024-06-16
+1618,Athletics,Guardians,2024-06-21
+1619,Athletics,Guardians,2024-06-22
+1620,Athletics,Guardians,2024-06-23
+1621,Athletics,Guardians,2024-06-24
+1622,Athletics,Royals,2024-07-02
+1623,Athletics,Royals,2024-07-03
+1624,Athletics,Royals,2024-07-04
+1625,Athletics,Orioles,2024-07-05
+1626,Athletics,Orioles,2024-07-06
+1627,Athletics,Orioles,2024-07-07
+1628,Athletics,Orioles,2024-07-08
+1629,Rangers,Athletics,2024-07-12
+1630,Rangers,Athletics,2024-07-13
+1631,Rangers,Athletics,2024-07-14
+1632,Yankees,Athletics,2024-07-23
+1633,Yankees,Athletics,2024-07-24
+1634,Yankees,Athletics,2024-07-25
+1635,Athletics,Rangers,2024-07-26
+1636,Athletics,Rangers,2024-07-27
+1637,Athletics,Rangers,2024-07-28
+1638,Athletics,Yankees,2024-07-30
+1639,Athletics,Yankees,2024-07-31
+1640,Athletics,Yankees,2024-08-01
+1641,Athletics,Angels,2024-08-02
+1642,Athletics,Angels,2024-08-03
+1643,Athletics,Angels,2024-08-04
+1644,Angels,Athletics,2024-08-09
+1645,Angels,Athletics,2024-08-10
+1646,Angels,Athletics,2024-08-11
+1647,Angels,Athletics,2024-08-12
+1648,Royals,Athletics,2024-08-13
+1649,Royals,Athletics,2024-08-14
+1650,Royals,Athletics,2024-08-15
+1651,Athletics,Astros,2024-08-16
+1652,Athletics,Astros,2024-08-17
+1653,Athletics,Astros,2024-08-18
+1654,Athletics,Blue Jays,2024-08-20
+1655,Athletics,Blue Jays,2024-08-21
+1656,Athletics,Blue Jays,2024-08-22
+1657,Athletics,Rangers,2024-08-23
+1658,Athletics,Rangers,2024-08-24
+1659,Athletics,Rangers,2024-08-25
+1660,Athletics,Rangers,2024-08-26
+1661,Twins,Athletics,2024-08-27
+1662,Twins,Athletics,2024-08-28
+1663,Twins,Athletics,2024-08-29
+1664,Athletics,Mariners,2024-08-30
+1665,Athletics,Mariners,2024-08-31
+1666,Athletics,Mariners,2024-09-01
+1667,Tigers,Athletics,2024-09-03
+1668,Tigers,Athletics,2024-09-04
+1669,Tigers,Athletics,2024-09-05
+1670,Athletics,Astros,2024-09-13
+1671,Athletics,Astros,2024-09-14
+1672,Athletics,Astros,2024-09-15
+1673,Athletics,Red Sox,2024-09-17
+1674,Athletics,Red Sox,2024-09-18
+1675,Athletics,Red Sox,2024-09-19
+1676,Rangers,Guardians,2024-03-19
+1677,Rangers,Guardians,2024-03-20
+1678,Rangers,Guardians,2024-03-21
+1679,Rangers,Rays,2024-03-22
+1680,Rangers,Rays,2024-03-23
+1681,Rangers,Rays,2024-03-24
+1682,Rangers,Rays,2024-03-25
+1683,Guardians,Rangers,2024-03-29
+1684,Guardians,Rangers,2024-03-30
+1685,Guardians,Rangers,2024-03-31
+1686,Guardians,Rangers,2024-04-01
+1687,Blue Jays,Rangers,2024-04-02
+1688,Blue Jays,Rangers,2024-04-03
+1689,Blue Jays,Rangers,2024-04-04
+1690,Rays,Rangers,2024-04-09
+1691,Rays,Rangers,2024-04-10
+1692,Rays,Rangers,2024-04-11
+1693,Mariners,Rangers,2024-04-12
+1694,Mariners,Rangers,2024-04-13
+1695,Mariners,Rangers,2024-04-14
+1696,Mariners,Rangers,2024-04-15
+1697,Rangers,Twins,2024-04-16
+1698,Rangers,Twins,2024-04-17
+1699,Rangers,Twins,2024-04-18
+1700,Rangers,White Sox,2024-04-30
+1701,Rangers,White Sox,2024-05-01
+1702,Rangers,White Sox,2024-05-02
+1703,Rangers,Tigers,2024-05-03
+1704,Rangers,Tigers,2024-05-04
+1705,Rangers,Tigers,2024-05-05
+1706,Rangers,Tigers,2024-05-06
+1707,Rangers,Royals,2024-05-14
+1708,Rangers,Royals,2024-05-15
+1709,Rangers,Royals,2024-05-16
+1710,Rangers,Angels,2024-05-24
+1711,Rangers,Angels,2024-05-25
+1712,Rangers,Angels,2024-05-26
+1713,Rangers,Orioles,2024-05-28
+1714,Rangers,Orioles,2024-05-29
+1715,Rangers,Orioles,2024-05-30
+1716,Rangers,Astros,2024-05-31
+1717,Rangers,Astros,2024-06-01
+1718,Rangers,Astros,2024-06-02
+1719,Rangers,Red Sox,2024-06-04
+1720,Rangers,Red Sox,2024-06-05
+1721,Rangers,Red Sox,2024-06-06
+1722,Mariners,Rangers,2024-06-07
+1723,Mariners,Rangers,2024-06-08
+1724,Mariners,Rangers,2024-06-09
+1725,Rangers,Blue Jays,2024-06-11
+1726,Rangers,Blue Jays,2024-06-12
+1727,Rangers,Blue Jays,2024-06-13
+1728,Rangers,Astros,2024-06-14
+1729,Rangers,Astros,2024-06-15
+1730,Rangers,Astros,2024-06-16
+1731,Royals,Rangers,2024-06-18
+1732,Royals,Rangers,2024-06-19
+1733,Royals,Rangers,2024-06-20
+1734,Angels,Rangers,2024-06-21
+1735,Angels,Rangers,2024-06-22
+1736,Angels,Rangers,2024-06-23
+1737,Angels,Rangers,2024-06-24
+1738,Twins,Rangers,2024-06-25
+1739,Twins,Rangers,2024-06-26
+1740,Twins,Rangers,2024-06-27
+1741,Astros,Rangers,2024-07-12
+1742,Astros,Rangers,2024-07-13
+1743,Astros,Rangers,2024-07-14
+1744,Astros,Rangers,2024-07-15
+1745,Rangers,Mariners,2024-07-26
+1746,Rangers,Mariners,2024-07-27
+1747,Rangers,Mariners,2024-07-28
+1748,White Sox,Rangers,2024-07-30
+1749,White Sox,Rangers,2024-07-31
+1750,White Sox,Rangers,2024-08-01
+1751,Angels,Rangers,2024-08-02
+1752,Angels,Rangers,2024-08-03
+1753,Angels,Rangers,2024-08-04
+1754,Yankees,Rangers,2024-08-06
+1755,Yankees,Rangers,2024-08-07
+1756,Yankees,Rangers,2024-08-08
+1757,Tigers,Rangers,2024-08-13
+1758,Tigers,Rangers,2024-08-14
+1759,Tigers,Rangers,2024-08-15
+1760,Rangers,Angels,2024-08-16
+1761,Rangers,Angels,2024-08-17
+1762,Rangers,Angels,2024-08-18
+1763,Orioles,Rangers,2024-08-20
+1764,Orioles,Rangers,2024-08-21
+1765,Orioles,Rangers,2024-08-22
+1766,Astros,Rangers,2024-08-23
+1767,Astros,Rangers,2024-08-24
+1768,Astros,Rangers,2024-08-25
+1769,Red Sox,Rangers,2024-09-03
+1770,Red Sox,Rangers,2024-09-04
+1771,Red Sox,Rangers,2024-09-05
+1772,Rangers,Yankees,2024-09-06
+1773,Rangers,Yankees,2024-09-07
+1774,Rangers,Yankees,2024-09-08
+1775,Rangers,Yankees,2024-09-09
+1776,Rangers,Mariners,2024-09-13
+1777,Rangers,Mariners,2024-09-14
+1778,Rangers,Mariners,2024-09-15
+1779,Guardians,Mariners,2024-03-19
+1780,Guardians,Mariners,2024-03-20
+1781,Guardians,Mariners,2024-03-21
+1782,Royals,Mariners,2024-03-26
+1783,Royals,Mariners,2024-03-27
+1784,Royals,Mariners,2024-03-28
+1785,Mariners,Astros,2024-03-29
+1786,Mariners,Astros,2024-03-30
+1787,Mariners,Astros,2024-03-31
+1788,Mariners,Guardians,2024-04-02
+1789,Mariners,Guardians,2024-04-03
+1790,Mariners,Guardians,2024-04-04
+1791,Mariners,Tigers,2024-04-05
+1792,Mariners,Tigers,2024-04-06
+1793,Mariners,Tigers,2024-04-07
+1794,Mariners,Tigers,2024-04-08
+1795,White Sox,Mariners,2024-04-09
+1796,White Sox,Mariners,2024-04-10
+1797,White Sox,Mariners,2024-04-11
+1798,Twins,Mariners,2024-04-16
+1799,Twins,Mariners,2024-04-17
+1800,Twins,Mariners,2024-04-18
+1801,Angels,Mariners,2024-04-26
+1802,Angels,Mariners,2024-04-27
+1803,Angels,Mariners,2024-04-28
+1804,Angels,Mariners,2024-04-29
+1805,Blue Jays,Mariners,2024-04-30
+1806,Blue Jays,Mariners,2024-05-01
+1807,Blue Jays,Mariners,2024-05-02
+1808,Mariners,Orioles,2024-05-07
+1809,Mariners,Orioles,2024-05-08
+1810,Mariners,Orioles,2024-05-09
+1811,Angels,Mariners,2024-05-10
+1812,Angels,Mariners,2024-05-11
+1813,Angels,Mariners,2024-05-12
+1814,Rays,Mariners,2024-05-14
+1815,Rays,Mariners,2024-05-15
+1816,Rays,Mariners,2024-05-16
+1817,Tigers,Mariners,2024-05-21
+1818,Tigers,Mariners,2024-05-22
+1819,Tigers,Mariners,2024-05-23
+1820,Mariners,Angels,2024-05-24
+1821,Mariners,Angels,2024-05-25
+1822,Mariners,Angels,2024-05-26
+1823,Orioles,Mariners,2024-05-28
+1824,Orioles,Mariners,2024-05-29
+1825,Orioles,Mariners,2024-05-30
+1826,Astros,Mariners,2024-05-31
+1827,Astros,Mariners,2024-06-01
+1828,Astros,Mariners,2024-06-02
+1829,Astros,Mariners,2024-06-03
+1830,Mariners,Rays,2024-06-04
+1831,Mariners,Rays,2024-06-05
+1832,Mariners,Rays,2024-06-06
+1833,Red Sox,Mariners,2024-06-11
+1834,Red Sox,Mariners,2024-06-12
+1835,Red Sox,Mariners,2024-06-13
+1836,Mariners,Royals,2024-06-14
+1837,Mariners,Royals,2024-06-15
+1838,Mariners,Royals,2024-06-16
+1839,Mariners,Royals,2024-06-17
+1840,Mariners,Twins,2024-06-18
+1841,Mariners,Twins,2024-06-19
+1842,Mariners,Twins,2024-06-20
+1843,Mariners,Yankees,2024-06-21
+1844,Mariners,Yankees,2024-06-22
+1845,Mariners,Yankees,2024-06-23
+1846,Mariners,Yankees,2024-06-24
+1847,Mariners,Astros,2024-07-05
+1848,Mariners,Astros,2024-07-06
+1849,Mariners,Astros,2024-07-07
+1850,Mariners,Blue Jays,2024-07-09
+1851,Mariners,Blue Jays,2024-07-10
+1852,Mariners,Blue Jays,2024-07-11
+1853,Mariners,Red Sox,2024-08-02
+1854,Mariners,Red Sox,2024-08-03
+1855,Mariners,Red Sox,2024-08-04
+1856,Mariners,Red Sox,2024-08-05
+1857,Yankees,Mariners,2024-08-06
+1858,Yankees,Mariners,2024-08-07
+1859,Yankees,Mariners,2024-08-08
+1860,Mariners,Angels,2024-08-16
+1861,Mariners,Angels,2024-08-17
+1862,Mariners,Angels,2024-08-18
+1863,Astros,Mariners,2024-08-30
+1864,Astros,Mariners,2024-08-31
+1865,Astros,Mariners,2024-09-01
+1866,Mariners,White Sox,2024-09-03
+1867,Mariners,White Sox,2024-09-04
+1868,Mariners,White Sox,2024-09-05
+1869,Astros,Angels,2024-03-22
+1870,Astros,Angels,2024-03-23
+1871,Astros,Angels,2024-03-24
+1872,Yankees,Angels,2024-03-26
+1873,Yankees,Angels,2024-03-27
+1874,Yankees,Angels,2024-03-28
+1875,Angels,Royals,2024-03-29
+1876,Angels,Royals,2024-03-30
+1877,Angels,Royals,2024-03-31
+1878,Angels,Royals,2024-04-01
+1879,Angels,Guardians,2024-04-02
+1880,Angels,Guardians,2024-04-03
+1881,Angels,Guardians,2024-04-04
+1882,Red Sox,Angels,2024-04-09
+1883,Red Sox,Angels,2024-04-10
+1884,Red Sox,Angels,2024-04-11
+1885,Orioles,Angels,2024-04-16
+1886,Orioles,Angels,2024-04-17
+1887,Orioles,Angels,2024-04-18
+1888,Angels,Astros,2024-04-19
+1889,Angels,Astros,2024-04-20
+1890,Angels,Astros,2024-04-21
+1891,Angels,Astros,2024-04-22
+1892,Royals,Angels,2024-04-30
+1893,Royals,Angels,2024-05-01
+1894,Royals,Angels,2024-05-02
+1895,Angels,White Sox,2024-05-07
+1896,Angels,White Sox,2024-05-08
+1897,Angels,White Sox,2024-05-09
+1898,Guardians,Angels,2024-05-21
+1899,Guardians,Angels,2024-05-22
+1900,Guardians,Angels,2024-05-23
+1901,Angels,Blue Jays,2024-05-24
+1902,Angels,Blue Jays,2024-05-25
+1903,Angels,Blue Jays,2024-05-26
+1904,Angels,Blue Jays,2024-05-27
+1905,Angels,Tigers,2024-06-04
+1906,Angels,Tigers,2024-06-05
+1907,Angels,Tigers,2024-06-06
+1908,Angels,Astros,2024-06-07
+1909,Angels,Astros,2024-06-08
+1910,Angels,Astros,2024-06-09
+1911,Angels,Red Sox,2024-06-21
+1912,Angels,Red Sox,2024-06-22
+1913,Angels,Red Sox,2024-06-23
+1914,Angels,Red Sox,2024-06-24
+1915,Twins,Angels,2024-07-02
+1916,Twins,Angels,2024-07-03
+1917,Twins,Angels,2024-07-04
+1918,Blue Jays,Angels,2024-07-09
+1919,Blue Jays,Angels,2024-07-10
+1920,Blue Jays,Angels,2024-07-11
+1921,Angels,Twins,2024-07-12
+1922,Angels,Twins,2024-07-13
+1923,Angels,Twins,2024-07-14
+1924,Angels,Twins,2024-07-15
+1925,Rays,Angels,2024-08-06
+1926,Rays,Angels,2024-08-07
+1927,Rays,Angels,2024-08-08
+1928,Tigers,Angels,2024-08-13
+1929,Tigers,Angels,2024-08-14
+1930,Tigers,Angels,2024-08-15
+1931,White Sox,Angels,2024-08-27
+1932,White Sox,Angels,2024-08-28
+1933,White Sox,Angels,2024-08-29
+1934,Angels,Rays,2024-09-03
+1935,Angels,Rays,2024-09-04
+1936,Angels,Rays,2024-09-05
+1937,Angels,Yankees,2024-09-10
+1938,Angels,Yankees,2024-09-11
+1939,Angels,Yankees,2024-09-12
+1940,Astros,Angels,2024-09-13
+1941,Astros,Angels,2024-09-14
+1942,Astros,Angels,2024-09-15
+1943,Angels,Orioles,2024-09-17
+1944,Angels,Orioles,2024-09-18
+1945,Angels,Orioles,2024-09-19
+1946,Astros,Royals,2024-03-19
+1947,Astros,Royals,2024-03-20
+1948,Astros,Royals,2024-03-21
+1949,Orioles,Astros,2024-04-09
+1950,Orioles,Astros,2024-04-10
+1951,Orioles,Astros,2024-04-11
+1952,Rays,Astros,2024-04-30
+1953,Rays,Astros,2024-05-01
+1954,Rays,Astros,2024-05-02
+1955,Astros,Rays,2024-05-07
+1956,Astros,Rays,2024-05-08
+1957,Astros,Rays,2024-05-09
+1958,Astros,White Sox,2024-05-10
+1959,Astros,White Sox,2024-05-11
+1960,Astros,White Sox,2024-05-12
+1961,Astros,White Sox,2024-05-13
+1962,Astros,Guardians,2024-05-14
+1963,Astros,Guardians,2024-05-15
+1964,Astros,Guardians,2024-05-16
+1965,Astros,Tigers,2024-05-21
+1966,Astros,Tigers,2024-05-22
+1967,Astros,Tigers,2024-05-23
+1968,Astros,Twins,2024-05-31
+1969,Astros,Twins,2024-06-01
+1970,Astros,Twins,2024-06-02
+1971,Astros,Twins,2024-06-03
+1972,Red Sox,Astros,2024-06-04
+1973,Red Sox,Astros,2024-06-05
+1974,Red Sox,Astros,2024-06-06
+1975,Tigers,Astros,2024-06-25
+1976,Tigers,Astros,2024-06-26
+1977,Tigers,Astros,2024-06-27
+1978,Astros,Yankees,2024-07-02
+1979,Astros,Yankees,2024-07-03
+1980,Astros,Yankees,2024-07-04
+1981,Royals,Astros,2024-07-23
+1982,Royals,Astros,2024-07-24
+1983,Royals,Astros,2024-07-25
+1984,Astros,Orioles,2024-07-26
+1985,Astros,Orioles,2024-07-27
+1986,Astros,Orioles,2024-07-28
+1987,Astros,Orioles,2024-07-29
+1988,Blue Jays,Astros,2024-07-30
+1989,Blue Jays,Astros,2024-07-31
+1990,Blue Jays,Astros,2024-08-01
+1991,White Sox,Astros,2024-08-06
+1992,White Sox,Astros,2024-08-07
+1993,White Sox,Astros,2024-08-08
+1994,Guardians,Astros,2024-08-13
+1995,Guardians,Astros,2024-08-14
+1996,Guardians,Astros,2024-08-15
+1997,Astros,Blue Jays,2024-08-16
+1998,Astros,Blue Jays,2024-08-17
+1999,Astros,Blue Jays,2024-08-18
+2000,Astros,Blue Jays,2024-08-19
+2001,Astros,Red Sox,2024-09-03
+2002,Astros,Red Sox,2024-09-04
+2003,Astros,Red Sox,2024-09-05
+2004,Yankees,Astros,2024-09-10
+2005,Yankees,Astros,2024-09-11
+2006,Yankees,Astros,2024-09-12
+2007,Twins,Astros,2024-09-17
+2008,Twins,Astros,2024-09-18
+2009,Twins,Astros,2024-09-19
+2010,Royals,Rays,2024-03-19
+2011,Royals,Rays,2024-03-20
+2012,Royals,Rays,2024-03-21
+2013,Royals,Twins,2024-03-29
+2014,Royals,Twins,2024-03-30
+2015,Royals,Twins,2024-03-31
+2016,Royals,Twins,2024-04-01
+2017,Red Sox,Royals,2024-04-09
+2018,Red Sox,Royals,2024-04-10
+2019,Red Sox,Royals,2024-04-11
+2020,Blue Jays,Royals,2024-04-12
+2021,Blue Jays,Royals,2024-04-13
+2022,Blue Jays,Royals,2024-04-14
+2023,Blue Jays,Royals,2024-04-15
+2024,Royals,Guardians,2024-04-19
+2025,Royals,Guardians,2024-04-20
+2026,Royals,Guardians,2024-04-21
+2027,Royals,Orioles,2024-04-23
+2028,Royals,Orioles,2024-04-24
+2029,Royals,Orioles,2024-04-25
+2030,Royals,Tigers,2024-04-26
+2031,Royals,Tigers,2024-04-27
+2032,Royals,Tigers,2024-04-28
+2033,White Sox,Royals,2024-05-03
+2034,White Sox,Royals,2024-05-04
+2035,White Sox,Royals,2024-05-05
+2036,Royals,Yankees,2024-05-07
+2037,Royals,Yankees,2024-05-08
+2038,Royals,Yankees,2024-05-09
+2039,Royals,White Sox,2024-05-10
+2040,Royals,White Sox,2024-05-11
+2041,Royals,White Sox,2024-05-12
+2042,Royals,White Sox,2024-05-17
+2043,Royals,White Sox,2024-05-18
+2044,Royals,White Sox,2024-05-19
+2045,Royals,White Sox,2024-05-20
+2046,Tigers,Royals,2024-05-24
+2047,Tigers,Royals,2024-05-25
+2048,Tigers,Royals,2024-05-26
+2049,Tigers,Royals,2024-05-31
+2050,Tigers,Royals,2024-06-01
+2051,Tigers,Royals,2024-06-02
+2052,White Sox,Royals,2024-06-07
+2053,White Sox,Royals,2024-06-08
+2054,White Sox,Royals,2024-06-09
+2055,Orioles,Royals,2024-06-28
+2056,Orioles,Royals,2024-06-29
+2057,Orioles,Royals,2024-06-30
+2058,Orioles,Royals,2024-07-01
+2059,Guardians,Royals,2024-07-12
+2060,Guardians,Royals,2024-07-13
+2061,Guardians,Royals,2024-07-14
+2062,Guardians,Royals,2024-07-15
+2063,Guardians,Royals,2024-08-02
+2064,Guardians,Royals,2024-08-03
+2065,Guardians,Royals,2024-08-04
+2066,Twins,Royals,2024-08-09
+2067,Twins,Royals,2024-08-10
+2068,Twins,Royals,2024-08-11
+2069,Royals,Tigers,2024-08-16
+2070,Royals,Tigers,2024-08-17
+2071,Royals,Tigers,2024-08-18
+2072,Royals,Tigers,2024-08-19
+2073,Rays,Royals,2024-08-20
+2074,Rays,Royals,2024-08-21
+2075,Rays,Royals,2024-08-22
+2076,Royals,Twins,2024-08-23
+2077,Royals,Twins,2024-08-24
+2078,Royals,Twins,2024-08-25
+2079,Twins,Royals,2024-08-30
+2080,Twins,Royals,2024-08-31
+2081,Twins,Royals,2024-09-01
+2082,Royals,Blue Jays,2024-09-03
+2083,Royals,Blue Jays,2024-09-04
+2084,Royals,Blue Jays,2024-09-05
+2085,Royals,Red Sox,2024-09-10
+2086,Royals,Red Sox,2024-09-11
+2087,Royals,Red Sox,2024-09-12
+2088,Yankees,Royals,2024-09-17
+2089,Yankees,Royals,2024-09-18
+2090,Yankees,Royals,2024-09-19
+2091,Royals,Guardians,2024-09-20
+2092,Royals,Guardians,2024-09-21
+2093,Royals,Guardians,2024-09-22
+2094,Rays,White Sox,2024-03-29
+2095,Rays,White Sox,2024-03-30
+2096,Rays,White Sox,2024-03-31
+2097,Rays,White Sox,2024-04-01
+2098,White Sox,Tigers,2024-04-05
+2099,White Sox,Tigers,2024-04-06
+2100,White Sox,Tigers,2024-04-07
+2101,White Sox,Rays,2024-04-23
+2102,White Sox,Rays,2024-04-24
+2103,White Sox,Rays,2024-04-25
+2104,Guardians,White Sox,2024-04-26
+2105,Guardians,White Sox,2024-04-27
+2106,Guardians,White Sox,2024-04-28
+2107,Guardians,White Sox,2024-04-29
+2108,Tigers,White Sox,2024-05-24
+2109,Tigers,White Sox,2024-05-25
+2110,Tigers,White Sox,2024-05-26
+2111,Tigers,White Sox,2024-05-27
+2112,White Sox,Blue Jays,2024-05-28
+2113,White Sox,Blue Jays,2024-05-29
+2114,White Sox,Blue Jays,2024-05-30
+2115,White Sox,Red Sox,2024-06-11
+2116,White Sox,Red Sox,2024-06-12
+2117,White Sox,Red Sox,2024-06-13
+2118,Yankees,White Sox,2024-06-18
+2119,Yankees,White Sox,2024-06-19
+2120,Yankees,White Sox,2024-06-20
+2121,White Sox,Tigers,2024-06-21
+2122,White Sox,Tigers,2024-06-22
+2123,White Sox,Tigers,2024-06-23
+2124,White Sox,Orioles,2024-06-25
+2125,White Sox,Orioles,2024-06-26
+2126,White Sox,Orioles,2024-06-27
+2127,White Sox,Yankees,2024-07-05
+2128,White Sox,Yankees,2024-07-06
+2129,White Sox,Yankees,2024-07-07
+2130,White Sox,Yankees,2024-07-08
+2131,Twins,White Sox,2024-07-12
+2132,Twins,White Sox,2024-07-13
+2133,Twins,White Sox,2024-07-14
+2134,Twins,White Sox,2024-07-15
+2135,Blue Jays,White Sox,2024-07-23
+2136,Blue Jays,White Sox,2024-07-24
+2137,Blue Jays,White Sox,2024-07-25
+2138,Orioles,White Sox,2024-07-30
+2139,Orioles,White Sox,2024-07-31
+2140,Orioles,White Sox,2024-08-01
+2141,Tigers,White Sox,2024-08-02
+2142,Tigers,White Sox,2024-08-03
+2143,Tigers,White Sox,2024-08-04
+2144,White Sox,Twins,2024-08-09
+2145,White Sox,Twins,2024-08-10
+2146,White Sox,Twins,2024-08-11
+2147,White Sox,Guardians,2024-08-16
+2148,White Sox,Guardians,2024-08-17
+2149,White Sox,Guardians,2024-08-18
+2150,Twins,White Sox,2024-08-23
+2151,Twins,White Sox,2024-08-24
+2152,Twins,White Sox,2024-08-25
+2153,Guardians,White Sox,2024-08-30
+2154,Guardians,White Sox,2024-08-31
+2155,Guardians,White Sox,2024-09-01
+2156,White Sox,Guardians,2024-09-06
+2157,White Sox,Guardians,2024-09-07
+2158,White Sox,Guardians,2024-09-08
+2159,White Sox,Twins,2024-09-13
+2160,White Sox,Twins,2024-09-14
+2161,White Sox,Twins,2024-09-15
+2162,Red Sox,White Sox,2024-09-17
+2163,Red Sox,White Sox,2024-09-18
+2164,Red Sox,White Sox,2024-09-19
+2165,Twins,Guardians,2024-03-22
+2166,Twins,Guardians,2024-03-23
+2167,Twins,Guardians,2024-03-24
+2168,Twins,Guardians,2024-03-29
+2169,Twins,Guardians,2024-03-30
+2170,Twins,Guardians,2024-03-31
+2171,Guardians,Orioles,2024-04-02
+2172,Guardians,Orioles,2024-04-03
+2173,Guardians,Orioles,2024-04-04
+2174,Guardians,Tigers,2024-04-12
+2175,Guardians,Tigers,2024-04-13
+2176,Guardians,Tigers,2024-04-14
+2177,Guardians,Yankees,2024-05-03
+2178,Guardians,Yankees,2024-05-04
+2179,Guardians,Yankees,2024-05-05
+2180,Guardians,Yankees,2024-05-06
+2181,Rays,Guardians,2024-05-14
+2182,Rays,Guardians,2024-05-15
+2183,Rays,Guardians,2024-05-16
+2184,Yankees,Guardians,2024-05-21
+2185,Yankees,Guardians,2024-05-22
+2186,Yankees,Guardians,2024-05-23
+2187,Guardians,Twins,2024-05-24
+2188,Guardians,Twins,2024-05-25
+2189,Guardians,Twins,2024-05-26
+2190,Guardians,Twins,2024-05-31
+2191,Guardians,Twins,2024-06-01
+2192,Guardians,Twins,2024-06-02
+2193,Guardians,Twins,2024-06-03
+2194,Blue Jays,Guardians,2024-06-18
+2195,Blue Jays,Guardians,2024-06-19
+2196,Blue Jays,Guardians,2024-06-20
+2197,Guardians,Red Sox,2024-06-28
+2198,Guardians,Red Sox,2024-06-29
+2199,Guardians,Red Sox,2024-06-30
+2200,Guardians,Red Sox,2024-07-01
+2201,Guardians,Rays,2024-07-09
+2202,Guardians,Rays,2024-07-10
+2203,Guardians,Rays,2024-07-11
+2204,Tigers,Guardians,2024-07-12
+2205,Tigers,Guardians,2024-07-13
+2206,Tigers,Guardians,2024-07-14
+2207,Tigers,Guardians,2024-08-09
+2208,Tigers,Guardians,2024-08-10
+2209,Tigers,Guardians,2024-08-11
+2210,Red Sox,Guardians,2024-08-13
+2211,Red Sox,Guardians,2024-08-14
+2212,Red Sox,Guardians,2024-08-15
+2213,Guardians,Tigers,2024-08-23
+2214,Guardians,Tigers,2024-08-24
+2215,Guardians,Tigers,2024-08-25
+2216,Guardians,Tigers,2024-08-26
+2217,Guardians,Blue Jays,2024-08-27
+2218,Guardians,Blue Jays,2024-08-28
+2219,Guardians,Blue Jays,2024-08-29
+2220,Orioles,Guardians,2024-09-17
+2221,Orioles,Guardians,2024-09-18
+2222,Orioles,Guardians,2024-09-19
+2223,Twins,Orioles,2024-04-02
+2224,Twins,Orioles,2024-04-03
+2225,Twins,Orioles,2024-04-04
+2226,Red Sox,Twins,2024-04-16
+2227,Red Sox,Twins,2024-04-17
+2228,Red Sox,Twins,2024-04-18
+2229,Twins,Tigers,2024-04-26
+2230,Twins,Tigers,2024-04-27
+2231,Twins,Tigers,2024-04-28
+2232,Tigers,Twins,2024-05-03
+2233,Tigers,Twins,2024-05-04
+2234,Tigers,Twins,2024-05-05
+2235,Rays,Twins,2024-05-17
+2236,Rays,Twins,2024-05-18
+2237,Rays,Twins,2024-05-19
+2238,Rays,Twins,2024-05-20
+2239,Tigers,Twins,2024-05-24
+2240,Tigers,Twins,2024-05-25
+2241,Tigers,Twins,2024-05-26
+2242,Tigers,Twins,2024-05-27
+2243,Twins,Rays,2024-06-11
+2244,Twins,Rays,2024-06-12
+2245,Twins,Rays,2024-06-13
+2246,Twins,Blue Jays,2024-06-25
+2247,Twins,Blue Jays,2024-06-26
+2248,Twins,Blue Jays,2024-06-27
+2249,Twins,Tigers,2024-06-28
+2250,Twins,Tigers,2024-06-29
+2251,Twins,Tigers,2024-06-30
+2252,Yankees,Twins,2024-07-02
+2253,Yankees,Twins,2024-07-03
+2254,Yankees,Twins,2024-07-04
+2255,Twins,Red Sox,2024-07-23
+2256,Twins,Red Sox,2024-07-24
+2257,Twins,Red Sox,2024-07-25
+2258,Orioles,Twins,2024-08-09
+2259,Orioles,Twins,2024-08-10
+2260,Orioles,Twins,2024-08-11
+2261,Orioles,Twins,2024-08-12
+2262,Twins,Yankees,2024-08-13
+2263,Twins,Yankees,2024-08-14
+2264,Twins,Yankees,2024-08-15
+2265,Blue Jays,Twins,2024-09-03
+2266,Blue Jays,Twins,2024-09-04
+2267,Blue Jays,Twins,2024-09-05
+2268,Rays,Tigers,2024-03-19
+2269,Rays,Tigers,2024-03-20
+2270,Rays,Tigers,2024-03-21
+2271,Red Sox,Tigers,2024-03-22
+2272,Red Sox,Tigers,2024-03-23
+2273,Red Sox,Tigers,2024-03-24
+2274,Red Sox,Tigers,2024-03-25
+2275,Blue Jays,Tigers,2024-03-29
+2276,Blue Jays,Tigers,2024-03-30
+2277,Blue Jays,Tigers,2024-03-31
+2278,Blue Jays,Tigers,2024-04-01
+2279,Tigers,Orioles,2024-05-14
+2280,Tigers,Orioles,2024-05-15
+2281,Tigers,Orioles,2024-05-16
+2282,Tigers,Blue Jays,2024-06-04
+2283,Tigers,Blue Jays,2024-06-05
+2284,Tigers,Blue Jays,2024-06-06
+2285,Tigers,Rays,2024-07-09
+2286,Tigers,Rays,2024-07-10
+2287,Tigers,Rays,2024-07-11
+2288,Tigers,Yankees,2024-07-30
+2289,Tigers,Yankees,2024-07-31
+2290,Tigers,Yankees,2024-08-01
+2291,Orioles,Tigers,2024-08-27
+2292,Orioles,Tigers,2024-08-28
+2293,Orioles,Tigers,2024-08-29
+2294,Yankees,Tigers,2024-09-03
+2295,Yankees,Tigers,2024-09-04
+2296,Yankees,Tigers,2024-09-05
+2297,Tigers,Red Sox,2024-09-10
+2298,Tigers,Red Sox,2024-09-11
+2299,Tigers,Red Sox,2024-09-12
+2300,Yankees,Blue Jays,2024-03-22
+2301,Yankees,Blue Jays,2024-03-23
+2302,Yankees,Blue Jays,2024-03-24
+2303,Rays,Yankees,2024-03-29
+2304,Rays,Yankees,2024-03-30
+2305,Rays,Yankees,2024-03-31
+2306,Red Sox,Yankees,2024-04-05
+2307,Red Sox,Yankees,2024-04-06
+2308,Red Sox,Yankees,2024-04-07
+2309,Red Sox,Yankees,2024-04-08
+2310,Blue Jays,Yankees,2024-04-19
+2311,Blue Jays,Yankees,2024-04-20
+2312,Blue Jays,Yankees,2024-04-21
+2313,Yankees,Blue Jays,2024-04-26
+2314,Yankees,Blue Jays,2024-04-27
+2315,Yankees,Blue Jays,2024-04-28
+2316,Rays,Yankees,2024-05-03
+2317,Rays,Yankees,2024-05-04
+2318,Rays,Yankees,2024-05-05
+2319,Rays,Yankees,2024-05-06
+2320,Orioles,Yankees,2024-05-24
+2321,Orioles,Yankees,2024-05-25
+2322,Orioles,Yankees,2024-05-26
+2323,Orioles,Yankees,2024-05-27
+2324,Blue Jays,Yankees,2024-05-31
+2325,Blue Jays,Yankees,2024-06-01
+2326,Blue Jays,Yankees,2024-06-02
+2327,Blue Jays,Yankees,2024-06-03
+2328,Orioles,Yankees,2024-06-07
+2329,Orioles,Yankees,2024-06-08
+2330,Orioles,Yankees,2024-06-09
+2331,Red Sox,Yankees,2024-06-14
+2332,Red Sox,Yankees,2024-06-15
+2333,Red Sox,Yankees,2024-06-16
+2334,Yankees,Orioles,2024-06-28
+2335,Yankees,Orioles,2024-06-29
+2336,Yankees,Orioles,2024-06-30
+2337,Yankees,Rays,2024-07-26
+2338,Yankees,Rays,2024-07-27
+2339,Yankees,Rays,2024-07-28
+2340,Yankees,Red Sox,2024-08-02
+2341,Yankees,Red Sox,2024-08-03
+2342,Yankees,Red Sox,2024-08-04
+2343,Yankees,Rays,2024-08-09
+2344,Yankees,Rays,2024-08-10
+2345,Yankees,Rays,2024-08-11
+2346,Yankees,Red Sox,2024-08-23
+2347,Yankees,Red Sox,2024-08-24
+2348,Yankees,Red Sox,2024-08-25
+2349,Yankees,Orioles,2024-08-30
+2350,Yankees,Orioles,2024-08-31
+2351,Yankees,Orioles,2024-09-01
+2352,Rays,Red Sox,2024-03-22
+2353,Rays,Red Sox,2024-03-23
+2354,Rays,Red Sox,2024-03-24
+2355,Rays,Red Sox,2024-03-25
+2356,Red Sox,Rays,2024-04-19
+2357,Red Sox,Rays,2024-04-20
+2358,Red Sox,Rays,2024-04-21
+2359,Blue Jays,Red Sox,2024-04-26
+2360,Blue Jays,Red Sox,2024-04-27
+2361,Blue Jays,Red Sox,2024-04-28
+2362,Red Sox,Orioles,2024-05-10
+2363,Red Sox,Orioles,2024-05-11
+2364,Red Sox,Orioles,2024-05-12
+2365,Red Sox,Rays,2024-05-17
+2366,Red Sox,Rays,2024-05-18
+2367,Red Sox,Rays,2024-05-19
+2368,Rays,Red Sox,2024-05-24
+2369,Rays,Red Sox,2024-05-25
+2370,Rays,Red Sox,2024-05-26
+2371,Blue Jays,Red Sox,2024-05-31
+2372,Blue Jays,Red Sox,2024-06-01
+2373,Blue Jays,Red Sox,2024-06-02
+2374,Blue Jays,Red Sox,2024-06-03
+2375,Red Sox,Blue Jays,2024-06-21
+2376,Red Sox,Blue Jays,2024-06-22
+2377,Red Sox,Blue Jays,2024-06-23
+2378,Red Sox,Blue Jays,2024-08-02
+2379,Red Sox,Blue Jays,2024-08-03
+2380,Red Sox,Blue Jays,2024-08-04
+2381,Orioles,Red Sox,2024-08-23
+2382,Orioles,Red Sox,2024-08-24
+2383,Orioles,Red Sox,2024-08-25
+2384,Orioles,Red Sox,2024-08-26
+2385,Red Sox,Orioles,2024-08-30
+2386,Red Sox,Orioles,2024-08-31
+2387,Red Sox,Orioles,2024-09-01
+2388,Orioles,Red Sox,2024-09-20
+2389,Orioles,Red Sox,2024-09-21
+2390,Orioles,Red Sox,2024-09-22
+2391,Orioles,Blue Jays,2024-05-10
+2392,Orioles,Blue Jays,2024-05-11
+2393,Orioles,Blue Jays,2024-05-12
+2394,Blue Jays,Rays,2024-05-17
+2395,Blue Jays,Rays,2024-05-18
+2396,Blue Jays,Rays,2024-05-19
+2397,Blue Jays,Rays,2024-05-20
+2398,Rays,Blue Jays,2024-06-07
+2399,Rays,Blue Jays,2024-06-08
+2400,Rays,Blue Jays,2024-06-09
+2401,Rays,Blue Jays,2024-06-21
+2402,Rays,Blue Jays,2024-06-22
+2403,Rays,Blue Jays,2024-06-23
+2404,Blue Jays,Rays,2024-08-02
+2405,Blue Jays,Rays,2024-08-03
+2406,Blue Jays,Rays,2024-08-04
+2407,Orioles,Blue Jays,2024-08-16
+2408,Orioles,Blue Jays,2024-08-17
+2409,Orioles,Blue Jays,2024-08-18
+2410,Blue Jays,Orioles,2024-09-13
+2411,Blue Jays,Orioles,2024-09-14
+2412,Blue Jays,Orioles,2024-09-15
+2413,Blue Jays,Orioles,2024-09-16
+2414,Blue Jays,Orioles,2024-09-20
+2415,Blue Jays,Orioles,2024-09-21
+2416,Blue Jays,Orioles,2024-09-22
+2417,Orioles,Rays,2024-05-03
+2418,Orioles,Rays,2024-05-04
+2419,Orioles,Rays,2024-05-05
+2420,Rays,Orioles,2024-05-24
+2421,Rays,Orioles,2024-05-25
+2422,Rays,Orioles,2024-05-26
+2423,Rays,Orioles,2024-08-09
+2424,Rays,Orioles,2024-08-10
+2425,Rays,Orioles,2024-08-11
+2426,Orioles,Rays,2024-09-06
+2427,Orioles,Rays,2024-09-07
+2428,Orioles,Rays,2024-09-08
+2429,Orioles,Rays,2024-09-09
