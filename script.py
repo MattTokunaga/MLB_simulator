@@ -383,6 +383,21 @@ def generate_schedule(year, teams):
     # return the generated schedule
     return generated_schedule
 
+def simulate_pitch():
+    pass
+
+def simulate_plate_appearance():
+    pass
+
+def simulate_half_inning():
+    pass
+
+def simulate_inning():
+    pass
+
+def simulate_game():
+    pass
+
 def simulate_season(year, teams):
     # connect to sqlite database
     con = sqlite3.connect("mlb_simulator.db")
