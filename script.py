@@ -28,7 +28,7 @@ teams = [
     ("Athletics", "Oakland", "alwest"),
     ("Rangers", "Texas", "alwest"),
     ("Mariners", "Seattle", "alwest"),
-    ("Angels", "Anaheim", "alwest"),
+    ("Angels", "Los Angeles", "alwest"),
     ("Astros", "Houston", "alwest"),
     ("Royals", "Kansas City", "alcentral"),
     ("White Sox", "Chicago", "alcentral"),
@@ -42,6 +42,7 @@ teams = [
     ("Rays", "Tampa Bay", "aleast"),
 ]
 
+#region <failed attempts to generate schedule>
 # def generate_schedule(year, teams):
 #     output = {}
     
@@ -340,7 +341,7 @@ teams = [
 #     #             fours_dict[tuple(sorted(pair))] -= 1
 
 #     return team_day_dicts
-
+#endregion
 
 # function to generate a schedule
 def generate_schedule(year, teams):
@@ -383,10 +384,57 @@ def generate_schedule(year, teams):
     # return the generated schedule
     return generated_schedule
 
-def simulate_pitch():
+# SIMULATE PITCH FUNCTION
+# takes in pitcher stats and batter stats in the form of a dictionary:
+
+# FOR PITCHERS:
+# 'handedness'
+# 'control'
+# 'velocity'
+# 'movement'
+
+# FOR BATTERS:
+# 'handedness'
+# 'contact'
+# 'power'
+# 'speed'
+# 'eye'
+
+def simulate_pitch(pa_constants):
+
+
+
     pass
 
-def simulate_plate_appearance():
+def simulate_plate_appearance(pitcher_stats, batter_stats):
+    # constants based on my own judgement
+    base_pa_constants = {
+        'strike_rate': .6,
+        'strike_swing_rate' : .75,
+        'ball_swing_rate' : .3,
+        'strike_contact_rate': .8,
+        'ball_contact_rate': .4,
+        'fastball_rate': .5,
+        'strike_hit_rate': .3,
+        'ball_hit_rate': .2
+    }
+
+    # input 0 to 100
+    def lininterp(input, base, switch):
+        return (1-base)/(100-switch)*(input - 100) + 1 if input >= switch else base/switch * input
+
+    # updated constates to reflect the specific batter and pitcher stats
+    updated_pa_constants = {
+        'fastball_chance': lininterp((pitcher_stats['velocity'] - pitcher_stats['movement'])/2 + 50, base_pa_constants["fastball_rate"], 50),
+        'strike_chance': lininterp(pitcher_stats['control'], base_pa_constants['strike_rate'], 50),
+        'strike_swing_chance': lininterp(batter_stats['eye'], base_pa_constants['strike_swing_rate'], 50),
+        'ball_swing_chance': lininterp(100 - batter_stats['eye'], base_pa_constants['ball_swing_rate'], 50),
+        'strike_contact_chance': lininterp(batter_stats['contact'], base_pa_constants['strike_contact_rate'], 50),
+        'ball_contact_chance': lininterp(batter_stats['contact'], base_pa_constants['ball_contact_chance'], 50),
+        'strike_hit_chance': (lininterp(batter_stats['power'], base_pa_constants['strike_hit_rate'], 50) - base_pa_constants['strike_hit_rate'])*.5 + base_pa_constants['strike_hit_rate'],
+        'ball_hit_chance': (lininterp(batter_stats['power'], base_pa_constants['ball_hit_rate'], 50)- base_pa_constants['ball_hit_rate'])*.5 + base_pa_constants['ball_hit_rate']
+    }
+
     pass
 
 def simulate_half_inning():
