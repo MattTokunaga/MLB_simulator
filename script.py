@@ -402,9 +402,57 @@ def generate_schedule(year, teams):
 
 def simulate_pitch(pa_constants):
 
+    if np.random.rand() <= pa_constants['fastball_chance']:
+        is_fastball = True
+    else:
+        is_fastball = False
+    
+    if np.random.rand() <= pa_constants['strike_chance']:
+        is_strike = True
+    else:
+        is_strike = False
+    
+    if is_strike:
+        if np.random.rand() <= pa_constants['strike_swing_chance']:
+            swung = True
+        else:
+            return 'Looking strike'
+    else:
+        if np.random.rand() <= pa_constants['ball_swing_chance']:
+            swung = True
+        else:
+            return 'Ball'
+    
+    if swung:
+        if is_strike:
+            if np.random.rand() <= pa_constants['strike_contact_chance']:
+                contact = True
+            else:
+                return 'Swinging strike'
+        else:
+            if np.random.rand() <= pa_constants['ball_contact_chance']:
+                contact = True
+            else:
+                return 'Swinging strike'
+    
+    if contact:
+        if is_strike:
+            if np.random.rand() <= pa_constants['strike_hit_chance']:
+                return 'Hit'
+            else:
+                return 'Out'
+        else:
+            if np.random.rand() <= pa_constants['ball_hit_chance']:
+                return 'Hit'
+            else:
+                return 'Out'
+    
+    
 
 
-    pass
+
+
+    return 'Somehow made it all the way thru with no return'
 
 def simulate_plate_appearance(pitcher_stats, batter_stats):
     # constants based on my own judgement
@@ -430,12 +478,12 @@ def simulate_plate_appearance(pitcher_stats, batter_stats):
         'strike_swing_chance': lininterp(batter_stats['eye'], base_pa_constants['strike_swing_rate'], 50),
         'ball_swing_chance': lininterp(100 - batter_stats['eye'], base_pa_constants['ball_swing_rate'], 50),
         'strike_contact_chance': lininterp(batter_stats['contact'], base_pa_constants['strike_contact_rate'], 50),
-        'ball_contact_chance': lininterp(batter_stats['contact'], base_pa_constants['ball_contact_chance'], 50),
+        'ball_contact_chance': lininterp(batter_stats['contact'], base_pa_constants['ball_contact_rate'], 50),
         'strike_hit_chance': (lininterp(batter_stats['power'], base_pa_constants['strike_hit_rate'], 50) - base_pa_constants['strike_hit_rate'])*.5 + base_pa_constants['strike_hit_rate'],
         'ball_hit_chance': (lininterp(batter_stats['power'], base_pa_constants['ball_hit_rate'], 50)- base_pa_constants['ball_hit_rate'])*.5 + base_pa_constants['ball_hit_rate']
     }
 
-    pass
+    return simulate_pitch(updated_pa_constants)
 
 def simulate_half_inning():
     pass
@@ -462,5 +510,25 @@ def simulate_season(year, teams):
     schedule = generate_schedule(year, teams)
 
 
+outcomes = {
+    'Swinging strike': 0,
+    'Looking strike': 0,
+    'Ball': 0,
+    'Hit': 0,
+    'Out': 0
+}
 
+
+for i in range(1000):
+    outcomes[simulate_plate_appearance({
+        'control': 50,
+        'velocity': 50,
+        'movement': 50
+    }, {
+        'contact': 50,
+        'power': 50,
+        'eye': 50
+    })] += 1
+
+print(outcomes)
 
