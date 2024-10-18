@@ -402,88 +402,183 @@ def generate_schedule(year, teams):
 
 def simulate_pitch(pa_constants):
 
-    if np.random.rand() <= pa_constants['fastball_chance']:
-        is_fastball = True
-    else:
-        is_fastball = False
-    
-    if np.random.rand() <= pa_constants['strike_chance']:
-        is_strike = True
-    else:
-        is_strike = False
-    
-    if is_strike:
-        if np.random.rand() <= pa_constants['strike_swing_chance']:
-            swung = True
+    def rand_sim(situation):
+        if np.random.rand() <= pa_constants[situation]:
+            return True
         else:
-            return 'Looking strike'
+            return False
+        
+    if rand_sim('hit_by_pitch_chance'):
+        if np.random.choice([1, 2, 3]) == 1:
+            is_fastball = False
+        else:
+            is_fastball = True
+
+    is_fastball = rand_sim('fastball_chance')
+    
+    if is_fastball:
+        is_strike = rand_sim('fastball_strike_chance')
     else:
-        if np.random.rand() <= pa_constants['ball_swing_chance']:
-            swung = True
+        is_strike = rand_sim('non_fastball_strike_chance')
+
+    if is_strike:
+        if is_fastball:
+            swing = rand_sim('fastball_strike_swing_chance')
+        else:
+            swing = rand_sim('non_fastball_strike_swing_chance')
+    else:
+        if is_fastball:
+            swing = rand_sim('fastball_ball_swing_chance')
+        else:
+            swing = rand_sim('non_fastball_ball_swing_chance')
+    
+    if not swing:
+        if is_strike:
+            return 'Called strike'
         else:
             return 'Ball'
-    
-    if swung:
+
+
+    if is_fastball:
         if is_strike:
-            if np.random.rand() <= pa_constants['strike_contact_chance']:
-                contact = True
-            else:
-                return 'Swinging strike'
+            contact = rand_sim('fastball_strike_contact_chance')
         else:
-            if np.random.rand() <= pa_constants['ball_contact_chance']:
-                contact = True
-            else:
-                return 'Swinging strike'
-    
-    if contact:
+            contact = rand_sim('fastball_ball_contact_chance')
+    else:
         if is_strike:
-            if np.random.rand() <= pa_constants['strike_hit_chance']:
-                return 'Hit'
-            else:
-                return 'Out'
+            contact = rand_sim('non_fastball_strike_contact_chance')
         else:
-            if np.random.rand() <= pa_constants['ball_hit_chance']:
-                return 'Hit'
-            else:
-                return 'Out'
+            contact = rand_sim('non_fastball_ball_contact_chance')
     
+    if not contact:
+        return 'Swinging strike'
     
+    if is_fastball:
+        if is_strike:
+            foul = rand_sim('fastball_strike_foul_chance')
+        else:
+            foul = rand_sim('fastball_ball_foul_chance')
+    else:
+        if is_strike:
+            foul = rand_sim('non_fastball_strike_foul_chance')
+        else:
+            foul = rand_sim('non_fastball_ball_foul_chance')
+    
+    if foul:
+        return 'Foul'
+    else:
+        return 'In play'
 
-
-
-
-    return 'Somehow made it all the way thru with no return'
+    return 'Nothing returned'
 
 def simulate_plate_appearance(pitcher_stats, batter_stats):
-    # constants based on my own judgement
+    # constants based on statcast data and my own judgement
+    # statcast zones were used with heart and shadow being considered strikes, else balls
     base_pa_constants = {
-        'strike_rate': .6,
-        'strike_swing_rate' : .75,
-        'ball_swing_rate' : .3,
-        'strike_contact_rate': .8,
-        'ball_contact_rate': .4,
-        'fastball_rate': .5,
-        'strike_hit_rate': .3,
-        'ball_hit_rate': .2
+        'hit_by_pitch_chance': 0.003, # hbp / total pitches
+        'fastball_chance': 0.5, # fastballs / total pitches
+        'fastball_strike_chance': 0.75, # fastball strikes / total fastballs
+        'non_fastball_strike_chance': 0.6, # non fastball strikes / total non fastballs
+        'fastball_strike_swing_chance': 0.6, # fastball strike swings / total fastball strikes
+        'non_fastball_strike_swing_chance': 0.6, # non fastball strike swings / total non fastball strikes
+        'fastball_ball_swing_chance': 0.15, # fastball ball swings / total fastball balls
+        'non_fastball_ball_swing_chance': 0.25, # non fastball ball swings / total non fastball balls
+        'fastball_strike_contact_chance': 0.85, # fastball strike contacts / total fastball strike swings
+        'non_fastball_strike_contact_chance': 0.75, # non fastball strike contacts / total non fastball strike swings
+        'fastball_ball_contact_chance': 0.6, # fastball ball contacts / total ball strike swings
+        'non_fastball_ball_contact_chance': 0.35, # non fastball ball contacts / total non fastball ball swings
+        'fastball_strike_foul_chance': 0.55, # fastball strike fouls / total fastball strike contacts
+        'non_fastball_strike_foul_chance': 0.5, # non fastball strike fouls / total non fastball strike contacts
+        'fastball_ball_foul_chance': 0.7, # fastball ball fouls / total fastball ball contacts
+        'non_fastball_ball_foul_chance': 0.6 # non fastball ball fouls / total non fastball ball contacts
     }
 
     # input 0 to 100
-    def lininterp(input, base, switch):
-        return (1-base)/(100-switch)*(input - 100) + 1 if input >= switch else base/switch * input
+    # uses logistic curve for stat benefits
+    def adjust_base(base, input, higher_stat_higher_rate):
+        scale = 1/10
+        dist = min(np.abs(base - 1), base)
+        if higher_stat_higher_rate:
+            pass
+        else: 
+            input = 100 - input
+        return scale * dist * np.cos(np.pi / 100 * (input - 100))
 
-    # updated constates to reflect the specific batter and pitcher stats
+
+
     updated_pa_constants = {
-        'fastball_chance': lininterp((pitcher_stats['velocity'] - pitcher_stats['movement'])/2 + 50, base_pa_constants["fastball_rate"], 50),
-        'strike_chance': lininterp(pitcher_stats['control'], base_pa_constants['strike_rate'], 50),
-        'strike_swing_chance': lininterp(batter_stats['eye'], base_pa_constants['strike_swing_rate'], 50),
-        'ball_swing_chance': lininterp(100 - batter_stats['eye'], base_pa_constants['ball_swing_rate'], 50),
-        'strike_contact_chance': lininterp(batter_stats['contact'], base_pa_constants['strike_contact_rate'], 50),
-        'ball_contact_chance': lininterp(batter_stats['contact'], base_pa_constants['ball_contact_rate'], 50),
-        'strike_hit_chance': (lininterp(batter_stats['power'], base_pa_constants['strike_hit_rate'], 50) - base_pa_constants['strike_hit_rate'])*.5 + base_pa_constants['strike_hit_rate'],
-        'ball_hit_chance': (lininterp(batter_stats['power'], base_pa_constants['ball_hit_rate'], 50)- base_pa_constants['ball_hit_rate'])*.5 + base_pa_constants['ball_hit_rate']
+        'hit_by_pitch_chance': base_pa_constants['hit_by_pitch_chance'] + \
+            adjust_base(base_pa_constants['hit_by_pitch_chance'], pitcher_stats['control'], False) , 
+        'fastball_chance': base_pa_constants['fastball_chance'] + \
+            adjust_base(base_pa_constants['fastball_chance'], pitcher_stats['velocity'], True) + \
+            adjust_base(base_pa_constants['fastball_chance'], pitcher_stats['movement'], False),
+        'fastball_strike_chance': base_pa_constants['fastball_strike_chance'] + \
+            adjust_base(base_pa_constants['fastball_strike_chance'], pitcher_stats['control'], True), 
+        'non_fastball_strike_chance': base_pa_constants['non_fastball_strike_chance'] + \
+            adjust_base(base_pa_constants['non_fastball_strike_chance'], pitcher_stats['control'], True), 
+        'fastball_strike_swing_chance': base_pa_constants['fastball_strike_swing_chance'] + \
+            adjust_base(base_pa_constants['fastball_strike_swing_chance'], batter_stats['eye'], True) + \
+            adjust_base(base_pa_constants['fastball_strike_swing_chance'], pitcher_stats['velocity'], False), 
+        'non_fastball_strike_swing_chance': base_pa_constants['non_fastball_strike_swing_chance'] + \
+            adjust_base(base_pa_constants['non_fastball_strike_swing_chance'], batter_stats['eye'], True) + \
+            adjust_base(base_pa_constants['non_fastball_strike_swing_chance'], pitcher_stats['movement'], False), 
+        'fastball_ball_swing_chance': base_pa_constants['fastball_ball_swing_chance'] + \
+            adjust_base(base_pa_constants['fastball_ball_swing_chance'], batter_stats['eye'], False) + \
+            adjust_base(base_pa_constants['fastball_ball_swing_chance'], pitcher_stats['velocity'], True), 
+        'non_fastball_ball_swing_chance': base_pa_constants['non_fastball_ball_swing_chance'] + \
+            adjust_base(base_pa_constants['non_fastball_ball_swing_chance'], batter_stats['eye'], False) + \
+            adjust_base(base_pa_constants['fastball_ball_swing_chance'], pitcher_stats['movement'], True),
+        'fastball_strike_contact_chance': base_pa_constants['fastball_strike_contact_chance'] + \
+            adjust_base(base_pa_constants['fastball_strike_contact_chance'], batter_stats['contact'], True) + \
+            adjust_base(base_pa_constants['fastball_strike_contact_chance'], pitcher_stats['velocity'], False),
+        'non_fastball_strike_contact_chance': base_pa_constants['non_fastball_strike_contact_chance'] + \
+            adjust_base(base_pa_constants['non_fastball_strike_contact_chance'], batter_stats['contact'], True) + \
+            adjust_base(base_pa_constants['non_fastball_strike_contact_chance'], pitcher_stats['movement'], False),
+        'fastball_ball_contact_chance': base_pa_constants['fastball_ball_contact_chance'] + \
+            adjust_base(base_pa_constants['fastball_ball_contact_chance'], batter_stats['contact'], True) + \
+            adjust_base(base_pa_constants['fastball_ball_contact_chance'], pitcher_stats['velocity'], False), 
+        'non_fastball_ball_contact_chance': base_pa_constants['non_fastball_ball_contact_chance'] + \
+            adjust_base(base_pa_constants['non_fastball_ball_contact_chance'], batter_stats['contact'], True) + \
+            adjust_base(base_pa_constants['non_fastball_ball_contact_chance'], pitcher_stats['movement'], False), 
+        'fastball_strike_foul_chance': base_pa_constants['fastball_strike_foul_chance'] + \
+            adjust_base(base_pa_constants['fastball_strike_foul_chance'], batter_stats['contact'], False), 
+        'non_fastball_strike_foul_chance': base_pa_constants['non_fastball_strike_foul_chance'] + \
+            adjust_base(base_pa_constants['non_fastball_strike_foul_chance'], batter_stats['contact'], False), 
+        'fastball_ball_foul_chance': base_pa_constants['fastball_ball_foul_chance'] + \
+            adjust_base(base_pa_constants['fastball_ball_foul_chance'], batter_stats['contact'], False), 
+        'non_fastball_ball_foul_chance': base_pa_constants['non_fastball_ball_foul_chance'] + \
+            adjust_base(base_pa_constants['non_fastball_ball_foul_chance'], batter_stats['contact'], False)
     }
 
-    return simulate_pitch(updated_pa_constants)
+    pitch_counter = 0
+    ball_counter = 0
+    strike_counter = 0
+    while pitch_counter <= 100:
+        pitch_result = simulate_pitch(updated_pa_constants)
+        print(pitch_result)
+        pitch_counter += 1
+        if pitch_result == 'Ball':
+            ball_counter += 1
+        elif pitch_result == 'Called strike' or pitch_result == 'Swinging strike':
+            strike_counter += 1
+        elif pitch_result == 'Foul':
+            if strike_counter < 2:
+                strike_counter += 1
+            else:
+                continue
+        elif pitch_result == 'Hit by pitch':
+            ball_counter += 1
+            return 'Hit by pitch'
+        elif pitch_result == 'In play':
+            return 'In play'
+        
+        if strike_counter == 3:
+            return 'Strikeout'
+        
+        if ball_counter == 4:
+            return "Walk"
+
+    return 'At bat exceeded 100 pitches'
 
 def simulate_half_inning():
     pass
@@ -510,25 +605,34 @@ def simulate_season(year, teams):
     schedule = generate_schedule(year, teams)
 
 
-outcomes = {
-    'Swinging strike': 0,
-    'Looking strike': 0,
-    'Ball': 0,
-    'Hit': 0,
-    'Out': 0
-}
+# outcomes = {
+#     'Swinging strike': 0,
+#     'Looking strike': 0,
+#     'Ball': 0,
+#     'Hit': 0,
+#     'Out': 0
+# }
 
 
-for i in range(1000):
-    outcomes[simulate_plate_appearance({
-        'control': 50,
-        'velocity': 50,
-        'movement': 50
-    }, {
-        'contact': 50,
-        'power': 50,
-        'eye': 50
-    })] += 1
+# for i in range(1000):
+#     outcomes[simulate_plate_appearance({
+#         'control': 50,
+#         'velocity': 50,
+#         'movement': 50
+#     }, {
+#         'contact': 50,
+#         'power': 50,
+#         'eye': 50
+#     })] += 1
 
-print(outcomes)
+# print(outcomes)
 
+print(simulate_plate_appearance({
+    'control': 50,
+    'velocity': 50,
+    'movement': 50
+}, {
+    'contact': 50,
+    'power': 50,
+    'eye': 50
+}))
