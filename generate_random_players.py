@@ -65,7 +65,7 @@ with open('first_names.txt') as f:
 with open('last_names.txt') as f:
     last_names = f.readlines()
 
-def generate_player(position = None):
+def generate_player(team, year, position = None, player_id = None):
     output = {
         'player_id': None,
         'handedness': None,
@@ -215,30 +215,31 @@ def generate_player(position = None):
         },
     }
 
-    if position == 1:
-        pass
-    if position == 2:
-        pass
-    if position == 3:
-        pass
-    if position == 4:
-        pass
-    if position == 5:
-        pass
-    if position == 6:
-        pass
-    if position == 7:
-        pass
-    if position == 8:
-        pass
-    if position == 9:
-        pass
-    if position == 10:
-        pass
+    for stat in position_stat_distros[position]:
+        output[stat] = scipy.stats.truncnorm(loc = position_stat_distros[position][stat], scale = 20, a = 0, b = 100)
+    
+    # output = {
+    #     'player_id': None,
+    # }
 
-        
+    output['age'] = scipy.stats.truncnorm(loc = 30, scale = 3, a = 18, b = 45)
+    output['team'] = team
+    output['year'] = year
 
-    pass
+    if position in [2, 4, 5, 6]:
+        output['handedness'] = 'Right'
+    else:
+        output['handedness'] = np.random.choice(['Right', 'Left'])
+
+    con = sqlite3.connect('mlb_simulator.db')
+    cur = con.cursor()
+
+    if player_id:
+        output['player_id'] = player_id
+    else:
+        output['player_id'] = cur.execute('SELECT MAX(player_id) FROM Players').fetchone()[0]
+
+    return output
 
 def insert_player(team_id, player):
     pass
@@ -252,16 +253,21 @@ if mode == 'populate':
     team_ids = cur.execute(f'SELECT team_id FROM Teams WHERE year = {year}').fetchall()
     for team in team_ids:
         pos_to_generate = {
-            'SP': 0,
-            'RP': 0,
-            'C': 0,
-            'IF': 0,
-            'OF': 0
-        }
-        for pos_group in roster:
-            pos_to_generate[pos_group] = roster[pos_group] - cur.execute(f'SELECT COUNT(player_id) FROM Players WHERE team = {team} AND position_group = {pos_group}').fetchone()[0]
+                1: 0,
+                2: 0,
+                3: 0,
+                4: 0,
+                5: 0,
+                6: 0,
+                7: 0,
+                8: 0,
+                9: 0,
+                10: 0
+            }
+        for pos in roster:
+            pos_to_generate[pos] = roster[pos] - cur.execute(f'SELECT COUNT(player_id) FROM Players WHERE team = {team} AND position = {pos}').fetchone()[0]
 
-        for pos_group in pos_to_generate:
-            for i in range(pos_to_generate[pos_group]):
-                insert_player(team, generate_player(pos_group))
+        for pos in pos_to_generate:
+            for i in range(pos_to_generate[pos]):
+                insert_player(team, generate_player(pos))
         
