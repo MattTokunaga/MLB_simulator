@@ -94,19 +94,16 @@ def generate_player(team, year, position = None, player_id = None):
     # represent middle of the normal distribution
     position_stat_distros = {
         1: {
-            {
             'contact': 10,
             'power': 10,
             'speed': 20,
             'catch': 50,
-            'control': 50,
-            'velocity': 50,
-            'movement': 50,
+            'control': 70,
+            'velocity': 60,
+            'movement': 60,
             'eye': 10,
-        }
         },
         2: {
-            {
             'contact': 40,
             'power': 35,
             'speed': 25,
@@ -115,10 +112,8 @@ def generate_player(team, year, position = None, player_id = None):
             'velocity': 15,
             'movement': 15,
             'eye': 40,
-        }
         },
         3: {
-            {
             'contact': 60,
             'power': 70,
             'speed': 40,
@@ -127,10 +122,8 @@ def generate_player(team, year, position = None, player_id = None):
             'velocity': 10,
             'movement': 10,
             'eye': 55,
-        }
         },
         4: {
-            {
             'contact': 60,
             'power': 40,
             'speed': 70,
@@ -139,10 +132,8 @@ def generate_player(team, year, position = None, player_id = None):
             'velocity': 10,
             'movement': 10,
             'eye': 50,
-        }
         },
         5: {
-            {
             'contact': 65,
             'power': 65,
             'speed': 40,
@@ -151,10 +142,8 @@ def generate_player(team, year, position = None, player_id = None):
             'velocity': 10,
             'movement': 10,
             'eye': 60,
-        }
         },
         6: {
-            {
             'contact': 50,
             'power': 40,
             'speed': 80,
@@ -163,10 +152,8 @@ def generate_player(team, year, position = None, player_id = None):
             'velocity': 10,
             'movement': 10,
             'eye': 50,
-        }
         },
         7: {
-            {
             'contact': 70,
             'power': 70,
             'speed': 50,
@@ -175,10 +162,8 @@ def generate_player(team, year, position = None, player_id = None):
             'velocity': 15,
             'movement': 10,
             'eye': 50,
-        }
         },
         8: {
-            {
             'contact': 50,
             'power': 40,
             'speed': 80,
@@ -187,10 +172,8 @@ def generate_player(team, year, position = None, player_id = None):
             'velocity': 15,
             'movement': 10,
             'eye': 50,
-        }
         },
         9: {
-            {
             'contact': 60,
             'power': 70,
             'speed': 55,
@@ -199,10 +182,8 @@ def generate_player(team, year, position = None, player_id = None):
             'velocity': 20,
             'movement': 10,
             'eye': 50,
-        }
         },
         10: {
-            {
             'contact': 5,
             'power': 5,
             'speed': 5,
@@ -211,25 +192,26 @@ def generate_player(team, year, position = None, player_id = None):
             'velocity': 80,
             'movement': 70,
             'eye': 5,
-        }
         },
     }
 
+    distro_scale = 20
     for stat in position_stat_distros[position]:
-        output[stat] = scipy.stats.truncnorm(loc = position_stat_distros[position][stat], scale = 20, a = 0, b = 100)
+        mid = position_stat_distros[position][stat]
+        output[stat] = np.round(scipy.stats.truncnorm(loc = mid, scale = distro_scale, a = -mid/distro_scale , b = (100 - mid)/distro_scale).rvs())
     
     # output = {
     #     'player_id': None,
     # }
 
-    output['age'] = scipy.stats.truncnorm(loc = 30, scale = 3, a = 18, b = 45)
+    output['age'] = np.round(scipy.stats.truncnorm(-4, 5, loc = 30, scale = 3).rvs())
     output['team'] = team
     output['year'] = year
 
     if position in [2, 4, 5, 6]:
-        output['handedness'] = 'Right'
+        output['handedness'] = 'RIGHT'
     else:
-        output['handedness'] = np.random.choice(['Right', 'Left'])
+        output['handedness'] = np.random.choice(['RIGHT', 'LEFT'])
 
     con = sqlite3.connect('mlb_simulator.db')
     cur = con.cursor()
@@ -237,12 +219,54 @@ def generate_player(team, year, position = None, player_id = None):
     if player_id:
         output['player_id'] = player_id
     else:
-        output['player_id'] = cur.execute('SELECT MAX(player_id) FROM Players').fetchone()[0]
+        max_player_id = cur.execute('SELECT MAX(player_id) FROM Players').fetchone()[0]
+        if max_player_id:
+            output['player_id'] = max_player_id + 1
+        else:
+            output['player_id'] = 1
+
+    
+
+    if np.random.rand() <= 0.005:
+        with open('active_players.txt', 'r') as f:
+            names = f.readlines()
+        name = np.random.choice(names)
+        output['first_name'] = name.split(' ')[0]
+        output['last_name'] = ' '.join(name.split(' ')[1:]) + ' Jr.'
+    else:
+        with open('first_names.txt', 'r') as fn:
+            firsts = fn.readlines()
+        output['first_name'] = np.random.choice(firsts)
+        with open('last_names.txt', 'r') as ln:
+            lasts = ln.readlines()
+        output['last_name'] = np.random.choice(lasts)
 
     return output
 
-def insert_player(team_id, player):
-    pass
+def insert_player(player):
+    to_insert = [
+        player['player_id'],
+        player['handedness'],
+        player['position'],
+        player['contact'],
+        player['power'],
+        player['speed'],
+        player['catch'],
+        player['team'],
+        player['year'],
+        player['age'],
+        player['control'],
+        player['velocity'],
+        player['movement'],
+        player['eye'],
+        player['first_name'],
+        player['last_name'],
+    ]
+    con = sqlite3.connect('mlb_simulator.db')
+    cur = con.cursor()
+    cur.execute(f"INSERT INTO Players VALUES(?, ?, ?, ?, ?, ?, ? , ?, ?, ?, ?, ?, ?, ?, ? ,?)", to_insert)
+    con.commit()
+    return True
 
 con = sqlite3.connect('mlb_simulator.db')
 cur = con.cursor()
@@ -252,6 +276,7 @@ if mode == 'populate':
     year = cur.execute('SELECT MAX(year) FROM Teams').fetchone()[0]
     team_ids = cur.execute(f'SELECT team_id FROM Teams WHERE year = {year}').fetchall()
     for team in team_ids:
+        team = team[0]
         pos_to_generate = {
                 1: 0,
                 2: 0,
@@ -265,9 +290,9 @@ if mode == 'populate':
                 10: 0
             }
         for pos in roster:
-            pos_to_generate[pos] = roster[pos] - cur.execute(f'SELECT COUNT(player_id) FROM Players WHERE team = {team} AND position = {pos}').fetchone()[0]
+            pos_to_generate[pos] = roster[pos] - cur.execute(f'SELECT COUNT(player_id) FROM Players WHERE team = ? AND position = ?', [team, pos]).fetchone()[0]
 
         for pos in pos_to_generate:
             for i in range(pos_to_generate[pos]):
-                insert_player(team, generate_player(pos))
+                insert_player(generate_player(team, year, pos))
         
