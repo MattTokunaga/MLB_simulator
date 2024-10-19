@@ -606,7 +606,7 @@ def simulate_season(year, teams):
 
 
 
-
+# outcomes = {}
 # for i in range(1000):
 #     outcomes[simulate_plate_appearance({
 #         'control': 50,
