@@ -724,8 +724,6 @@ Montes
 Mata
 Rosario
 Vang
-S
-S
 Walter
 Henson
 Oneal
@@ -962,8 +960,6 @@ Maddox
 Vo
 Oconnell
 Vu
-S
-S
 Andersen
 Spence
 Mcpherson
