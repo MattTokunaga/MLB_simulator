@@ -407,12 +407,13 @@ def simulate_pitch(pa_constants):
             return True
         else:
             return False
-        
+
     if rand_sim('hit_by_pitch_chance'):
         if np.random.choice([1, 2, 3]) == 1:
             is_fastball = False
         else:
             is_fastball = True
+        return 'Hit by pitch'
 
     is_fastball = rand_sim('fastball_chance')
     
@@ -476,17 +477,17 @@ def simulate_plate_appearance(pitcher_stats, batter_stats):
     # statcast zones were used with heart and shadow being considered strikes, else balls
     base_pa_constants = {
         'hit_by_pitch_chance': 0.003, # hbp / total pitches
-        'fastball_chance': 0.5, # fastballs / total pitches
-        'fastball_strike_chance': 0.75, # fastball strikes / total fastballs
-        'non_fastball_strike_chance': 0.6, # non fastball strikes / total non fastballs
-        'fastball_strike_swing_chance': 0.6, # fastball strike swings / total fastball strikes
-        'non_fastball_strike_swing_chance': 0.6, # non fastball strike swings / total non fastball strikes
-        'fastball_ball_swing_chance': 0.15, # fastball ball swings / total fastball balls
+        'fastball_chance': 0.56, # fastballs / total pitches
+        'fastball_strike_chance': 0.65, # fastball strikes / total fastballs
+        'non_fastball_strike_chance': 0.5, # non fastball strikes / total non fastballs
+        'fastball_strike_swing_chance': 0.8, # fastball strike swings / total fastball strikes
+        'non_fastball_strike_swing_chance': 0.7, # non fastball strike swings / total non fastball strikes
+        'fastball_ball_swing_chance': 0.2, # fastball ball swings / total fastball balls
         'non_fastball_ball_swing_chance': 0.25, # non fastball ball swings / total non fastball balls
         'fastball_strike_contact_chance': 0.85, # fastball strike contacts / total fastball strike swings
-        'non_fastball_strike_contact_chance': 0.75, # non fastball strike contacts / total non fastball strike swings
-        'fastball_ball_contact_chance': 0.6, # fastball ball contacts / total ball strike swings
-        'non_fastball_ball_contact_chance': 0.35, # non fastball ball contacts / total non fastball ball swings
+        'non_fastball_strike_contact_chance': 0.8, # non fastball strike contacts / total non fastball strike swings
+        'fastball_ball_contact_chance': 0.75, # fastball ball contacts / total ball strike swings
+        'non_fastball_ball_contact_chance': 0.65, # non fastball ball contacts / total non fastball ball swings
         'fastball_strike_foul_chance': 0.55, # fastball strike fouls / total fastball strike contacts
         'non_fastball_strike_foul_chance': 0.5, # non fastball strike fouls / total non fastball strike contacts
         'fastball_ball_foul_chance': 0.7, # fastball ball fouls / total fastball ball contacts
@@ -555,7 +556,7 @@ def simulate_plate_appearance(pitcher_stats, batter_stats):
     strike_counter = 0
     while pitch_counter <= 100:
         pitch_result = simulate_pitch(updated_pa_constants)
-        print(pitch_result)
+        # print(pitch_result)
         pitch_counter += 1
         if pitch_result == 'Ball':
             ball_counter += 1
@@ -605,13 +606,6 @@ def simulate_season(year, teams):
     schedule = generate_schedule(year, teams)
 
 
-# outcomes = {
-#     'Swinging strike': 0,
-#     'Looking strike': 0,
-#     'Ball': 0,
-#     'Hit': 0,
-#     'Out': 0
-# }
 
 
 # for i in range(1000):
@@ -627,12 +621,60 @@ def simulate_season(year, teams):
 
 # print(outcomes)
 
-print(simulate_plate_appearance({
-    'control': 50,
-    'velocity': 50,
-    'movement': 50
-}, {
-    'contact': 50,
-    'power': 50,
-    'eye': 50
-}))
+
+N = 100000
+outcomes = {}
+for i in range(N):
+    result = simulate_plate_appearance({
+        'control': 50,
+        'velocity': 50,
+        'movement': 50
+    }, {
+        'contact': 50,
+        'power': 50,
+        'eye': 50
+    })
+    if result in outcomes:
+        outcomes[result] += 1
+    else:
+        outcomes[result] = 1
+for key in outcomes:
+    outcomes[key] = outcomes[key]/N
+print(outcomes)
+
+# base_pa_constants = {
+#         'hit_by_pitch_chance': 0.003, # hbp / total pitches
+#         'fastball_chance': 0.5, # fastballs / total pitches
+#         'fastball_strike_chance': 0.65, # fastball strikes / total fastballs
+#         'non_fastball_strike_chance': 0.5, # non fastball strikes / total non fastballs
+#         'fastball_strike_swing_chance': 0.7, # fastball strike swings / total fastball strikes
+#         'non_fastball_strike_swing_chance': 0.7, # non fastball strike swings / total non fastball strikes
+#         'fastball_ball_swing_chance': 0.15, # fastball ball swings / total fastball balls
+#         'non_fastball_ball_swing_chance': 0.25, # non fastball ball swings / total non fastball balls
+#         'fastball_strike_contact_chance': 0.85, # fastball strike contacts / total fastball strike swings
+#         'non_fastball_strike_contact_chance': 0.75, # non fastball strike contacts / total non fastball strike swings
+#         'fastball_ball_contact_chance': 0.6, # fastball ball contacts / total ball strike swings
+#         'non_fastball_ball_contact_chance': 0.35, # non fastball ball contacts / total non fastball ball swings
+#         'fastball_strike_foul_chance': 0.55, # fastball strike fouls / total fastball strike contacts
+#         'non_fastball_strike_foul_chance': 0.5, # non fastball strike fouls / total non fastball strike contacts
+#         'fastball_ball_foul_chance': 0.7, # fastball ball fouls / total fastball ball contacts
+#         'non_fastball_ball_foul_chance': 0.6 # non fastball ball fouls / total non fastball ball contacts
+# }
+
+# pitch_outcomes = {
+#     'Swinging strike': 0,
+#     'Called strike': 0,
+#     'Ball': 0,
+#     'In play': 0,
+#     'Hit by pitch': 0,
+#     'Foul': 0
+# }
+# for i in range(N):
+#     result = simulate_pitch(base_pa_constants)
+#     if result in pitch_outcomes:
+#         pitch_outcomes[result] += 1
+#     else:
+#         pitch_outcomes[result] = 1
+# for key in pitch_outcomes:
+#     pitch_outcomes[key] = np.round(pitch_outcomes[key]/N * 100, 2)
+# print(pitch_outcomes)
