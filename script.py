@@ -6,41 +6,15 @@ from datetime import timedelta
 import copy
 import json
 
-current_year = 2024
+current_year = 2025
 number_of_teams = 0
 
-teams = [
-    ("Giants", "San Francisco", "nlwest"),
-    ("Dodgers", "Los Angeles", "nlwest"),
-    ("Padres", "San Diego", "nlwest"),
-    ("Rockies", "Colorado", "nlwest"),
-    ("Diamondbacks", "Arizona", "nlwest"),
-    ("Cardinals", "St. Louis", "nlcentral"),
-    ("Brewers", "Milwaukee", "nlcentral"),
-    ("Reds", "Cincinnati", "nlcentral"),
-    ("Pirates", "Pittsburgh", "nlcentral"),
-    ("Cubs", "Chicago", "nlcentral"),
-    ("Marlins", "Miami", "nleast"),
-    ("Phillies", "Philadelphia", "nleast"),
-    ("Mets", "New York", "nleast"),
-    ("Braves", "Atlanta", "nleast"),
-    ("Nationals", "Washington", "nleast"),
-    ("Athletics", "Oakland", "alwest"),
-    ("Rangers", "Texas", "alwest"),
-    ("Mariners", "Seattle", "alwest"),
-    ("Angels", "Los Angeles", "alwest"),
-    ("Astros", "Houston", "alwest"),
-    ("Royals", "Kansas City", "alcentral"),
-    ("White Sox", "Chicago", "alcentral"),
-    ("Guardians", "Cleveland", "alcentral"),
-    ("Twins", "Minnesota", "alcentral"),
-    ("Tigers", "Detroit", "alcentral"),
-    ("Yankees", "New York", "aleast"),
-    ("Red Sox", "Boston", "aleast"),
-    ("Blue Jays", "Toronto", "aleast"),
-    ("Orioles", "Baltimore", "aleast"),
-    ("Rays", "Tampa Bay", "aleast"),
-]
+teams = []
+with open('teams.txt', 'r') as f:
+    lines = f.readlines()
+    for line in lines:
+        split = line.split(' ')
+        teams.append((split[0], split[1], split[2]))        
 
 #region <failed attempts to generate schedule>
 # def generate_schedule(year, teams):
@@ -343,6 +317,15 @@ teams = [
 #     return team_day_dicts
 #endregion
 
+def clear_table(table_name):
+    con = sqlite3.connect("mlb_simulator.db")
+    cur = con.cursor()
+    try:
+        cur.execute(f"DELETE FROM {table_name}")
+    except:
+        print('Error: probably a nonexistent table')
+
+
 # function to generate a schedule
 def generate_schedule(year, teams):
     # define output dictionary
@@ -384,24 +367,22 @@ def generate_schedule(year, teams):
     # return the generated schedule
     return generated_schedule
 
-# SIMULATE PITCH FUNCTION
-# takes in pitcher stats and batter stats in the form of a dictionary:
+def simulate_pitch(pa_constants, pitch_id, pitcher_id, batter_id):
+    # SIMULATE PITCH FUNCTION
+    # takes in pitcher stats and batter stats in the form of a dictionary:
 
-# FOR PITCHERS:
-# 'handedness'
-# 'control'
-# 'velocity'
-# 'movement'
+    # FOR PITCHERS:
+    # 'handedness'
+    # 'control'
+    # 'velocity'
+    # 'movement'
 
-# FOR BATTERS:
-# 'handedness'
-# 'contact'
-# 'power'
-# 'speed'
-# 'eye'
-
-def simulate_pitch(pa_constants):
-
+    # FOR BATTERS:
+    # 'handedness'
+    # 'contact'
+    # 'power'
+    # 'speed'
+    # 'eye'
     def rand_sim(situation):
         if np.random.rand() <= pa_constants[situation]:
             return True
@@ -469,6 +450,24 @@ def simulate_pitch(pa_constants):
         return 'Foul'
     else:
         return 'In play'
+    
+
+    con = sqlite3.connect("mlb_simulator.db")
+    cur = con.cursor()
+    pitch_id = int(con.execute('SELECT MAX(pitch_id) FROM Pitches').fetchone()) + 1
+    cur.execute(f'INSERT INTO Pitches VALUES ( \
+                {pitch_id}, \
+                {pitcher_id}, \
+                {batter_id}, \
+                {swinging_strike}, \
+                {ball}, \
+                {foul}, \
+                {in_play}, \
+                {hit_by_pitch}, \
+                {int(is_fastball)}, \
+                {int(is_strike)}, \
+                {int(swing)}, \
+                {int(contact)}')
 
     return 'Nothing returned'
 
@@ -622,25 +621,25 @@ def simulate_season(year, teams):
 # print(outcomes)
 
 
-N = 100000
-outcomes = {}
-for i in range(N):
-    result = simulate_plate_appearance({
-        'control': 50,
-        'velocity': 50,
-        'movement': 50
-    }, {
-        'contact': 50,
-        'power': 50,
-        'eye': 50
-    })
-    if result in outcomes:
-        outcomes[result] += 1
-    else:
-        outcomes[result] = 1
-for key in outcomes:
-    outcomes[key] = outcomes[key]/N
-print(outcomes)
+# N = 10000
+# outcomes = {}
+# for i in range(N):
+#     result = simulate_plate_appearance({
+#         'control': 50,
+#         'velocity': 50,
+#         'movement': 50
+#     }, {
+#         'contact': 50,
+#         'power': 50,
+#         'eye': 50
+#     })
+#     if result in outcomes:
+#         outcomes[result] += 1
+#     else:
+#         outcomes[result] = 1
+# for key in outcomes:
+#     outcomes[key] = outcomes[key]/N
+# print(outcomes)
 
 # base_pa_constants = {
 #         'hit_by_pitch_chance': 0.003, # hbp / total pitches
