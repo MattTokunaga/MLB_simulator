@@ -309,7 +309,7 @@ if mode == 'populate':
 if mode == 'create':
     con = sqlite3.connect('mlb_simulator.db')
     cur = con.cursor()
-    year = cur.execute('SELECT MAX(year) FROM Teams').fetchone()
+    year = cur.execute('SELECT MAX(year) FROM Teams').fetchone()[0]
     if year:
         year = year[0] + 1
     else:

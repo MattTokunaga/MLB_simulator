@@ -383,17 +383,54 @@ def simulate_pitch(pa_constants, pitch_id, pitcher_id, batter_id):
     # 'power'
     # 'speed'
     # 'eye'
+
+    # defines variables to be inserted into database row
+    swinging_strike_insert = 0
+    ball_insert = 0
+    foul_insert = 0
+    in_play_insert = 0
+    called_strike_insert = 0
+    hit_by_pitch_insert = 0
+    is_fastball = False
+    is_strike = False
+    swing = False
+    contact = False
+
+
     def rand_sim(situation):
         if np.random.rand() <= pa_constants[situation]:
             return True
         else:
             return False
+        
+    def insert_into_database():
+        con = sqlite3.connect("mlb_simulator.db")
+        cur = con.cursor()
+        to_insert = [
+            pitch_id,
+            pitcher_id,
+            batter_id,
+            swinging_strike_insert,
+            ball_insert,
+            called_strike_insert,
+            foul_insert,
+            in_play_insert,
+            hit_by_pitch_insert,
+            int(is_fastball),
+            int(is_strike),
+            int(swing),
+            int(contact)
+        ]
+        cur.execute('INSERT INTO Pitches VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', to_insert)
+        con.commit()
 
     if rand_sim('hit_by_pitch_chance'):
         if np.random.choice([1, 2, 3]) == 1:
             is_fastball = False
         else:
             is_fastball = True
+        hit_by_pitch_insert = 1
+        insert_into_database()
         return 'Hit by pitch'
 
     is_fastball = rand_sim('fastball_chance')
@@ -416,8 +453,12 @@ def simulate_pitch(pa_constants, pitch_id, pitcher_id, batter_id):
     
     if not swing:
         if is_strike:
+            called_strike_insert = 1
+            insert_into_database()
             return 'Called strike'
         else:
+            ball_insert = 1
+            insert_into_database()
             return 'Ball'
 
 
@@ -433,6 +474,8 @@ def simulate_pitch(pa_constants, pitch_id, pitcher_id, batter_id):
             contact = rand_sim('non_fastball_ball_contact_chance')
     
     if not contact:
+        swinging_strike_insert = 1
+        insert_into_database()
         return 'Swinging strike'
     
     if is_fastball:
@@ -447,29 +490,14 @@ def simulate_pitch(pa_constants, pitch_id, pitcher_id, batter_id):
             foul = rand_sim('non_fastball_ball_foul_chance')
     
     if foul:
+        foul_insert = 1
+        insert_into_database() 
         return 'Foul'
     else:
+        in_play_insert = 1
+        insert_into_database()
         return 'In play'
     
-
-    con = sqlite3.connect("mlb_simulator.db")
-    cur = con.cursor()
-    pitch_id = int(con.execute('SELECT MAX(pitch_id) FROM Pitches').fetchone()) + 1
-    cur.execute(f'INSERT INTO Pitches VALUES ( \
-                {pitch_id}, \
-                {pitcher_id}, \
-                {batter_id}, \
-                {swinging_strike}, \
-                {ball}, \
-                {foul}, \
-                {in_play}, \
-                {hit_by_pitch}, \
-                {int(is_fastball)}, \
-                {int(is_strike)}, \
-                {int(swing)}, \
-                {int(contact)}')
-
-    return 'Nothing returned'
 
 def simulate_plate_appearance(pitcher_stats, batter_stats):
     # constants based on statcast data and my own judgement
@@ -553,8 +581,16 @@ def simulate_plate_appearance(pitcher_stats, batter_stats):
     pitch_counter = 0
     ball_counter = 0
     strike_counter = 0
+    
+    con = sqlite3.connect('mlb_simulator.db')
+    cur = con.cursor()
+    most_recent_pitch = cur.execute('SELECT MAX(pitch_id) FROM Pitches').fetchone()[0]
+    if most_recent_pitch:
+        starting_pitch_id = most_recent_pitch + 1
+    else:
+        starting_pitch_id = 1
     while pitch_counter <= 100:
-        pitch_result = simulate_pitch(updated_pa_constants)
+        pitch_result = simulate_pitch(updated_pa_constants, starting_pitch_id + pitch_counter, pitcher_stats['player_id'], batter_stats['player_id'])
         # print(pitch_result)
         pitch_counter += 1
         if pitch_result == 'Ball':
@@ -603,8 +639,6 @@ def simulate_season(year, teams):
     
     # generate schedule
     schedule = generate_schedule(year, teams)
-
-
 
 # outcomes = {}
 # for i in range(1000):
@@ -677,3 +711,15 @@ def simulate_season(year, teams):
 # for key in pitch_outcomes:
 #     pitch_outcomes[key] = np.round(pitch_outcomes[key]/N * 100, 2)
 # print(pitch_outcomes)
+
+simulate_plate_appearance({
+        'control': 50,
+        'velocity': 50,
+        'movement': 50,
+        'player_id': 1
+    }, {
+        'contact': 50,
+        'power': 50,
+        'eye': 50,
+        'player_id': 10
+    })
