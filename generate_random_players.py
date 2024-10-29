@@ -236,7 +236,7 @@ def generate_player(team, year, position = None, player_id = None):
             names = f.readlines()
         name = np.random.choice(names)
         output['first_name'] = name.split(' ')[0]
-        output['last_name'] = ' '.join(name.split(' ')[1:]) + ' Jr.'
+        output['last_name'] = ' '.join(name.strip().split(' ')[1:]) + ' Jr.'
     else:
         with open('first_names.txt', 'r') as fn:
             firsts = fn.readlines()

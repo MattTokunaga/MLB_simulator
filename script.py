@@ -403,7 +403,7 @@ def simulate_pitch(pa_constants, pitch_id, pitcher_id, batter_id):
         else:
             return False
         
-    def insert_into_database():
+    def insert_pitch_into_database():
         con = sqlite3.connect("mlb_simulator.db")
         cur = con.cursor()
         to_insert = [
@@ -430,7 +430,7 @@ def simulate_pitch(pa_constants, pitch_id, pitcher_id, batter_id):
         else:
             is_fastball = True
         hit_by_pitch_insert = 1
-        insert_into_database()
+        insert_pitch_into_database()
         return 'Hit by pitch'
 
     is_fastball = rand_sim('fastball_chance')
@@ -454,11 +454,11 @@ def simulate_pitch(pa_constants, pitch_id, pitcher_id, batter_id):
     if not swing:
         if is_strike:
             called_strike_insert = 1
-            insert_into_database()
+            insert_pitch_into_database()
             return 'Called strike'
         else:
             ball_insert = 1
-            insert_into_database()
+            insert_pitch_into_database()
             return 'Ball'
 
 
@@ -475,7 +475,7 @@ def simulate_pitch(pa_constants, pitch_id, pitcher_id, batter_id):
     
     if not contact:
         swinging_strike_insert = 1
-        insert_into_database()
+        insert_pitch_into_database()
         return 'Swinging strike'
     
     if is_fastball:
@@ -491,11 +491,11 @@ def simulate_pitch(pa_constants, pitch_id, pitcher_id, batter_id):
     
     if foul:
         foul_insert = 1
-        insert_into_database() 
+        insert_pitch_into_database() 
         return 'Foul'
     else:
         in_play_insert = 1
-        insert_into_database()
+        insert_pitch_into_database()
         return 'In play'
     
 
@@ -522,7 +522,7 @@ def simulate_plate_appearance(pitcher_stats, batter_stats):
     }
 
     # input 0 to 100
-    # uses logistic curve for stat benefits
+    # uses cos curve for stat benefits
     def adjust_base(base, input, higher_stat_higher_rate):
         scale = 1/10
         dist = min(np.abs(base - 1), base)
@@ -614,7 +614,14 @@ def simulate_plate_appearance(pitcher_stats, batter_stats):
         if ball_counter == 4:
             return "Walk"
 
+
     return 'At bat exceeded 100 pitches'
+
+def simulate_in_play(pitcher_stats, batter_stats):
+    # options:
+    # single, double, triple, home run, error, groundout, flyout, double play, triple play, fielders choice
+    
+    pass
 
 def simulate_half_inning():
     pass
