@@ -3,6 +3,7 @@ import numpy as np
 import calendar
 from datetime import date
 from datetime import timedelta
+import pandas as pd
 import copy
 import json
 
@@ -325,6 +326,18 @@ def clear_table(table_name):
     except:
         print('Error: probably a nonexistent table')
 
+def insert_into_table(table, to_insert):
+    num_to_add = len(to_insert)
+    con = sqlite3.connect("mlb_simulator.db")
+    cur = con.cursor()
+    if type(to_insert) == tuple:
+        to_insert = list(to_insert)
+    elif type(to_insert) != list:
+        raise ValueError('to_insert is neither a list nor a tuple')
+    to_insert = [table] + to_insert
+    insert_string = 'INSERT INTO ? VALUES (' + "?,"*(num_to_add-1) + '?)'
+    cur.execute(insert_string, to_insert)
+    con.commit()
 
 # function to generate a schedule
 def generate_schedule(year, teams):
@@ -403,9 +416,33 @@ def simulate_pitch(pa_constants, pitch_id, pitcher_id, batter_id):
         else:
             return False
         
-    def insert_pitch_into_database():
-        con = sqlite3.connect("mlb_simulator.db")
-        cur = con.cursor()
+    # def insert_pitch_into_database():
+    #     con = sqlite3.connect("mlb_simulator.db")
+    #     cur = con.cursor()
+    #     to_insert = [
+    #         pitch_id,
+    #         pitcher_id,
+    #         batter_id,
+    #         swinging_strike_insert,
+    #         ball_insert,
+    #         called_strike_insert,
+    #         foul_insert,
+    #         in_play_insert,
+    #         hit_by_pitch_insert,
+    #         int(is_fastball),
+    #         int(is_strike),
+    #         int(swing),
+    #         int(contact)
+    #     ]
+    #     cur.execute('INSERT INTO Pitches VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', to_insert)
+    #     con.commit()
+
+    if rand_sim('hit_by_pitch_chance'):
+        if np.random.choice([1, 2, 3]) == 1:
+            is_fastball = False
+        else:
+            is_fastball = True
+        hit_by_pitch_insert = 1
         to_insert = [
             pitch_id,
             pitcher_id,
@@ -421,16 +458,7 @@ def simulate_pitch(pa_constants, pitch_id, pitcher_id, batter_id):
             int(swing),
             int(contact)
         ]
-        cur.execute('INSERT INTO Pitches VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', to_insert)
-        con.commit()
-
-    if rand_sim('hit_by_pitch_chance'):
-        if np.random.choice([1, 2, 3]) == 1:
-            is_fastball = False
-        else:
-            is_fastball = True
-        hit_by_pitch_insert = 1
-        insert_pitch_into_database()
+        insert_into_table('Pitches', to_insert)
         return 'Hit by pitch'
 
     is_fastball = rand_sim('fastball_chance')
@@ -454,11 +482,41 @@ def simulate_pitch(pa_constants, pitch_id, pitcher_id, batter_id):
     if not swing:
         if is_strike:
             called_strike_insert = 1
-            insert_pitch_into_database()
+            to_insert = [
+                pitch_id,
+                pitcher_id,
+                batter_id,
+                swinging_strike_insert,
+                ball_insert,
+                called_strike_insert,
+                foul_insert,
+                in_play_insert,
+                hit_by_pitch_insert,
+                int(is_fastball),
+                int(is_strike),
+                int(swing),
+                int(contact)
+            ]
+            insert_into_table('Pitches', to_insert)
             return 'Called strike'
         else:
             ball_insert = 1
-            insert_pitch_into_database()
+            to_insert = [
+                pitch_id,
+                pitcher_id,
+                batter_id,
+                swinging_strike_insert,
+                ball_insert,
+                called_strike_insert,
+                foul_insert,
+                in_play_insert,
+                hit_by_pitch_insert,
+                int(is_fastball),
+                int(is_strike),
+                int(swing),
+                int(contact)
+            ]
+            insert_into_table('Pitches', to_insert)
             return 'Ball'
 
 
@@ -475,7 +533,22 @@ def simulate_pitch(pa_constants, pitch_id, pitcher_id, batter_id):
     
     if not contact:
         swinging_strike_insert = 1
-        insert_pitch_into_database()
+        to_insert = [
+            pitch_id,
+            pitcher_id,
+            batter_id,
+            swinging_strike_insert,
+            ball_insert,
+            called_strike_insert,
+            foul_insert,
+            in_play_insert,
+            hit_by_pitch_insert,
+            int(is_fastball),
+            int(is_strike),
+            int(swing),
+            int(contact)
+        ]
+        insert_into_table('Pitches', to_insert)
         return 'Swinging strike'
     
     if is_fastball:
@@ -491,15 +564,45 @@ def simulate_pitch(pa_constants, pitch_id, pitcher_id, batter_id):
     
     if foul:
         foul_insert = 1
-        insert_pitch_into_database() 
+        to_insert = [
+            pitch_id,
+            pitcher_id,
+            batter_id,
+            swinging_strike_insert,
+            ball_insert,
+            called_strike_insert,
+            foul_insert,
+            in_play_insert,
+            hit_by_pitch_insert,
+            int(is_fastball),
+            int(is_strike),
+            int(swing),
+            int(contact)
+        ]
+        insert_into_table('Pitches', to_insert)
         return 'Foul'
     else:
         in_play_insert = 1
-        insert_pitch_into_database()
+        to_insert = [
+            pitch_id,
+            pitcher_id,
+            batter_id,
+            swinging_strike_insert,
+            ball_insert,
+            called_strike_insert,
+            foul_insert,
+            in_play_insert,
+            hit_by_pitch_insert,
+            int(is_fastball),
+            int(is_strike),
+            int(swing),
+            int(contact)
+        ]
+        insert_into_table('Pitches', to_insert)
         return 'In play'
     
 
-def simulate_plate_appearance(pitcher_stats, batter_stats):
+def simulate_plate_appearance(pitcher_stats, batter_stats, situation, plate_app_id):
     # constants based on statcast data and my own judgement
     # statcast zones were used with heart and shadow being considered strikes, else balls
     base_pa_constants = {
@@ -604,23 +707,215 @@ def simulate_plate_appearance(pitcher_stats, batter_stats):
                 continue
         elif pitch_result == 'Hit by pitch':
             ball_counter += 1
-            return 'Hit by pitch'
+            pa_result = 'Hit by pitch'
+            break
         elif pitch_result == 'In play':
-            return 'In play'
+            pa_result = 'In play'
+            break
         
         if strike_counter == 3:
-            return 'Strikeout'
+            pa_result = 'Strikeout'
+            break
         
         if ball_counter == 4:
-            return "Walk"
+            pa_result = 'Walk'
+            break
 
+    if pa_result == 'In play':
+        pa_result = simulate_in_play(pitcher_stats, batter_stats, situation, starting_pitch_id + pitch_counter -1, plate_app_id)
 
-    return 'At bat exceeded 100 pitches'
+    to_insert = (
+        plate_app_id,
+        pitcher_stats['player_id'],
+        batter_stats['player_id'],
+        pa_result
+    )
 
-def simulate_in_play(pitcher_stats, batter_stats):
+    return
+
+def simulate_in_play(pitcher_stats, batter_stats, situation, pitch_id, plate_app_id):
+    exit_velo_probs = pd.read_csv('exit_velo_probs.csv')
+    rounded_las = pd.read_csv('rounded_las.csv')
     # options:
     # single, double, triple, home run, error, groundout, flyout, double play, triple play, fielders choice
-    
+
+    # pick direction
+    direction_probabilities = {
+        'pull': .42,
+        'middle': .34,
+        'oppo': .24
+    }
+    right_direcs = {
+        'pull': 'left',
+        'middle': 'center',
+        'oppo': 'right'
+    }
+    left_direcs = {
+        'pull': 'right',
+        'middle': 'center',
+        'oppo': 'left'
+    }
+
+    rel_direc = np.random.choice(['pull', 'middle', 'oppo'], p = [direction_probabilities['pull'], direction_probabilities['middle'], direction_probabilities['oppo']])
+    bat_hand = batter_stats['handedness']
+    if bat_hand == 'RIGHT':
+        direc = right_direcs[rel_direc]
+    if bat_hand == 'LEFT':
+        direc = left_direcs[rel_direc]
+
+    # pick exit velo/launch angle
+    exve = np.random.choice(np.array(exit_velo_probs['Exit velo']), p = np.array(exit_velo_probs['BBE']))
+    la_bbe = rounded_las[rounded_las['Exit velo'] == exve][['rounded_la', 'BBE']]
+    la_bbe = la_bbe.assign(prob = la_bbe['BBE'] / la_bbe['BBE'].sum())
+    laan = np.random.choice(np.array(la_bbe['rounded_la']), p = np.array(la_bbe['prob']))
+    specific_exve_laan = rounded_las[(rounded_las['Exit velo'] == exve) & (rounded_las['rounded_la'] == laan)]
+    bbe = specific_exve_laan['BBE'].iloc[0]
+    oneb_prob = specific_exve_laan['1b'].iloc[0] / bbe
+    twob_prob = specific_exve_laan['2b'].iloc[0] / bbe
+    threeb_prob = specific_exve_laan['3b'].iloc[0] / bbe
+    homer_prob = specific_exve_laan['HR'].iloc[0] / bbe
+    out_prob = 1 - oneb_prob - twob_prob - threeb_prob - homer_prob
+
+    # decide type of hit (or out)
+    res = np.random.choice(['Single', 'Double', 'Triple', 'Home run', 'Out'], p = [oneb_prob, twob_prob, threeb_prob, homer_prob, out_prob])
+    if res == 'Home run':
+        return 'Home run'
+
+
+    # decide position hit to
+    first_probs = {
+        'RIGHT': 5/14,
+        'LEFT': 11/27
+    }
+    second_probs = {
+        'RIGHT': 9/14,
+        'LEFT': 16/27
+    }
+    third_probs = {
+        'RIGHT': 15/31,
+        'LEFT': 8/18
+    }
+    short_probs = {
+        'RIGHT': 16/31,
+        'LEFT': 10/18
+    }
+    pitcher_given_center_if = 4/5
+
+    gb_rate = 0.43
+    infield_single_rate = 0.07
+    grounder_or_flyball = None
+
+    if direc == 'center':
+        if res == 'Single':
+            if np.random.random() <= infield_single_rate:
+                grounder_or_flyball = 'Ground ball'
+                if np.random.random() <= pitcher_given_center_if:
+                    pos = 1
+                else:
+                    pos = 2
+            else:
+                grounder_or_flyball = 'Fly ball'
+                pos = 8
+        elif res == 'Out':
+            if np.random.random() <= gb_rate:
+                grounder_or_flyball = 'Ground ball'
+                if np.random.random() <= pitcher_given_center_if:
+                    pos = 1
+                else:
+                    pos = 2
+            else:
+                grounder_or_flyball = 'Fly ball'
+                pos = 8
+        else:
+            grounder_or_flyball = 'Fly ball'
+            pos = 8
+    elif direc == 'left':
+        if res == 'Single':
+            if np.random.random() <= infield_single_rate:
+                grounder_or_flyball = 'Ground ball'
+                if np.random.random() <= short_probs[bat_hand]:
+                    pos = 6
+                else:
+                    pos = 5
+            else:
+                grounder_or_flyball = 'Fly ball'
+                pos = 7
+        elif res == 'Out':
+            if np.random.random() <= gb_rate:
+                grounder_or_flyball = 'Ground ball'
+                if np.random.random() <= short_probs[bat_hand]:
+                    pos = 6
+                else:
+                    pos = 5
+            else:
+                grounder_or_flyball = 'Fly ball'
+                pos = 7
+        else:
+            grounder_or_flyball = 'Fly ball'
+            pos = 7
+    elif direc == 'right':
+        if res == 'Single':
+            if np.random.random() <= infield_single_rate:
+                grounder_or_flyball = 'Ground ball'
+                if np.random.random() <= second_probs[bat_hand]:
+                    pos = 4
+                else:
+                    pos = 3
+            else:
+                grounder_or_flyball = 'Fly ball'
+                pos = 9
+        elif res == 'Out':
+            if np.random.random() <= gb_rate:
+                grounder_or_flyball = 'Ground ball'
+                if np.random.random() <= second_probs[bat_hand]:
+                    pos = 4
+                else:
+                    pos = 3
+            else:
+                grounder_or_flyball = 'Fly ball'
+                pos = 9
+        else:
+            grounder_or_flyball = 'Fly ball'
+            pos = 9
+
+    # check for double plays and tag ups
+    # implement later
+    play_id = situation['initial_play_id'] + situation['plays_in_inning_so_far']
+    year = situation['Year']
+    pitcher_id = pitcher_stats['player_id']
+    batter_id = batter_stats['player_id']
+    fielder_id = situation['fielder_ids'][pos]
+    play_type = grounder_or_flyball
+    play_result = res
+    first_runner_id = situation['runner_ids']['first']
+    second_runner_id =situation['runner_ids']['second']
+    third_runner_id = situation['runner_ids']['third']
+    runs_scored = runs_scored
+    outs_made = outs_made
+    inning = situation['inning']
+    half_inning = situation['half_inning']
+    pitch_id = pitch_id
+
+    to_insert = (
+        play_id,
+        year,
+        pitcher_id,
+        batter_id,
+        fielder_id,
+        play_type,
+        play_result,
+        first_runner_id,
+        second_runner_id,
+        third_runner_id,
+        runs_scored,
+        outs_made,
+        inning,
+        half_inning,
+        pitch_id,
+        plate_app_id
+    )
+
+    insert_into_table('PlateAppearances', to_insert)
     pass
 
 def simulate_half_inning():
