@@ -334,8 +334,7 @@ def insert_into_table(table, to_insert):
         to_insert = list(to_insert)
     elif type(to_insert) != list:
         raise ValueError('to_insert is neither a list nor a tuple')
-    to_insert = [table] + to_insert
-    insert_string = 'INSERT INTO ? VALUES (' + "?,"*(num_to_add-1) + '?)'
+    insert_string = 'INSERT INTO '+ table +' VALUES (' + "?,"*(num_to_add-1) + '?)'
     cur.execute(insert_string, to_insert)
     con.commit()
 
@@ -890,8 +889,8 @@ def simulate_in_play(pitcher_stats, batter_stats, situation, pitch_id, plate_app
     first_runner_id = situation['runner_ids']['first']
     second_runner_id =situation['runner_ids']['second']
     third_runner_id = situation['runner_ids']['third']
-    runs_scored = runs_scored
-    outs_made = outs_made
+    runs_scored = 0# runs_scored
+    outs_made = 0 #outs_made
     inning = situation['inning']
     half_inning = situation['half_inning']
     pitch_id = pitch_id
@@ -915,8 +914,8 @@ def simulate_in_play(pitcher_stats, batter_stats, situation, pitch_id, plate_app
         plate_app_id
     )
 
-    insert_into_table('PlateAppearances', to_insert)
-    pass
+    insert_into_table('InPlays', to_insert)
+    return res
 
 def simulate_half_inning():
     pass
@@ -1014,14 +1013,38 @@ def simulate_season(year, teams):
 #     pitch_outcomes[key] = np.round(pitch_outcomes[key]/N * 100, 2)
 # print(pitch_outcomes)
 
-simulate_plate_appearance({
+test_situation = {
+    'initial_play_id': 1,
+    'plays_in_inning_so_far': 0,
+    'Year': 2024,
+    'fielder_ids': {
+    1: 1,2: 2,3: 3,4: 4,5: 5,6: 6,7: 7,8: 8,9: 9,10: None
+    },
+    'runner_ids' : {
+    'first': 11, 'second': 12, 'third': 13
+    },
+    'inning': 1,
+    'half_inning': 'Top'
+}
+testres = simulate_in_play({
         'control': 50,
         'velocity': 50,
         'movement': 50,
-        'player_id': 1
+        'player_id': 1,
+        'handedness': 'RIGHT'
     }, {
         'contact': 50,
         'power': 50,
         'eye': 50,
-        'player_id': 10
-    })
+        'player_id': 10,
+        'handedness': 'LEFT'
+    },
+    test_situation,
+    1,
+    1)
+
+print(testres)
+
+# con = sqlite3.connect("mlb_simulator.db")
+# cur = con.cursor()
+# print(cur.execute('pragma table_info(InPlays)').fetchall())
