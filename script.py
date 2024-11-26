@@ -896,6 +896,7 @@ def simulate_in_play(pitcher_stats, batter_stats, situation, pitch_id, plate_app
     inning = situation['inning']
     half_inning = situation['half_inning']
     pitch_id = pitch_id
+    position_to = pos
 
     to_insert = (
         play_id,
@@ -913,16 +914,19 @@ def simulate_in_play(pitcher_stats, batter_stats, situation, pitch_id, plate_app
         inning,
         half_inning,
         pitch_id,
-        plate_app_id
+        plate_app_id,
+        position_to
     )
 
     insert_into_table('InPlays', to_insert)
     return res, pos, grounder_or_flyball
 
-def simulate_half_inning(inning, half_inning, current_players, year, game_info, roster_stats, current_batter, lineups):
+def simulate_half_inning(inning, half_inning, current_players, year, game_info, roster_stats, current_batter, lineups, next_plate_app_id):
     con = sqlite3.connect("mlb_simulator.db")
     cur = con.cursor()
     init_play_id = cur.execute('SELECT MAX(play_id) FROM InPlays').fetchone()[0]
+    if not init_play_id:
+        init_play_id = 0
 
     # situation
     situation = {
@@ -942,7 +946,8 @@ def simulate_half_inning(inning, half_inning, current_players, year, game_info, 
         'outs': 0,
         'runs_scored': 0,
         'results_sequence': [],
-        'current_batter': current_batter
+        'current_batter': current_batter, # NOT PLAYER ID, LINEUP POSITION
+        'next_plate_app_id': next_plate_app_id
     }
 
     # define batting and fielding teams
@@ -966,12 +971,16 @@ def simulate_half_inning(inning, half_inning, current_players, year, game_info, 
     # main loop
     while situation['outs'] < 3:
         # simulates plate appearance
-        res = simulate_plate_appearance(roster_stats[fielder_ids[pitcher_pos]])
-        
+        res = simulate_plate_appearance(roster_stats[fielder_ids[pitcher_pos]], roster_stats[lineups[situation['batting_team']][situation['current_batter']]], situation, situation['next_plate_app_id'])
+        situation['next_plate_app_id'] += 1
+
         runs_scored = 0
         # interprets result
         if type(res) == tuple:
             # in play
+
+            situation['plays_in_inning_so_far'] += 1
+
             actual_res = res[0]
             pos_hit_to = res[1]
             grounder_or_flyball = res[2]
@@ -1427,8 +1436,12 @@ roster_stats = {
         'player_id': 19
     }
 }
-current_batter = None
-lineups = None
+current_batter = 0
+lineups = {
+    'Home': [1, 2, 3, 4, 5, 6 ,7 ,8, 9],
+    'Away': [11, 12, 13, 14, 15, 16, 17, 18, 19]
+}
+next_plate_app_id = 1
 
 half_inning_sim = simulate_half_inning(
     inning,
@@ -1438,6 +1451,7 @@ half_inning_sim = simulate_half_inning(
     game_info,
     roster_stats,
     current_batter,
-    lineups
+    lineups,
+    next_plate_app_id
 )
 print(half_inning_sim)
