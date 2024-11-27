@@ -918,10 +918,13 @@ def simulate_in_play(pitcher_stats, batter_stats, situation, pitch_id, plate_app
         position_to
     )
 
-    insert_into_table('InPlays', to_insert)
+    try:
+        insert_into_table('InPlays', to_insert)
+    except:
+        raise ValueError(f'Insertion Error, init_play_id: {situation["initial_play_id"]}, plays so far: {situation["plays_in_inning_so_far"]}')
     return res, pos, grounder_or_flyball
 
-def simulate_half_inning(inning, half_inning, current_players, year, game_info, roster_stats, lineups, next_plate_app_id):
+def simulate_half_inning(inning, half_inning, current_players, year, game_info, roster_stats, lineups):
     '''
     Args:
         inning (int): inning number.
@@ -931,7 +934,6 @@ def simulate_half_inning(inning, half_inning, current_players, year, game_info, 
         game_info ():
         roster_stats (dict): keys: player_ids of every player on either roster, values are dictionaries of stats
         lineups (dict): keys: 'Home', 'Away', values are lists with player id in batting order, 0 is leadoff
-        next_plate_app_id (int): plate app id that is not yet in the table
     
     Returns:
         Something
@@ -941,6 +943,8 @@ def simulate_half_inning(inning, half_inning, current_players, year, game_info, 
     init_play_id = cur.execute('SELECT MAX(play_id) FROM InPlays').fetchone()[0]
     if not init_play_id:
         init_play_id = 0
+    else:
+        init_play_id += 1
 
     # situation
     situation = {
@@ -961,7 +965,7 @@ def simulate_half_inning(inning, half_inning, current_players, year, game_info, 
         'runs_scored': 0,
         'results_sequence': [],
         'current_batter': None, # NOT PLAYER ID, LINEUP POSITION
-        'next_plate_app_id': next_plate_app_id
+        'next_plate_app_id': game_info['next_plate_app_id']
     }
 
     # define batting and fielding teams
@@ -988,13 +992,12 @@ def simulate_half_inning(inning, half_inning, current_players, year, game_info, 
     while situation['outs'] < 3:
         # simulates plate appearance
         res = simulate_plate_appearance(roster_stats[fielder_ids[pitcher_pos]], roster_stats[lineups[situation['batting_team']][situation['current_batter']]], situation, situation['next_plate_app_id'])
-        situation['next_plate_app_id'] += 1
+        game_info['next_plate_app_id'] += 1
 
-        runs_scored = 0
         # interprets result
         if type(res) == tuple:
             # in play
-
+            
             situation['plays_in_inning_so_far'] += 1
 
             actual_res = res[0]
@@ -1003,33 +1006,33 @@ def simulate_half_inning(inning, half_inning, current_players, year, game_info, 
 
             # options: home run, triple, double, single, out
             if actual_res == 'Home run':
-                runs_scored += 1
+                situation['runs_scored'] += 1
                 if situation['runner_ids']['first']:
-                    runs_scored += 1
+                    situation['runs_scored'] += 1
                     situation['runner_ids']['first'] = None
                 if situation['runner_ids']['second']:
-                    runs_scored += 1
+                    situation['runs_scored'] += 1
                     situation['runner_ids']['second'] = None
                 if situation['runner_ids']['third']:
-                    runs_scored += 1
+                    situation['runs_scored'] += 1
                     situation['runner_ids']['third'] = None
             elif actual_res == 'Triple':
                 if situation['runner_ids']['first']:
-                    runs_scored += 1
+                    situation['runs_scored'] += 1
                     situation['runner_ids']['first'] = None
                 if situation['runner_ids']['second']:
-                    runs_scored += 1
+                    situation['runs_scored'] += 1
                     situation['runner_ids']['second'] = None
                 if situation['runner_ids']['third']:
-                    runs_scored += 1
+                    situation['runs_scored'] += 1
                     situation['runner_ids']['third'] = None
                 situation['runner_ids']['third'] = lineups[situation['batting_team']][situation['current_batter']]
             elif actual_res == 'Double':
                 if situation['runner_ids']['third']:
-                    runs_scored += 1
+                    situation['runs_scored'] += 1
                     situation['runner_ids']['third'] = None
                 if situation['runner_ids']['second']:
-                    runs_scored += 1
+                    situation['runs_scored'] += 1
                     situation['runner_ids']['second'] = None
                 if situation['runner_ids']['first']:
                     situation['runner_ids']['third'] = situation['runner_ids']['first']
@@ -1037,7 +1040,7 @@ def simulate_half_inning(inning, half_inning, current_players, year, game_info, 
                 situation['runner_ids']['second'] = lineups[situation['batting_team']][situation['current_batter']]
             elif actual_res == 'Single':
                 if situation['runner_ids']['third']:
-                    runs_scored += 1
+                    situation['runs_scored'] += 1
                     situation['runner_ids']['third'] = None
                 if situation['runner_ids']['second']:
                     situation['runner_ids']['third'] = situation['runner_ids']['second']
@@ -1093,19 +1096,19 @@ def simulate_half_inning(inning, half_inning, current_players, year, game_info, 
         situation['current_batter'] = (situation['current_batter'] + 1) % 9
 
     if half_inning == 'Top':
-        game_info['Away Runs'] += runs_scored
+        game_info['Away Runs'] += situation['runs_scored']
     elif half_inning == 'Bottom':
-        game_info['Home Runs'] += runs_scored        
+        game_info['Home Runs'] += situation['runs_scored']        
 
     return situation['results_sequence']
 
-def simulate_inning(inning, current_players, year, game_info, roster_stats, lineups, next_plate_app_id):
+def simulate_inning(inning, current_players, year, game_info, roster_stats, lineups):
 
     # top of the inning
-    simulate_half_inning(inning, 'Top', current_players, year, game_info, roster_stats, lineups, next_plate_app_id)
+    simulate_half_inning(inning, 'Top', current_players, year, game_info, roster_stats, lineups)
 
     # bottom of the inning
-    simulate_half_inning(inning, 'Bottom', current_players, year, game_info, roster_stats, lineups, next_plate_app_id)
+    simulate_half_inning(inning, 'Bottom', current_players, year, game_info, roster_stats, lineups)
     pass
 
 def simulate_game(home_team, away_team, year):
@@ -1118,7 +1121,8 @@ def simulate_game(home_team, away_team, year):
         'Home Runs': 0,
         'Away Runs': 0,
         'Home Current Batter': 0,
-        'Away Current Batter': 0
+        'Away Current Batter': 0,
+        'next_plate_app_id': None # gets initialized later (in a few lines)
     }
 
     roster_stats = {}
@@ -1145,6 +1149,13 @@ def simulate_game(home_team, away_team, year):
             'first_name': player[14],
             'last_name': player[15],
         }
+
+    next_plate_app_id = cur.execute('SELECT MAX(plate_app_id) FROM PlateAppearances;').fetchone()[0]
+    if next_plate_app_id:
+        next_plate_app_id += 1
+    else:
+        next_plate_app_id = 0
+    game_info['next_plate_app_id'] = next_plate_app_id
 
     current_players = {
         'Home': {},
@@ -1197,14 +1208,18 @@ def simulate_game(home_team, away_team, year):
     # simulates innings
     inning = 1
     for _ in range(9):
-        simulate_inning(inning, current_players, year, game_info, roster_stats, lineups, next_plate_app_id)
+        simulate_inning(inning, current_players, year, game_info, roster_stats, lineups)
+        print(f'inning {inning} simulated')
+        inning += 1
 
     while game_info['Home Runs'] == game_info['Away Runs']:
+        simulate_inning(inning, current_players, year, game_info, roster_stats, lineups)
+        print(f'inning {inning} simulated')
         inning += 1
-        simulate_inning(inning, current_players, year, game_info, roster_stats, lineups, next_plate_app_id)
+        if inning >= 100:
+            break
 
-
-    pass
+    return (game_info['Home Runs'], game_info['Away Runs'])
 
 def simulate_season(year, teams):
     # connect to sqlite database
@@ -1329,250 +1344,251 @@ def simulate_season(year, teams):
 # cur = con.cursor()
 # print(cur.execute('pragma table_info(InPlays)').fetchall())
 
-inning = 1
-half_inning = 'Top'
-current_players = {
-    'Home': {
-        1: 1,
-        2: 2,
-        3: 3,
-        4: 4,
-        5: 5,
-        6: 6,
-        7: 7,
-        8: 8,
-        9: 9
-    },
-    'Away': {
-        1: 11,
-        2: 12,
-        3: 13,
-        4: 14,
-        5: 15,
-        6: 16,
-        7: 17,
-        8: 18,
-        9: 19
-    }
-}
-year = 2024
-game_info = None
-roster_stats = {
-    1: {
-        'control': 50,
-        'velocity': 50,
-        'movement': 50,
-        'player_id': 1,
-        'handedness': 'RIGHT',
-        'contact': 50,
-        'power': 50,
-        'eye': 50,
-        'player_id': 1
-    },
-    2: {
-        'control': 50,
-        'velocity': 50,
-        'movement': 50,
-        'player_id': 1,
-        'handedness': 'RIGHT',
-        'contact': 50,
-        'power': 50,
-        'eye': 50,
-        'player_id': 2
-    },
-    3: {
-        'control': 50,
-        'velocity': 50,
-        'movement': 50,
-        'player_id': 1,
-        'handedness': 'RIGHT',
-        'contact': 50,
-        'power': 50,
-        'eye': 50,
-        'player_id': 3
-    },
-    4: {
-        'control': 50,
-        'velocity': 50,
-        'movement': 50,
-        'player_id': 1,
-        'handedness': 'RIGHT',
-        'contact': 50,
-        'power': 50,
-        'eye': 50,
-        'player_id': 4
-    },
-    5: {
-        'control': 50,
-        'velocity': 50,
-        'movement': 50,
-        'player_id': 1,
-        'handedness': 'RIGHT',
-        'contact': 50,
-        'power': 50,
-        'eye': 50,
-        'player_id': 5
-    },
-    6: {
-        'control': 50,
-        'velocity': 50,
-        'movement': 50,
-        'player_id': 1,
-        'handedness': 'RIGHT',
-        'contact': 50,
-        'power': 50,
-        'eye': 50,
-        'player_id': 6
-    },
-    7: {
-        'control': 50,
-        'velocity': 50,
-        'movement': 50,
-        'player_id': 1,
-        'handedness': 'RIGHT',
-        'contact': 50,
-        'power': 50,
-        'eye': 50,
-        'player_id': 7
-    },
-    8: {
-        'control': 50,
-        'velocity': 50,
-        'movement': 50,
-        'player_id': 1,
-        'handedness': 'RIGHT',
-        'contact': 50,
-        'power': 50,
-        'eye': 50,
-        'player_id': 8
-    },
-    9: {
-        'control': 50,
-        'velocity': 50,
-        'movement': 50,
-        'player_id': 1,
-        'handedness': 'RIGHT',
-        'contact': 50,
-        'power': 50,
-        'eye': 50,
-        'player_id': 9
-    },
-    11: {
-        'control': 50,
-        'velocity': 50,
-        'movement': 50,
-        'player_id': 1,
-        'handedness': 'RIGHT',
-        'contact': 50,
-        'power': 50,
-        'eye': 50,
-        'player_id': 11
-    },
-    12: {
-        'control': 50,
-        'velocity': 50,
-        'movement': 50,
-        'player_id': 1,
-        'handedness': 'RIGHT',
-        'contact': 50,
-        'power': 50,
-        'eye': 50,
-        'player_id': 12
-    },
-    13: {
-        'control': 50,
-        'velocity': 50,
-        'movement': 50,
-        'player_id': 1,
-        'handedness': 'RIGHT',
-        'contact': 50,
-        'power': 50,
-        'eye': 50,
-        'player_id': 13
-    },
-    14: {
-        'control': 50,
-        'velocity': 50,
-        'movement': 50,
-        'player_id': 1,
-        'handedness': 'RIGHT',
-        'contact': 50,
-        'power': 50,
-        'eye': 50,
-        'player_id': 14
-    },
-    15: {
-        'control': 50,
-        'velocity': 50,
-        'movement': 50,
-        'player_id': 1,
-        'handedness': 'RIGHT',
-        'contact': 50,
-        'power': 50,
-        'eye': 50,
-        'player_id': 15
-    },
-    16: {
-        'control': 50,
-        'velocity': 50,
-        'movement': 50,
-        'player_id': 1,
-        'handedness': 'RIGHT',
-        'contact': 50,
-        'power': 50,
-        'eye': 50,
-        'player_id': 16
-    },
-    17: {
-        'control': 50,
-        'velocity': 50,
-        'movement': 50,
-        'player_id': 1,
-        'handedness': 'RIGHT',
-        'contact': 50,
-        'power': 50,
-        'eye': 50,
-        'player_id': 17
-    },
-    18: {
-        'control': 50,
-        'velocity': 50,
-        'movement': 50,
-        'player_id': 1,
-        'handedness': 'RIGHT',
-        'contact': 50,
-        'power': 50,
-        'eye': 50,
-        'player_id': 18
-    },
-    19: {
-        'control': 50,
-        'velocity': 50,
-        'movement': 50,
-        'player_id': 1,
-        'handedness': 'RIGHT',
-        'contact': 50,
-        'power': 50,
-        'eye': 50,
-        'player_id': 19
-    }
-}
-current_batter = 0
-lineups = {
-    'Home': [1, 2, 3, 4, 5, 6 ,7 ,8, 9],
-    'Away': [11, 12, 13, 14, 15, 16, 17, 18, 19]
-}
-next_plate_app_id = 1
+# inning = 1
+# half_inning = 'Top'
+# current_players = {
+#     'Home': {
+#         1: 1,
+#         2: 2,
+#         3: 3,
+#         4: 4,
+#         5: 5,
+#         6: 6,
+#         7: 7,
+#         8: 8,
+#         9: 9
+#     },
+#     'Away': {
+#         1: 11,
+#         2: 12,
+#         3: 13,
+#         4: 14,
+#         5: 15,
+#         6: 16,
+#         7: 17,
+#         8: 18,
+#         9: 19
+#     }
+# }
+# year = 2024
+# game_info = {
+#     'next_plate_app_id': 0
+# }
+# roster_stats = {
+#     1: {
+#         'control': 50,
+#         'velocity': 50,
+#         'movement': 50,
+#         'player_id': 1,
+#         'handedness': 'RIGHT',
+#         'contact': 50,
+#         'power': 50,
+#         'eye': 50,
+#         'player_id': 1
+#     },
+#     2: {
+#         'control': 50,
+#         'velocity': 50,
+#         'movement': 50,
+#         'player_id': 1,
+#         'handedness': 'RIGHT',
+#         'contact': 50,
+#         'power': 50,
+#         'eye': 50,
+#         'player_id': 2
+#     },
+#     3: {
+#         'control': 50,
+#         'velocity': 50,
+#         'movement': 50,
+#         'player_id': 1,
+#         'handedness': 'RIGHT',
+#         'contact': 50,
+#         'power': 50,
+#         'eye': 50,
+#         'player_id': 3
+#     },
+#     4: {
+#         'control': 50,
+#         'velocity': 50,
+#         'movement': 50,
+#         'player_id': 1,
+#         'handedness': 'RIGHT',
+#         'contact': 50,
+#         'power': 50,
+#         'eye': 50,
+#         'player_id': 4
+#     },
+#     5: {
+#         'control': 50,
+#         'velocity': 50,
+#         'movement': 50,
+#         'player_id': 1,
+#         'handedness': 'RIGHT',
+#         'contact': 50,
+#         'power': 50,
+#         'eye': 50,
+#         'player_id': 5
+#     },
+#     6: {
+#         'control': 50,
+#         'velocity': 50,
+#         'movement': 50,
+#         'player_id': 1,
+#         'handedness': 'RIGHT',
+#         'contact': 50,
+#         'power': 50,
+#         'eye': 50,
+#         'player_id': 6
+#     },
+#     7: {
+#         'control': 50,
+#         'velocity': 50,
+#         'movement': 50,
+#         'player_id': 1,
+#         'handedness': 'RIGHT',
+#         'contact': 50,
+#         'power': 50,
+#         'eye': 50,
+#         'player_id': 7
+#     },
+#     8: {
+#         'control': 50,
+#         'velocity': 50,
+#         'movement': 50,
+#         'player_id': 1,
+#         'handedness': 'RIGHT',
+#         'contact': 50,
+#         'power': 50,
+#         'eye': 50,
+#         'player_id': 8
+#     },
+#     9: {
+#         'control': 50,
+#         'velocity': 50,
+#         'movement': 50,
+#         'player_id': 1,
+#         'handedness': 'RIGHT',
+#         'contact': 50,
+#         'power': 50,
+#         'eye': 50,
+#         'player_id': 9
+#     },
+#     11: {
+#         'control': 50,
+#         'velocity': 50,
+#         'movement': 50,
+#         'player_id': 1,
+#         'handedness': 'RIGHT',
+#         'contact': 50,
+#         'power': 50,
+#         'eye': 50,
+#         'player_id': 11
+#     },
+#     12: {
+#         'control': 50,
+#         'velocity': 50,
+#         'movement': 50,
+#         'player_id': 1,
+#         'handedness': 'RIGHT',
+#         'contact': 50,
+#         'power': 50,
+#         'eye': 50,
+#         'player_id': 12
+#     },
+#     13: {
+#         'control': 50,
+#         'velocity': 50,
+#         'movement': 50,
+#         'player_id': 1,
+#         'handedness': 'RIGHT',
+#         'contact': 50,
+#         'power': 50,
+#         'eye': 50,
+#         'player_id': 13
+#     },
+#     14: {
+#         'control': 50,
+#         'velocity': 50,
+#         'movement': 50,
+#         'player_id': 1,
+#         'handedness': 'RIGHT',
+#         'contact': 50,
+#         'power': 50,
+#         'eye': 50,
+#         'player_id': 14
+#     },
+#     15: {
+#         'control': 50,
+#         'velocity': 50,
+#         'movement': 50,
+#         'player_id': 1,
+#         'handedness': 'RIGHT',
+#         'contact': 50,
+#         'power': 50,
+#         'eye': 50,
+#         'player_id': 15
+#     },
+#     16: {
+#         'control': 50,
+#         'velocity': 50,
+#         'movement': 50,
+#         'player_id': 1,
+#         'handedness': 'RIGHT',
+#         'contact': 50,
+#         'power': 50,
+#         'eye': 50,
+#         'player_id': 16
+#     },
+#     17: {
+#         'control': 50,
+#         'velocity': 50,
+#         'movement': 50,
+#         'player_id': 1,
+#         'handedness': 'RIGHT',
+#         'contact': 50,
+#         'power': 50,
+#         'eye': 50,
+#         'player_id': 17
+#     },
+#     18: {
+#         'control': 50,
+#         'velocity': 50,
+#         'movement': 50,
+#         'player_id': 1,
+#         'handedness': 'RIGHT',
+#         'contact': 50,
+#         'power': 50,
+#         'eye': 50,
+#         'player_id': 18
+#     },
+#     19: {
+#         'control': 50,
+#         'velocity': 50,
+#         'movement': 50,
+#         'player_id': 1,
+#         'handedness': 'RIGHT',
+#         'contact': 50,
+#         'power': 50,
+#         'eye': 50,
+#         'player_id': 19
+#     }
+# }
+# current_batter = 0
+# lineups = {
+#     'Home': [1, 2, 3, 4, 5, 6 ,7 ,8, 9],
+#     'Away': [11, 12, 13, 14, 15, 16, 17, 18, 19]
+# }
 
-half_inning_sim = simulate_half_inning(
-    inning,
-    half_inning,
-    current_players,
-    year,
-    game_info,
-    roster_stats,
-    lineups,
-    next_plate_app_id
-)
-print(half_inning_sim)
+# half_inning_sim = simulate_half_inning(
+#     inning,
+#     half_inning,
+#     current_players,
+#     year,
+#     game_info,
+#     roster_stats,
+#     lineups
+# )
+# print(half_inning_sim)
 
+print(simulate_game(1, 2, 2024))
