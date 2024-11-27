@@ -921,7 +921,21 @@ def simulate_in_play(pitcher_stats, batter_stats, situation, pitch_id, plate_app
     insert_into_table('InPlays', to_insert)
     return res, pos, grounder_or_flyball
 
-def simulate_half_inning(inning, half_inning, current_players, year, game_info, roster_stats, current_batter, lineups, next_plate_app_id):
+def simulate_half_inning(inning, half_inning, current_players, year, game_info, roster_stats, lineups, next_plate_app_id):
+    '''
+    Args:
+        inning (int): inning number.
+        half_inning (string): 'Top' or 'Bottom'.
+        current_players (dict): keys: 'Home', 'Away', values are dictionaries with keys 1-9 and values player ids for the positions
+        year (int): current year
+        game_info ():
+        roster_stats (dict): keys: player_ids of every player on either roster, values are dictionaries of stats
+        lineups (dict): keys: 'Home', 'Away', values are lists with player id in batting order, 0 is leadoff
+        next_plate_app_id (int): plate app id that is not yet in the table
+    
+    Returns:
+        Something
+    '''
     con = sqlite3.connect("mlb_simulator.db")
     cur = con.cursor()
     init_play_id = cur.execute('SELECT MAX(play_id) FROM InPlays').fetchone()[0]
@@ -946,7 +960,7 @@ def simulate_half_inning(inning, half_inning, current_players, year, game_info, 
         'outs': 0,
         'runs_scored': 0,
         'results_sequence': [],
-        'current_batter': current_batter, # NOT PLAYER ID, LINEUP POSITION
+        'current_batter': None, # NOT PLAYER ID, LINEUP POSITION
         'next_plate_app_id': next_plate_app_id
     }
 
@@ -954,9 +968,11 @@ def simulate_half_inning(inning, half_inning, current_players, year, game_info, 
     if half_inning == 'Top':
         situation['fielding_team'] = 'Home'
         situation['batting_team'] = 'Away'
+        situation['current_batter'] = game_info['Away Current Batter']
     elif half_inning == 'Bottom':
         situation['fielding_team'] = 'Away'
         situation['batting_team'] = 'Home'
+        situation['current_batter'] = game_info['Home Current Batter']
     else:
         raise ValueError('Half_inning neither "Top" nor "Bottom"')
     situation['fielder_ids'] = current_players[situation['fielding_team']]
@@ -1076,13 +1092,118 @@ def simulate_half_inning(inning, half_inning, current_players, year, game_info, 
         
         situation['current_batter'] = (situation['current_batter'] + 1) % 9
 
+    if half_inning == 'Top':
+        game_info['Away Runs'] += runs_scored
+    elif half_inning == 'Bottom':
+        game_info['Home Runs'] += runs_scored        
 
     return situation['results_sequence']
 
-def simulate_inning():
+def simulate_inning(inning, current_players, year, game_info, roster_stats, lineups, next_plate_app_id):
+
+    # top of the inning
+    simulate_half_inning(inning, 'Top', current_players, year, game_info, roster_stats, lineups, next_plate_app_id)
+
+    # bottom of the inning
+    simulate_half_inning(inning, 'Bottom', current_players, year, game_info, roster_stats, lineups, next_plate_app_id)
     pass
 
-def simulate_game():
+def simulate_game(home_team, away_team, year):
+    '''
+    Args:
+        home_team (int): team id
+        away_team (int): team id
+    '''
+    game_info = {
+        'Home Runs': 0,
+        'Away Runs': 0,
+        'Home Current Batter': 0,
+        'Away Current Batter': 0
+    }
+
+    roster_stats = {}
+
+    con = sqlite3.connect('mlb_simulator.db')
+    cur = con.cursor()
+    players = cur.execute('SELECT * FROM Players WHERE team = ? OR team = ?', (home_team, away_team)).fetchall()
+    for player in players:
+        roster_stats[player[0]] = {
+            'player_id': player[0],
+            'handedness': player[1],
+            'position': player[2],
+            'contact': player[3],
+            'power': player[4],
+            'speed': player[5],
+            'catch': player[6],
+            'team': player[7],
+            'year': player[8],
+            'age': player[9],
+            'control': player[10],
+            'velocity': player[11],
+            'movement': player[12],
+            'eye': player[13],
+            'first_name': player[14],
+            'last_name': player[15],
+        }
+
+    current_players = {
+        'Home': {},
+        'Away': {}
+    }
+
+    # decided starters and inserts into current_players
+    # position players are decided by contact + power + eye + .5 * speed
+    # starters are decided randomly but matchups are preserved (sorted by velocity + control + movement and same index is taken for both teams ie ace vs ace, 5 v 5, etc)
+    for pos in range(2, 10):
+        pos_players_home = list(filter(lambda x: roster_stats[x]['position'] == pos and roster_stats[x]['team'] == home_team, roster_stats))
+        highest_stats_home = -1
+        highest_stats_home_id = -1
+        for pos_player in pos_players_home:
+            stat_sum = roster_stats[pos_player]['contact'] + roster_stats[pos_player]['power'] + roster_stats[pos_player]['speed'] * .5 + roster_stats[pos_player]['eye']
+            if stat_sum > highest_stats_home:
+                highest_stats_home = stat_sum
+                highest_stats_home_id = pos_player
+
+        pos_players_away = list(filter(lambda x: roster_stats[x]['position'] == pos and roster_stats[x]['team'] == away_team, roster_stats))
+        highest_stats_away = -1
+        highest_stats_away_id = -1
+        for pos_player in pos_players_away:
+            stat_sum = roster_stats[pos_player]['contact'] + roster_stats[pos_player]['power'] + roster_stats[pos_player]['speed'] * .5 + roster_stats[pos_player]['eye']
+            if stat_sum > highest_stats_away:
+                highest_stats_away = stat_sum
+                highest_stats_away_id = pos_player
+        current_players['Home'][pos] = highest_stats_home_id
+        current_players['Away'][pos] = highest_stats_away_id
+
+    starter_matchup = np.random.choice([0, 1, 2, 3, 4])
+    starting_pitchers_home = list(filter(lambda x: roster_stats[x]['position'] == 1 and roster_stats[x]['team'] == home_team, roster_stats))
+    sorted_home_pitchers = sorted(starting_pitchers_home, key = lambda x: roster_stats[x]['control'] + roster_stats[x]['velocity'] + roster_stats[x]['movement'], reverse = True)
+    starting_pitchers_away = list(filter(lambda x: roster_stats[x]['position'] == 1 and roster_stats[x]['team'] == away_team, roster_stats))
+    sorted_away_pitchers = sorted(starting_pitchers_away, key = lambda x: roster_stats[x]['control'] + roster_stats[x]['velocity'] + roster_stats[x]['movement'], reverse = True)
+    current_players['Home'][1] = sorted_home_pitchers[starter_matchup]
+    current_players['Away'][1] = sorted_away_pitchers[starter_matchup]
+
+    # creates lineups (just orders by contact + power + eye + .5 * speed)
+    lineups = {
+        'Home': None,
+        'Away': None
+    }
+    lineups['Home'] = sorted(list(current_players['Home'].values()), key = lambda x: roster_stats[x]['contact'] + roster_stats[x]['power'] + roster_stats[x]['speed'] * .5 + roster_stats[x]['eye'], reverse = True)
+    lineups['Home'].append(current_players['Home'][1])
+
+    lineups['Away'] = sorted(list(current_players['Away'].values()), key = lambda x: roster_stats[x]['contact'] + roster_stats[x]['power'] + roster_stats[x]['speed'] * .5 + roster_stats[x]['eye'], reverse = True)
+    lineups['Away'].append(current_players['Away'][1])
+
+    # simulates innings
+    inning = 1
+    for _ in range(9):
+        simulate_inning(inning, current_players, year, game_info, roster_stats, lineups, next_plate_app_id)
+
+    while game_info['Home Runs'] == game_info['Away Runs']:
+        inning += 1
+        simulate_inning(inning, current_players, year, game_info, roster_stats, lineups, next_plate_app_id)
+
+
     pass
 
 def simulate_season(year, teams):
@@ -1450,8 +1571,8 @@ half_inning_sim = simulate_half_inning(
     year,
     game_info,
     roster_stats,
-    current_batter,
     lineups,
     next_plate_app_id
 )
 print(half_inning_sim)
+
