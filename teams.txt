@@ -1,30 +1,30 @@
-Giants San Francisco nlwest
-Dodgers Los Angeles nlwest
-Padres San Diego nlwest
-Rockies Colorado nlwest
-Diamondbacks Arizona nlwest
-Cardinals St. Louis nlcentral
-Brewers Milwaukee nlcentral
-Reds Cincinnati nlcentral
-Pirates Pittsburgh nlcentral
-Cubs Chicago nlcentral
-Marlins Miami nleast
-Phillies Philadelphia nleast
-Mets New York nleast
-Braves Atlanta nleast
-Nationals Washington nleast
-Athletics Oakland alwest
-Rangers Texas alwest
-Mariners Seattle alwest
-Angels Los Angeles alwest
-Astros Houston alwest
-Royals Kansas City alcentral
-White Sox Chicago alcentral
-Guardians Cleveland alcentral
-Twins Minnesota alcentral
-Tigers Detroit alcentral
-Yankees New York aleast
-Red Sox Boston aleast
-Blue Jays Toronto aleast
-Orioles Baltimore aleast
-Rays Tampa Bay aleast
+Giants, San Francisco, nlwest
+Dodgers, Los Angeles, nlwest
+Padres, San Diego, nlwest
+Rockies, Colorado, nlwest
+Diamondbacks, Arizona, nlwest
+Cardinals, St. Louis, nlcentral
+Brewers, Milwaukee, nlcentral
+Reds, Cincinnati, nlcentral
+Pirates, Pittsburgh, nlcentral
+Cubs, Chicago, nlcentral
+Marlins, Miami, nleast
+Phillies, Philadelphia, nleast
+Mets, New York, nleast
+Braves, Atlanta, nleast
+Nationals, Washington, nleast
+Athletics, Oakland, alwest
+Rangers, Texas, alwest
+Mariners, Seattle, alwest
+Angels, Los Angeles, alwest
+Astros, Houston, alwest
+Royals, Kansas City, alcentral
+White Sox, Chicago, alcentral
+Guardians, Cleveland, alcentral
+Twins, Minnesota, alcentral
+Tigers, Detroit, alcentral
+Yankees, New York, aleast
+Red Sox, Boston, aleast
+Blue Jays, Toronto, aleast
+Orioles, Baltimore, aleast
+Rays, Tampa Bay, aleast

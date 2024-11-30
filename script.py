@@ -6,16 +6,17 @@ from datetime import timedelta
 import pandas as pd
 import copy
 import json
+import create_teams
 
-current_year = 2025
-number_of_teams = 0
+# current_year = 2025
+# number_of_teams = 0
 
 teams = []
 with open('teams.txt', 'r') as f:
     lines = f.readlines()
     for line in lines:
-        split = line.split(' ')
-        teams.append((split[0], split[1], split[2]))        
+        split = tuple(line.strip().split(', '))
+        teams.append((split))        
 
 #region <failed attempts to generate schedule>
 # def generate_schedule(year, teams):
@@ -327,20 +328,22 @@ def clear_table(table_name):
     except:
         print('Error: probably a nonexistent table')
 
-def insert_into_table(table, to_insert):
+def insert_into_table(table, to_insert, cur):
     num_to_add = len(to_insert)
-    con = sqlite3.connect("mlb_simulator.db")
-    cur = con.cursor()
     if type(to_insert) == tuple:
         to_insert = list(to_insert)
     elif type(to_insert) != list:
         raise ValueError('to_insert is neither a list nor a tuple')
     insert_string = 'INSERT INTO '+ table +' VALUES (' + "?,"*(num_to_add-1) + '?)'
     cur.execute(insert_string, to_insert)
-    con.commit()
 
 # function to generate a schedule
 def generate_schedule(year, teams):
+    '''
+    Args:
+        year (int): year
+        teams (list): tuples of teams (Name, City, division) maybe
+    '''
     # define output dictionary
     generated_schedule = {}
 
@@ -380,7 +383,7 @@ def generate_schedule(year, teams):
     # return the generated schedule
     return generated_schedule
 
-def simulate_pitch(pa_constants, pitch_id, pitcher_id, batter_id):
+def simulate_pitch(pa_constants, pitch_id, pitcher_id, batter_id, cur):
     # SIMULATE PITCH FUNCTION
     # takes in pitcher stats and batter stats in the form of a dictionary:
 
@@ -458,7 +461,7 @@ def simulate_pitch(pa_constants, pitch_id, pitcher_id, batter_id):
             int(swing),
             int(contact)
         ]
-        insert_into_table('Pitches', to_insert)
+        insert_into_table('Pitches', to_insert, cur)
         return 'Hit by pitch'
 
     is_fastball = rand_sim('fastball_chance')
@@ -497,7 +500,7 @@ def simulate_pitch(pa_constants, pitch_id, pitcher_id, batter_id):
                 int(swing),
                 int(contact)
             ]
-            insert_into_table('Pitches', to_insert)
+            insert_into_table('Pitches', to_insert, cur)
             return 'Called strike'
         else:
             ball_insert = 1
@@ -516,7 +519,7 @@ def simulate_pitch(pa_constants, pitch_id, pitcher_id, batter_id):
                 int(swing),
                 int(contact)
             ]
-            insert_into_table('Pitches', to_insert)
+            insert_into_table('Pitches', to_insert, cur)
             return 'Ball'
 
 
@@ -548,7 +551,7 @@ def simulate_pitch(pa_constants, pitch_id, pitcher_id, batter_id):
             int(swing),
             int(contact)
         ]
-        insert_into_table('Pitches', to_insert)
+        insert_into_table('Pitches', to_insert, cur)
         return 'Swinging strike'
     
     if is_fastball:
@@ -579,7 +582,7 @@ def simulate_pitch(pa_constants, pitch_id, pitcher_id, batter_id):
             int(swing),
             int(contact)
         ]
-        insert_into_table('Pitches', to_insert)
+        insert_into_table('Pitches', to_insert, cur)
         return 'Foul'
     else:
         in_play_insert = 1
@@ -598,11 +601,11 @@ def simulate_pitch(pa_constants, pitch_id, pitcher_id, batter_id):
             int(swing),
             int(contact)
         ]
-        insert_into_table('Pitches', to_insert)
+        insert_into_table('Pitches', to_insert, cur)
         return 'In play'
     
 
-def simulate_plate_appearance(pitcher_stats, batter_stats, situation, plate_app_id):
+def simulate_plate_appearance(pitcher_stats, batter_stats, situation, plate_app_id, cur):
     # constants based on statcast data and my own judgement
     # statcast zones were used with heart and shadow being considered strikes, else balls
     # possible outputs: Hit by pitch, Strikeout, Walk, (in play possible outputs)
@@ -686,15 +689,13 @@ def simulate_plate_appearance(pitcher_stats, batter_stats, situation, plate_app_
     ball_counter = 0
     strike_counter = 0
     
-    con = sqlite3.connect('mlb_simulator.db')
-    cur = con.cursor()
     most_recent_pitch = cur.execute('SELECT MAX(pitch_id) FROM Pitches').fetchone()[0]
     if most_recent_pitch:
         starting_pitch_id = most_recent_pitch + 1
     else:
         starting_pitch_id = 1
     while pitch_counter <= 100:
-        pitch_result = simulate_pitch(updated_pa_constants, starting_pitch_id + pitch_counter, pitcher_stats['player_id'], batter_stats['player_id'])
+        pitch_result = simulate_pitch(updated_pa_constants, starting_pitch_id + pitch_counter, pitcher_stats['player_id'], batter_stats['player_id'], cur)
         # print(pitch_result)
         pitch_counter += 1
         if pitch_result == 'Ball':
@@ -723,7 +724,7 @@ def simulate_plate_appearance(pitcher_stats, batter_stats, situation, plate_app_
             break
 
     if pa_result == 'In play':
-        pa_result = simulate_in_play(pitcher_stats, batter_stats, situation, starting_pitch_id + pitch_counter -1, plate_app_id)
+        pa_result = simulate_in_play(pitcher_stats, batter_stats, situation, starting_pitch_id + pitch_counter -1, plate_app_id, cur)
 
     to_insert = (
         plate_app_id,
@@ -734,7 +735,7 @@ def simulate_plate_appearance(pitcher_stats, batter_stats, situation, plate_app_
 
     return pa_result
 
-def simulate_in_play(pitcher_stats, batter_stats, situation, pitch_id, plate_app_id):
+def simulate_in_play(pitcher_stats, batter_stats, situation, pitch_id, plate_app_id, cur):
     exit_velo_probs = pd.read_csv('exit_velo_probs.csv')
     rounded_las = pd.read_csv('rounded_las.csv')
     # options:
@@ -919,12 +920,12 @@ def simulate_in_play(pitcher_stats, batter_stats, situation, pitch_id, plate_app
     )
 
     try:
-        insert_into_table('InPlays', to_insert)
+        insert_into_table('InPlays', to_insert, cur)
     except:
         raise ValueError(f'Insertion Error, init_play_id: {situation["initial_play_id"]}, plays so far: {situation["plays_in_inning_so_far"]}')
     return res, pos, grounder_or_flyball
 
-def simulate_half_inning(inning, half_inning, current_players, year, game_info, roster_stats, lineups):
+def simulate_half_inning(inning, half_inning, current_players, year, game_info, roster_stats, lineups, cur):
     '''
     Args:
         inning (int): inning number.
@@ -938,8 +939,7 @@ def simulate_half_inning(inning, half_inning, current_players, year, game_info, 
     Returns:
         Something
     '''
-    con = sqlite3.connect("mlb_simulator.db")
-    cur = con.cursor()
+
     init_play_id = cur.execute('SELECT MAX(play_id) FROM InPlays').fetchone()[0]
     if not init_play_id:
         init_play_id = 0
@@ -991,7 +991,7 @@ def simulate_half_inning(inning, half_inning, current_players, year, game_info, 
     # main loop
     while situation['outs'] < 3:
         # simulates plate appearance
-        res = simulate_plate_appearance(roster_stats[fielder_ids[pitcher_pos]], roster_stats[lineups[situation['batting_team']][situation['current_batter']]], situation, situation['next_plate_app_id'])
+        res = simulate_plate_appearance(roster_stats[fielder_ids[pitcher_pos]], roster_stats[lineups[situation['batting_team']][situation['current_batter']]], situation, situation['next_plate_app_id'], cur)
         game_info['next_plate_app_id'] += 1
 
         # interprets result
@@ -1102,13 +1102,13 @@ def simulate_half_inning(inning, half_inning, current_players, year, game_info, 
 
     return situation['results_sequence']
 
-def simulate_inning(inning, current_players, year, game_info, roster_stats, lineups):
+def simulate_inning(inning, current_players, year, game_info, roster_stats, lineups, cur):
 
     # top of the inning
-    simulate_half_inning(inning, 'Top', current_players, year, game_info, roster_stats, lineups)
+    simulate_half_inning(inning, 'Top', current_players, year, game_info, roster_stats, lineups, cur)
 
     # bottom of the inning
-    simulate_half_inning(inning, 'Bottom', current_players, year, game_info, roster_stats, lineups)
+    simulate_half_inning(inning, 'Bottom', current_players, year, game_info, roster_stats, lineups, cur)
     pass
 
 def simulate_game(home_team, away_team, year):
@@ -1191,8 +1191,11 @@ def simulate_game(home_team, away_team, year):
     sorted_home_pitchers = sorted(starting_pitchers_home, key = lambda x: roster_stats[x]['control'] + roster_stats[x]['velocity'] + roster_stats[x]['movement'], reverse = True)
     starting_pitchers_away = list(filter(lambda x: roster_stats[x]['position'] == 1 and roster_stats[x]['team'] == away_team, roster_stats))
     sorted_away_pitchers = sorted(starting_pitchers_away, key = lambda x: roster_stats[x]['control'] + roster_stats[x]['velocity'] + roster_stats[x]['movement'], reverse = True)
-    current_players['Home'][1] = sorted_home_pitchers[starter_matchup]
-    current_players['Away'][1] = sorted_away_pitchers[starter_matchup]
+    try:
+        current_players['Home'][1] = sorted_home_pitchers[starter_matchup]
+        current_players['Away'][1] = sorted_away_pitchers[starter_matchup]
+    except:
+        raise IndexError(home_team)
 
     # creates lineups (just orders by contact + power + eye + .5 * speed)
     lineups = {
@@ -1208,20 +1211,25 @@ def simulate_game(home_team, away_team, year):
     # simulates innings
     inning = 1
     for _ in range(9):
-        simulate_inning(inning, current_players, year, game_info, roster_stats, lineups)
-        print(f'inning {inning} simulated')
+        simulate_inning(inning, current_players, year, game_info, roster_stats, lineups, cur)
         inning += 1
 
     while game_info['Home Runs'] == game_info['Away Runs']:
-        simulate_inning(inning, current_players, year, game_info, roster_stats, lineups)
-        print(f'inning {inning} simulated')
+        simulate_inning(inning, current_players, year, game_info, roster_stats, lineups, cur)
         inning += 1
         if inning >= 100:
             break
 
+    con.commit()
+
     return (game_info['Home Runs'], game_info['Away Runs'])
 
-def simulate_season(year, teams):
+def simulate_season(year, teams, cutoff = 0):
+    '''
+    Args:
+        year (int): year
+        teams (list): list of tups of form (City, Name, division)
+    '''
     # connect to sqlite database
     con = sqlite3.connect("mlb_simulator.db")
     cur = con.cursor()
@@ -1232,9 +1240,45 @@ def simulate_season(year, teams):
     if year in years:
         print("Error: Season already in record.")
         return False
+    else:
+        # create teams and create players IF THEY DONT EXIST ALREADY
+        pass
+
+    # creates 
+    id_to_team = {} # keys: team_id, values: City Name
+    team_to_id = {} # keys: City name, values: team_id
+    records = {} # keys: City name, values: [wins, losses]
+    team_id_tups = cur.execute("SELECT team_id, name, city FROM Teams WHERE year = ?", [year]).fetchall()
+    if not team_id_tups:
+        raise ValueError('Year not in database (this shouldnt happen)')
+    for tup in team_id_tups:
+        id_to_team[tup[0]] = (tup[2] + " " + tup[1]).replace(",", " ")
+        team_to_id[id_to_team[tup[0]]] = tup[0]
+        records[id_to_team[tup[0]]] = [0, 0]
+    
     
     # generate schedule
+    # format: dictionary with key as date and values as list of tuples, home team id first then away team id
     schedule = generate_schedule(year, teams)
+
+    counter = 1
+    for date in schedule:
+        for game in schedule[date]:
+            final_score = simulate_game(team_to_id[game[0]], team_to_id[game[1]], year)
+            if final_score[0] > final_score[1]:
+                records[game[0]][0] += 1
+                records[game[1]][1] += 1
+            else:
+                records[game[1]][0] += 1
+                records[game[0]][1] += 1
+        print(date, "simulated")
+        if counter == cutoff and cutoff != 0:
+            break
+        counter += 1
+        
+    
+    return records
+
 
 # outcomes = {}
 # for i in range(1000):
@@ -1591,4 +1635,5 @@ def simulate_season(year, teams):
 # )
 # print(half_inning_sim)
 
-print(simulate_game(1, 2, 2024))
+print(simulate_season(2024, teams))
+

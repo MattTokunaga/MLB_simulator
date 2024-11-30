@@ -8,9 +8,8 @@ def create_teams(year):
     with open('teams.txt', 'r') as f:
         lines = f.readlines()
         for line in lines:
-            split = line.split(' ')
-            city = ' '.join(split[1:-1])
-            teams.append((split[0], city, split[-1]))   
+            split = line.split(', ')
+            teams.append((split))   
 
     con = sqlite3.connect('mlb_simulator.db')
     cur = con.cursor()
