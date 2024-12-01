@@ -7,6 +7,7 @@ import pandas as pd
 import copy
 import json
 import create_teams
+import random
 
 # current_year = 2025
 # number_of_teams = 0
@@ -1224,11 +1225,62 @@ def simulate_game(home_team, away_team, year):
 
     return (game_info['Home Runs'], game_info['Away Runs'])
 
+def simulate_series(team_1_id, team_2_id, best_of, year, id_to_team):
+    wins_needed = best_of//2 + 1
+    team_1_wins = 0
+    team_2_wins = 0
+    home_away_dic = {}
+    if random.randint(0, 1) == 1:
+        home_field_team = team_1_id
+        away_team = team_2_id
+        home_away_dic['Home'] = 'Team 1'
+        home_away_dic['Away'] = 'Team 2'
+    else:
+        home_field_team = team_2_id
+        away_team = team_1_id
+        home_away_dic['Home'] = 'Team 2'
+        home_away_dic['Away'] = 'Team 1'
+    
+    game_num = 1
+    while team_1_wins < wins_needed and team_2_wins < wins_needed:
+        if game_num % 2 == 1:
+            score = simulate_game(home_field_team, away_team, year)
+            if score[0] > score[1]:
+                if home_away_dic['Home'] == 'Team 1':
+                    team_1_wins += 1
+                else:
+                    team_2_wins += 1
+            else:
+                if home_away_dic['Home'] == 'Team 1':
+                    team_2_wins += 1
+                else:
+                    team_1_wins += 1
+        else:
+            score = simulate_game(away_team, home_field_team, year)
+            if score[0] > score[1]:
+                if home_away_dic['Home'] == 'Team 1':
+                    team_2_wins += 1
+                else:
+                    team_1_wins += 1
+            else:
+                if home_away_dic['Home'] == 'Team 1':
+                    team_1_wins += 1
+                else:
+                    team_2_wins += 1
+
+    if team_1_wins > team_2_wins:
+        print(f'The {id_to_team[team_1_id]} have beaten the {id_to_team[team_2_id]} in a best of {best_of} series.')
+        return team_1_id
+    else:
+        print(f'The {id_to_team[team_2_id]} have beaten the {id_to_team[team_1_id]} in a best of {best_of} series.')
+        return team_2_id
+
 def simulate_season(year, teams, cutoff = 0):
     '''
     Args:
         year (int): year
         teams (list): list of tups of form (City, Name, division)
+        cutoff (int): optional, number of days to run simulation for if you don't want a full season
     '''
     # connect to sqlite database
     con = sqlite3.connect("mlb_simulator.db")
@@ -1260,6 +1312,7 @@ def simulate_season(year, teams, cutoff = 0):
     # generate schedule
     # format: dictionary with key as date and values as list of tuples, home team id first then away team id
     schedule = generate_schedule(year, teams)
+    print('Schedule generated')
 
     counter = 1
     for date in schedule:
@@ -1275,365 +1328,55 @@ def simulate_season(year, teams, cutoff = 0):
         if counter == cutoff and cutoff != 0:
             break
         counter += 1
-        
+
+
+    divisions = set([x[2] for x in teams])
+    standings = {}
+
+    for div in divisions:
+        standings[div] = {team[1] + ' ' + team[0]: records[team[1] + ' ' + team[0]] for team in list(filter(lambda x: x[2] == div, teams))}
     
-    return records
+    nl_div_winners = []
+    al_div_winners = []
+    nl_wild_card_wins = -1
+    al_wild_card_wins = -1
+    nl_wild_card_team = None
+    al_wild_card_team = None
+    for div in standings:
+        sorted_div = sorted(standings[div], key = lambda x: standings[div][x][0], reverse = True)
+        random.shuffle(sorted_div)
+        sorted_div = sorted(sorted_div, key = lambda x: standings[div][x][0], reverse = True)
+        if div[:2] == 'al':
+            al_div_winners.append(sorted_div[0])
+            if standings[div][sorted_div[1]][0] > al_wild_card_wins:
+                al_wild_card_wins = standings[div][sorted_div[1]][0]
+                al_wild_card_team = sorted_div[1]
+            elif standings[div][sorted_div[1]][0] == al_wild_card_wins:
+                if random.randint(0, 1) == 1:
+                    al_wild_card_team = sorted_div[1]
+        else:
+            nl_div_winners.append(sorted_div[0])
+            if standings[div][sorted_div[1]][0] > nl_wild_card_wins:
+                nl_wild_card_wins = standings[div][sorted_div[1]][0]
+                nl_wild_card_team = sorted_div[1]
+            elif standings[div][sorted_div[1]][0] == nl_wild_card_wins:
+                if random.randint(0, 1) == 1:
+                    nl_wild_card_team = sorted_div[1]
 
+    alcs_team_1 = simulate_series(team_to_id[al_div_winners[0]], team_to_id[al_wild_card_team], 5, year, id_to_team)
+    alcs_team_2 = simulate_series(team_to_id[al_div_winners[1]], team_to_id[al_div_winners[2]], 5, year, id_to_team)
 
-# outcomes = {}
-# for i in range(1000):
-#     outcomes[simulate_plate_appearance({
-#         'control': 50,
-#         'velocity': 50,
-#         'movement': 50
-#     }, {
-#         'contact': 50,
-#         'power': 50,
-#         'eye': 50
-#     })] += 1
+    nlcs_team_1 = simulate_series(team_to_id[nl_div_winners[0]], team_to_id[nl_wild_card_team], 5, year, id_to_team)
+    nlcs_team_2 = simulate_series(team_to_id[nl_div_winners[1]], team_to_id[nl_div_winners[2]], 5, year, id_to_team)
 
-# print(outcomes)
+    al_champ = simulate_series(alcs_team_1, alcs_team_2, 7, year, id_to_team)
+    nl_champ = simulate_series(nlcs_team_1, nlcs_team_2, 7, year, id_to_team)
 
+    world_series_winner = simulate_series(al_champ, nl_champ, 7, year, id_to_team)
+    print(f'Your {year} World Series winners are the {id_to_team[world_series_winner]}')
 
-# N = 10000
-# outcomes = {}
-# for i in range(N):
-#     result = simulate_plate_appearance({
-#         'control': 50,
-#         'velocity': 50,
-#         'movement': 50
-#     }, {
-#         'contact': 50,
-#         'power': 50,
-#         'eye': 50
-#     })
-#     if result in outcomes:
-#         outcomes[result] += 1
-#     else:
-#         outcomes[result] = 1
-# for key in outcomes:
-#     outcomes[key] = outcomes[key]/N
-# print(outcomes)
+    return standings
 
-# base_pa_constants = {
-#         'hit_by_pitch_chance': 0.003, # hbp / total pitches
-#         'fastball_chance': 0.5, # fastballs / total pitches
-#         'fastball_strike_chance': 0.65, # fastball strikes / total fastballs
-#         'non_fastball_strike_chance': 0.5, # non fastball strikes / total non fastballs
-#         'fastball_strike_swing_chance': 0.7, # fastball strike swings / total fastball strikes
-#         'non_fastball_strike_swing_chance': 0.7, # non fastball strike swings / total non fastball strikes
-#         'fastball_ball_swing_chance': 0.15, # fastball ball swings / total fastball balls
-#         'non_fastball_ball_swing_chance': 0.25, # non fastball ball swings / total non fastball balls
-#         'fastball_strike_contact_chance': 0.85, # fastball strike contacts / total fastball strike swings
-#         'non_fastball_strike_contact_chance': 0.75, # non fastball strike contacts / total non fastball strike swings
-#         'fastball_ball_contact_chance': 0.6, # fastball ball contacts / total ball strike swings
-#         'non_fastball_ball_contact_chance': 0.35, # non fastball ball contacts / total non fastball ball swings
-#         'fastball_strike_foul_chance': 0.55, # fastball strike fouls / total fastball strike contacts
-#         'non_fastball_strike_foul_chance': 0.5, # non fastball strike fouls / total non fastball strike contacts
-#         'fastball_ball_foul_chance': 0.7, # fastball ball fouls / total fastball ball contacts
-#         'non_fastball_ball_foul_chance': 0.6 # non fastball ball fouls / total non fastball ball contacts
-# }
-
-# pitch_outcomes = {
-#     'Swinging strike': 0,
-#     'Called strike': 0,
-#     'Ball': 0,
-#     'In play': 0,
-#     'Hit by pitch': 0,
-#     'Foul': 0
-# }
-# for i in range(N):
-#     result = simulate_pitch(base_pa_constants)
-#     if result in pitch_outcomes:
-#         pitch_outcomes[result] += 1
-#     else:
-#         pitch_outcomes[result] = 1
-# for key in pitch_outcomes:
-#     pitch_outcomes[key] = np.round(pitch_outcomes[key]/N * 100, 2)
-# print(pitch_outcomes)
-
-# test_situation = {
-#     'initial_play_id': 1,
-#     'plays_in_inning_so_far': 0,
-#     'Year': 2024,
-#     'fielder_ids': {
-#     1: 1,2: 2,3: 3,4: 4,5: 5,6: 6,7: 7,8: 8,9: 9,10: None
-#     },
-#     'runner_ids' : {
-#     'first': 11, 'second': 12, 'third': 13
-#     },
-#     'inning': 1,
-#     'half_inning': 'Top'
-# }
-# testres = simulate_in_play({
-#         'control': 50,
-#         'velocity': 50,
-#         'movement': 50,
-#         'player_id': 1,
-#         'handedness': 'RIGHT'
-#     }, {
-#         'contact': 50,
-#         'power': 50,
-#         'eye': 50,
-#         'player_id': 10,
-#         'handedness': 'LEFT'
-#     },
-#     test_situation,
-#     1,
-#     1)
-
-# print(testres)
-
-# con = sqlite3.connect("mlb_simulator.db")
-# cur = con.cursor()
-# print(cur.execute('pragma table_info(InPlays)').fetchall())
-
-# inning = 1
-# half_inning = 'Top'
-# current_players = {
-#     'Home': {
-#         1: 1,
-#         2: 2,
-#         3: 3,
-#         4: 4,
-#         5: 5,
-#         6: 6,
-#         7: 7,
-#         8: 8,
-#         9: 9
-#     },
-#     'Away': {
-#         1: 11,
-#         2: 12,
-#         3: 13,
-#         4: 14,
-#         5: 15,
-#         6: 16,
-#         7: 17,
-#         8: 18,
-#         9: 19
-#     }
-# }
-# year = 2024
-# game_info = {
-#     'next_plate_app_id': 0
-# }
-# roster_stats = {
-#     1: {
-#         'control': 50,
-#         'velocity': 50,
-#         'movement': 50,
-#         'player_id': 1,
-#         'handedness': 'RIGHT',
-#         'contact': 50,
-#         'power': 50,
-#         'eye': 50,
-#         'player_id': 1
-#     },
-#     2: {
-#         'control': 50,
-#         'velocity': 50,
-#         'movement': 50,
-#         'player_id': 1,
-#         'handedness': 'RIGHT',
-#         'contact': 50,
-#         'power': 50,
-#         'eye': 50,
-#         'player_id': 2
-#     },
-#     3: {
-#         'control': 50,
-#         'velocity': 50,
-#         'movement': 50,
-#         'player_id': 1,
-#         'handedness': 'RIGHT',
-#         'contact': 50,
-#         'power': 50,
-#         'eye': 50,
-#         'player_id': 3
-#     },
-#     4: {
-#         'control': 50,
-#         'velocity': 50,
-#         'movement': 50,
-#         'player_id': 1,
-#         'handedness': 'RIGHT',
-#         'contact': 50,
-#         'power': 50,
-#         'eye': 50,
-#         'player_id': 4
-#     },
-#     5: {
-#         'control': 50,
-#         'velocity': 50,
-#         'movement': 50,
-#         'player_id': 1,
-#         'handedness': 'RIGHT',
-#         'contact': 50,
-#         'power': 50,
-#         'eye': 50,
-#         'player_id': 5
-#     },
-#     6: {
-#         'control': 50,
-#         'velocity': 50,
-#         'movement': 50,
-#         'player_id': 1,
-#         'handedness': 'RIGHT',
-#         'contact': 50,
-#         'power': 50,
-#         'eye': 50,
-#         'player_id': 6
-#     },
-#     7: {
-#         'control': 50,
-#         'velocity': 50,
-#         'movement': 50,
-#         'player_id': 1,
-#         'handedness': 'RIGHT',
-#         'contact': 50,
-#         'power': 50,
-#         'eye': 50,
-#         'player_id': 7
-#     },
-#     8: {
-#         'control': 50,
-#         'velocity': 50,
-#         'movement': 50,
-#         'player_id': 1,
-#         'handedness': 'RIGHT',
-#         'contact': 50,
-#         'power': 50,
-#         'eye': 50,
-#         'player_id': 8
-#     },
-#     9: {
-#         'control': 50,
-#         'velocity': 50,
-#         'movement': 50,
-#         'player_id': 1,
-#         'handedness': 'RIGHT',
-#         'contact': 50,
-#         'power': 50,
-#         'eye': 50,
-#         'player_id': 9
-#     },
-#     11: {
-#         'control': 50,
-#         'velocity': 50,
-#         'movement': 50,
-#         'player_id': 1,
-#         'handedness': 'RIGHT',
-#         'contact': 50,
-#         'power': 50,
-#         'eye': 50,
-#         'player_id': 11
-#     },
-#     12: {
-#         'control': 50,
-#         'velocity': 50,
-#         'movement': 50,
-#         'player_id': 1,
-#         'handedness': 'RIGHT',
-#         'contact': 50,
-#         'power': 50,
-#         'eye': 50,
-#         'player_id': 12
-#     },
-#     13: {
-#         'control': 50,
-#         'velocity': 50,
-#         'movement': 50,
-#         'player_id': 1,
-#         'handedness': 'RIGHT',
-#         'contact': 50,
-#         'power': 50,
-#         'eye': 50,
-#         'player_id': 13
-#     },
-#     14: {
-#         'control': 50,
-#         'velocity': 50,
-#         'movement': 50,
-#         'player_id': 1,
-#         'handedness': 'RIGHT',
-#         'contact': 50,
-#         'power': 50,
-#         'eye': 50,
-#         'player_id': 14
-#     },
-#     15: {
-#         'control': 50,
-#         'velocity': 50,
-#         'movement': 50,
-#         'player_id': 1,
-#         'handedness': 'RIGHT',
-#         'contact': 50,
-#         'power': 50,
-#         'eye': 50,
-#         'player_id': 15
-#     },
-#     16: {
-#         'control': 50,
-#         'velocity': 50,
-#         'movement': 50,
-#         'player_id': 1,
-#         'handedness': 'RIGHT',
-#         'contact': 50,
-#         'power': 50,
-#         'eye': 50,
-#         'player_id': 16
-#     },
-#     17: {
-#         'control': 50,
-#         'velocity': 50,
-#         'movement': 50,
-#         'player_id': 1,
-#         'handedness': 'RIGHT',
-#         'contact': 50,
-#         'power': 50,
-#         'eye': 50,
-#         'player_id': 17
-#     },
-#     18: {
-#         'control': 50,
-#         'velocity': 50,
-#         'movement': 50,
-#         'player_id': 1,
-#         'handedness': 'RIGHT',
-#         'contact': 50,
-#         'power': 50,
-#         'eye': 50,
-#         'player_id': 18
-#     },
-#     19: {
-#         'control': 50,
-#         'velocity': 50,
-#         'movement': 50,
-#         'player_id': 1,
-#         'handedness': 'RIGHT',
-#         'contact': 50,
-#         'power': 50,
-#         'eye': 50,
-#         'player_id': 19
-#     }
-# }
-# current_batter = 0
-# lineups = {
-#     'Home': [1, 2, 3, 4, 5, 6 ,7 ,8, 9],
-#     'Away': [11, 12, 13, 14, 15, 16, 17, 18, 19]
-# }
-
-# half_inning_sim = simulate_half_inning(
-#     inning,
-#     half_inning,
-#     current_players,
-#     year,
-#     game_info,
-#     roster_stats,
-#     lineups
-# )
-# print(half_inning_sim)
 
 print(simulate_season(2024, teams))
 
